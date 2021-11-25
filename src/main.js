@@ -9,7 +9,7 @@ const a = [
   { key: 'f', index: 5}
 ]
 
-const obj = find(a, (item) => item.key === 'x')
+const obj = find(a, (item) => item.key === 'z')
 
 console.log('obj')
 console.log(obj)
