@@ -1,3 +1,3 @@
-import createPredicateIndexFinder from "./_createPredicateIndexFinder"
+import createFindIndexFunc from "./_createFindIndexFunc"
 
-export default createPredicateIndexFinder()
+export default createFindIndexFunc()

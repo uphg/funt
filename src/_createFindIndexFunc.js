@@ -4,7 +4,7 @@ import isArray from "./isArray"
  * @param direction 遍历方向
  * @returns 
  */
-const createPredicateIndexFinder = (direction = 'first') => {
+const createFindIndexFunc = (direction = 'first') => {
   const back = direction === 'last'
   
   return (collection, predicate, fromIndex = 0) => {
@@ -21,4 +21,4 @@ const createPredicateIndexFinder = (direction = 'first') => {
   }
 }
 
-export default createPredicateIndexFinder
+export default createFindIndexFunc
