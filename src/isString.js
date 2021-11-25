@@ -1,5 +1,5 @@
-import toStringTag from './_toStringTag'
+import hasToStringTag from './_hasToStringTag'
 
-const isString = (value) => toStringTag(value, 'String')
+const isString = (value) => hasToStringTag(value, 'String')
 
 export default isString
