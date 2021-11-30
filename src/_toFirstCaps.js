@@ -13,15 +13,14 @@
  * // => 'TheCaseOfThisConversionString'
  */
 
-function toFirstCaps(value, delimiter = /[_-\s]/) {
+function toFirstCaps(value, { delimiter = /[_-\s]/, hump = false }) {
   const newValue = value.split(delimiter)
   if (newValue?.length <= 0) return value
-
   if (newValue.length === 1) {
-    return firstCaps(newValue[0])
+    return hump ? value : firstCaps(newValue[0])
   }
 
-  return newValue.reduce((a, b) => firstCaps(a) + firstCaps(b))
+  return newValue.reduce((a, b) => (hump ? a : firstCaps(a)) + firstCaps(b))
 }
 
 function firstCaps(word) {
