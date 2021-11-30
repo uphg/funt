@@ -6,14 +6,14 @@
  * @returns {Array} 返回转换后的字符串.
  * @example
  * 
- * splitWordLine('TheCaseOfThisConversionString')
+ * splitCapsWord('TheCaseOfThisConversionString')
  * // => 'the-case-of-this-conversion-string'
  * 
- * splitWordLine('TheCaseOfThisConversionString', '_')
+ * splitCapsWord('TheCaseOfThisConversionString', '_')
  * // => 'the_case_of_this_conversion_string'
  */
 
-function splitWordLine(value, delimiter = '-') {
+function splitCapsWord(value, delimiter = '-') {
   const newValue = value.replace(/[A-Z]?[^A-Z]*/g, (item) => {
     return item ? firstLowerCase(item) + delimiter : ''
   })
@@ -25,4 +25,4 @@ function firstLowerCase(word) {
   return word ? word.replace(word[0], word[0].toLowerCase()) : ''
 }
 
-export default splitWordLine
+export default splitCapsWord

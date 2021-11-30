@@ -6,14 +6,14 @@
  * @returns {Array} 返回转换后的字符串.
  * @example
  * 
- * toFirstLetterCaps('the_case_of_this_conversion_string')
+ * toFirstCaps('the_case_of_this_conversion_string')
  * // => 'TheCaseOfThisConversionString'
  * 
- * toFirstLetterCaps('the-case-of This conversion-string')
+ * toFirstCaps('the-case-of This conversion-string')
  * // => 'TheCaseOfThisConversionString'
  */
 
-function toFirstLetterCaps(value, delimiter = /[_-\s]/) {
+function toFirstCaps(value, delimiter = /[_-\s]/) {
   const newValue = value.split(delimiter)
   if (newValue?.length <= 0) return value
 
@@ -28,4 +28,4 @@ function firstCaps(word) {
   return word.replace(word[0], word[0].toUpperCase())
 }
 
-export default toFirstLetterCaps
+export default toFirstCaps

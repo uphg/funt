@@ -1,5 +1,5 @@
-import splitWordLine from './_splitWordLine'
-import toFirstLetterCaps from './_toFirstLetterCaps'
+import splitCapsWord from './_splitCapsWord'
+import toFirstCaps from './_toFirstCaps'
 
 import { find, findIndex, findLast, findLastIndex } from "./index"
 
@@ -17,21 +17,21 @@ const obj = find(a, (item) => item.key === 'z')
 console.log('obj')
 console.log(obj)
 
-// # splitWordLine
-console.log('# splitWordLine')
+// # splitCapsWord
+console.log('# splitCapsWord')
 
 const string1 = 'TheCaseOfThisConversionString'
 
-const splitString1 = splitWordLine(string1, '_')
+const splitString1 = splitCapsWord(string1, '_')
 console.log(string1)
 console.log(splitString1)
 
-// # toFirstLetterCaps
-console.log('\n# toFirstLetterCaps')
+// # toFirstCaps
+console.log('\n# toFirstCaps')
 
 const string2 = 'the_case_of_this_conversion_string'
 
-const splitString2 = toFirstLetterCaps(string2)
+const splitString2 = toFirstCaps(string2)
 console.log(string2)
 console.log(splitString2)
 
