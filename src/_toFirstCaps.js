@@ -13,7 +13,7 @@
  * // => 'TheCaseOfThisConversionString'
  */
 
-function toFirstCaps(value, { delimiter = /[_-\s]/, hump = false }) {
+function toFirstCaps(value, { delimiter = /[_-\s]/, hump = true }) {
   const newValue = value.split(delimiter)
   if (newValue?.length <= 0) return value
   if (newValue.length === 1) {
