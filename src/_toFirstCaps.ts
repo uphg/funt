@@ -1,3 +1,8 @@
+type Options = {
+  delimiter?: RegExp | string;
+  hump?: boolean;
+}
+
 /**
  * 将分割的单词转为首字母大写的字符串
  * 
@@ -13,7 +18,13 @@
  * // => 'TheCaseOfThisConversionString'
  */
 
-function toFirstCaps(value, { delimiter = /[_-\s]/, hump = true }) {
+function toFirstCaps(
+  value: string,
+  {
+    delimiter = /[_-\s]/,
+    hump = false
+  }: Options = {}
+) {
   const newValue = value.split(delimiter)
   if (newValue?.length <= 0) return value
   if (newValue.length === 1) {
@@ -23,8 +34,8 @@ function toFirstCaps(value, { delimiter = /[_-\s]/, hump = true }) {
   return newValue.reduce((a, b) => (hump ? a : firstCaps(a)) + firstCaps(b))
 }
 
-function firstCaps(word) {
-  return word.replace(word[0], word[0].toUpperCase())
+function firstCaps(word: string) {
+  return word ? word.replace(word[0], word[0].toUpperCase()) : ''
 }
 
 export default toFirstCaps

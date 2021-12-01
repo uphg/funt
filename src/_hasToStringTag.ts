@@ -1,4 +1,4 @@
-const hasToStringTag = (value, name) => {
+const hasToStringTag = (value: unknown, name: string) => {
   return Object.prototype.toString.call(value) === `object ${name}`
 }
 

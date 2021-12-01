@@ -3,7 +3,7 @@
  * 
  * @param {*} string 字符串
  * @param {*} delimiter 分割符，默认 `-`
- * @returns {Array} 返回转换后的字符串.
+ * @returns {string} 返回转换后的字符串.
  * @example
  * 
  * splitCapsWord('TheCaseOfThisConversionString')
@@ -13,7 +13,7 @@
  * // => 'the_case_of_this_conversion_string'
  */
 
-function splitCapsWord(value, delimiter = '-') {
+function splitCapsWord(value: string, delimiter = '-') {
   const newValue = value.replace(/[A-Z]?[^A-Z]*/g, (item) => {
     return item ? firstLowerCase(item) + delimiter : ''
   })
@@ -21,7 +21,7 @@ function splitCapsWord(value, delimiter = '-') {
   return newValue.slice(0, newValue.length - 1)
 }
 
-function firstLowerCase(word) {
+function firstLowerCase(word: string) {
   return word ? word.replace(word[0], word[0].toLowerCase()) : ''
 }
 

@@ -12,7 +12,7 @@ const a = [
   { key: 'f', index: 5}
 ]
 
-const obj = find(a, (item) => item.key === 'z')
+const obj = find(a, (item: { key: string, index: number}) => item.key === 'z')
 
 console.log('obj')
 console.log(obj)
@@ -35,6 +35,6 @@ const splitString2 = toFirstCaps(string2)
 console.log(string2)
 console.log(splitString2)
 
-const app = document.querySelector('#app')
+const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = `<h1>Hello Vite!</h1>`
