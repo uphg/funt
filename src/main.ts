@@ -1,7 +1,8 @@
 import splitCapsWord from './_splitCapsWord'
 import toFirstCaps from './_toFirstCaps'
+import './umd-demo'
 
-import { find, findIndex, findLast, findLastIndex } from "./index"
+import { find, /* findIndex, findLast, findLastIndex */ } from "./index"
 
 const a = [
   { key: 'a', index: 0},

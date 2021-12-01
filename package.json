@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "serve": "vite preview"
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "build:modules": "sh ./scripts/build.sh"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
