@@ -6,12 +6,13 @@
   "exports": {
     ".": {
       "import": "./dist/es/",
-      "require": "./dist/umd/"
+      "require": "./dist/cjs/"
     }
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && rollup -c",
+    "build:modules": "sh scripts/build.sh",
     "serve": "vite preview"
   },
   "devDependencies": {

@@ -1,6 +1,5 @@
 import splitCapsWord from './_splitCapsWord'
 import toFirstCaps from './_toFirstCaps'
-import './demo'
 
 import { find, /* findIndex, findLast, findLastIndex */ } from "./index"
 

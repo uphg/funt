@@ -1,17 +1,24 @@
 import esbuild from 'rollup-plugin-esbuild'
 
-const createLib = (fileName) => ({
-  input: `src/${fileName}.ts`,
+export default {
+  input: `src/index.ts`,
   output: [
     {
-      file: `dist/es/${fileName}.js`,
+      preserveModules: true, // 保留导入的模块为单独文件
+      dir: `dist/es`,
       format: 'es'
     },
     {
-      file: `dist/umd/${fileName}.js`,
-      name: `funny.${fileName}`,
-      format: 'umd'
-    }
+      preserveModules: true, // 保留导入的模块为单独文件
+      dir: `dist/cjs`,
+      format: 'cjs',
+      // exports: 'auto'
+    },
+    /* {
+      dir: `dist/umd`,
+      name: `funny`,
+      format: 'umd',
+    } */
   ],
   plugins: [
     esbuild({
@@ -20,11 +27,4 @@ const createLib = (fileName) => ({
       target: 'es2015' 
     })
   ],
-})
-
-export default [
-  createLib('find'),
-  createLib('findIndex'),
-  createLib('findLast'),
-  createLib('findLastIndex'),
-]
+}
