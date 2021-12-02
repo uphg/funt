@@ -11,9 +11,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "serve": "vite preview",
-    "build:modules": "rollup -c"
+    "build": "tsc && vite build && rollup -c",
+    "serve": "vite preview"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
