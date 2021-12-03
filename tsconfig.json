@@ -14,9 +14,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "declaration": true,
-    "baseUrl": "src/",
     "outDir": "dist/",
-    "rootDir": "src/"
   },
   "include": ["./src"]
 }

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "esnext",
+    "declaration": true,
+    "outDir": "../dist/cjs/",
+  },
+  "include": ["../src"]
+}

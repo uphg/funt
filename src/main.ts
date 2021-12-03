@@ -1,6 +1,9 @@
 import splitCapsWord from './_splitCapsWord'
 import toFirstCaps from './_toFirstCaps'
+// import findIndex from '../dist/es/findIndex'
 
+// console.log('findIndex')
+// console.log(findIndex([1, 3, 4, 1, 3], (item) => item === 3))
 
 import { find, /* findIndex, findLast, findLastIndex */ } from "./index"
 

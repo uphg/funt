@@ -6,36 +6,23 @@ export default {
   input: `src/index.ts`,
   output: [
     {
-      name: 'funny',
-      dir: 'dist',
-      // file: 'dist/index.js',
-      format: 'umd',
+      preserveModules: true, // 保留导入的模块为单独文件
+      dir: `dist/es`,
+      format: 'es',
       sourcemap: true
     },
     {
       preserveModules: true, // 保留导入的模块为单独文件
-      dir: `dist`,
-      format: 'es',
+      dir: `dist/cjs`,
+      format: 'cjs',
       sourcemap: true
     },
-    // {
-    //   preserveModules: true, // 保留导入的模块为单独文件
-    //   dir: `dist/es`,
-    //   format: 'es',
-    //   sourcemap: true
-    // },
-    // {
-    //   preserveModules: true, // 保留导入的模块为单独文件
-    //   dir: `dist/cjs`,
-    //   format: 'cjs',
-    //   sourcemap: true
-    // },
-    // {
-    //   name: 'funny',
-    //   file: 'dist/umd/index.js',
-    //   format: 'umd',
-    //   sourcemap: true
-    // }
+    {
+      name: 'funny',
+      file: 'dist/umd/index.js',
+      format: 'umd',
+      sourcemap: true
+    }
   ],
   plugins: [
     typescript({
@@ -46,6 +33,6 @@ export default {
       minify: process.env.NODE_ENV === 'production',
       target: 'es2015' 
     }),
-    // terser() // 压缩代码
+    terser() // 压缩代码
   ]
 }

@@ -4,13 +4,20 @@ set -e
 
 rm -rf dist/*
 
-if [ ! -d "dist/cjs" ]; then
-  mkdir dist/cjs
-fi
+# if [ ! -d "dist/cjs" ]; then
+#   mkdir dist/cjs
+# fi
 
-if [ ! -d "dist/es" ]; then
-  mkdir dist/es
-fi
+# if [ ! -d "dist/es" ]; then
+#   mkdir dist/es
+# fi
+
+# 使用 rollup 打包
+
+pnpm build &&
+pnpm rollup -c ./build/rollup.config.cjs.ts --configPlugin typescript &&
+pnpm rollup -c ./build/rollup.config.es.ts --configPlugin typescript
+# pnpm rollup -c ./build/rollup.config.umd.ts --configPlugin typescript
 
 # 使用 babel 打包
 # pnpm babel src -d dist/es --extensions .ts &&
