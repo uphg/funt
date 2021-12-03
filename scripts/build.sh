@@ -18,5 +18,8 @@ fi
 # pnpm babel --config-file ./babel.config.commonjs.js dist/es -d dist/cjs
 
 # 使用 tsc 打包
-# npx tsc src/*.ts --module umd --outDir dist/umd &&
-# npx tsc src/*.ts --module es2015 --outDir dist/es
+# pnpm tsc src/*.ts --module umd --outDir dist/umd &&
+# pnpm tsc src/*.ts --module es2015 --outDir dist/es
+
+# 使用 tsc 生成类型声明文件
+# pnpm tsc src/*.ts --module es2015 --outDir dist/es --declaration --emitDeclarationOnly

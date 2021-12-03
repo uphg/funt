@@ -6,6 +6,13 @@ export default {
   input: `src/index.ts`,
   output: [
     {
+      name: 'funny',
+      dir: 'dist',
+      // file: 'dist/index.js',
+      format: 'umd',
+      sourcemap: true
+    },
+    {
       preserveModules: true, // 保留导入的模块为单独文件
       dir: `dist`,
       format: 'es',
@@ -39,6 +46,6 @@ export default {
       minify: process.env.NODE_ENV === 'production',
       target: 'es2015' 
     }),
-    terser() // 压缩代码
+    // terser() // 压缩代码
   ]
 }

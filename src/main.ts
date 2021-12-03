@@ -1,6 +1,7 @@
 import splitCapsWord from './_splitCapsWord'
 import toFirstCaps from './_toFirstCaps'
 
+
 import { find, /* findIndex, findLast, findLastIndex */ } from "./index"
 
 const a = [

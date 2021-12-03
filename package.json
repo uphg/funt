@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && rollup -c",
+    "build": "tsc && vite build",
     "serve": "vite preview",
     "build:modules": "sh scripts/build.sh"
   },
