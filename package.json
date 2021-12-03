@@ -16,6 +16,7 @@
     "build:modules": "sh scripts/build.sh"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.14.1",
     "rollup": "^2.60.2",
