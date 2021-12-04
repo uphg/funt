@@ -16,7 +16,11 @@ rm -rf dist/*
 
 pnpm build &&
 pnpm rollup -c ./build/rollup.config.cjs.ts --configPlugin typescript &&
-pnpm rollup -c ./build/rollup.config.es.ts --configPlugin typescript
+pnpm rollup -c ./build/rollup.config.es.ts --configPlugin typescript &&
+
+mv dist/es/*.d.ts dist &&
+rm dist/es/*.js.map &&
+cp -r public/. dist
 # pnpm rollup -c ./build/rollup.config.umd.ts --configPlugin typescript
 
 # 使用 babel 打包

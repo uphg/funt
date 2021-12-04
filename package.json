@@ -1,14 +1,6 @@
 {
-  "name": "@uphg/funny",
+  "name": "creator-funny",
   "version": "0.0.1",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/es/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/es/",
-      "require": "./dist/cjs/"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -22,6 +14,7 @@
     "rollup": "^2.60.2",
     "rollup-plugin-esbuild": "^4.7.2",
     "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"
   },
