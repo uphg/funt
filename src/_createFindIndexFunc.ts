@@ -1,9 +1,7 @@
 import isArray from "./isArray"
 
-type FindIndexCollection = Array<unknown>
-
 export interface FindIndexPredicate {
-  (collectionItem: any, index: number, collection: FindIndexCollection): boolean
+  (collectionItem: any, index: number, collection: Array<unknown>): boolean
 }
 
 /**
@@ -11,11 +9,10 @@ export interface FindIndexPredicate {
  * @param direction 遍历方向
  * @returns {Function} 返回一个 findIndex 函数 
  */
-
 function createFindIndexFunc(direction = 'first') {
   const back = direction === 'last'
   return function (
-    collection: FindIndexCollection,
+    collection: Array<unknown>,
     predicate: FindIndexPredicate,
     fromIndex = 0
   ) {

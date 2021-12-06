@@ -8,7 +8,5 @@ export default {
     format: 'cjs',
     exports: 'auto'
   },
-  plugins: [
-    ...commonPlugins
-  ]
+  plugins: commonPlugins
 }
