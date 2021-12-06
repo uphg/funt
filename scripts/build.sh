@@ -14,7 +14,8 @@ rm -rf dist/*
 
 # 使用 rollup 打包
 
-pnpm build &&
+pnpm tsc &&
+pnpm vite build &&
 pnpm rollup -c ./build/rollup.config.cjs.ts --configPlugin typescript &&
 pnpm rollup -c ./build/rollup.config.es.ts --configPlugin typescript &&
 
