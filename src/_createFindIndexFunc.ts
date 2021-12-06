@@ -21,7 +21,7 @@ function createFindIndexFunc(direction = 'first') {
     for (let i = fromIndex; i < collection.length; i++) {
       const index = back ? collection.length - i - 1 : i
       if (predicate(collection[index], index, collection)) {
-        return i
+        return back ? index : i
       }
     }
     return -1
