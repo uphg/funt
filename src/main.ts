@@ -1,21 +1,32 @@
 import emitter from "./emitter"
-import indexOf from "./indexOf"
-import lastIndexOf from "./lastIndexOf"
+// import indexOf from "./indexOf"
+// import lastIndexOf from "./lastIndexOf"
 
+console.log('# eventBus')
 const eventBus = emitter()
 
-eventBus.emit('update-demo', 'hi')
-eventBus.emit('update-demo', 'hello')
+const eventName = 'update-demo'
 
-eventBus.on('update-demo', (value) => {
+const onFun = (value: string) => {
   console.log(`emit: ${value}`)
-})
+}
+console.log('-- on')
+eventBus.on(eventName, onFun)
 
-console.log('# lastIndexOf')
-console.log(lastIndexOf([1, 2, 3, 4, 5, 6], 2, 0))
+// console.log('-- once')
+// eventBus.once('update-demo', onFun)
 
-console.log('# indexOf')
-console.log(indexOf([1, 2, 3], 2))
+eventBus.off(eventName, onFun)
+
+eventBus.emit(eventName, 'hi')
+eventBus.emit(eventName, 'hello')
+eventBus.emit(eventName, 'world')
+
+// console.log('\n# lastIndexOf')
+// console.log(lastIndexOf([1, 2, 3, 4, 5, 6], 2, 0))
+
+// console.log('\n# indexOf')
+// console.log(indexOf([1, 2, 3], 2))
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!

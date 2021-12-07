@@ -1,4 +1,4 @@
-import findIndex from "./findIndex"
+import indexOf from "./indexOf"
 
 type EmitterArgs = any[]
 
@@ -25,12 +25,6 @@ function emitter() {
       _cache[name]?.push(callback)
     },
 
-    once(name: string, callback: EmitterCallback) {
-      if (!_cache[name]) return
-
-      callback?.(_cache[name]?.[0])
-    },
-
     emit(name: string, ...args: EmitterArgs) {
       if (!_cache[name]) return
 
@@ -40,7 +34,7 @@ function emitter() {
     off(name: string, callback: EmitterCallback) {
       if (!(_cache[name]?.length! > 0)) return
 
-      const index = findIndex(_cache[name] as EmitterCallback[], (item) => item === callback)
+      const index = indexOf(_cache[name] as EmitterCallback[], callback)
       _cache[name]?.splice(index, 1)
     },
 
