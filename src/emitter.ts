@@ -1,4 +1,4 @@
-import findIndex from "./findIndex"
+// 部分内容参考：https://github.com/scottcorgan/tiny-emitter/blob/master/index.js
 
 type EmitterArgs = any[]
 
@@ -6,14 +6,10 @@ interface EmitterCallback {
   (...args: EmitterArgs): void
 }
 
-type EmitterCacheItem = {
-  callback: EmitterCallback,
-  once?: boolean
-}[]
-
 interface EmitterCache {
-  [key: string]: EmitterCacheItem | null
+  [key: string]: EmitterCallback[] | null
 }
+
 
 /**
  * event emitter
@@ -21,51 +17,50 @@ interface EmitterCache {
  * @returns 
  */
 function emitter() {
-  let _cache: EmitterCache = {}
+  const _cache: EmitterCache = {}
 
   const api = {
     on(name: string, callback: EmitterCallback) {
       if (!_cache[name]) {
-        _cache[name] = [{ callback }]
+        _cache[name] = [callback]
         return
       }
-
-      _cache[name]?.push({ callback })
+      _cache[name]?.push(callback)
     },
 
     once(name: string, callback: EmitterCallback) {
-      if (!_cache[name]) {
-        _cache[name] = [{ callback, once: true }]
-        return
+      const listener = (...args: EmitterArgs) => {
+        api.off(name, listener);
+        callback(...args);
       }
-
-      _cache[name]?.push({ callback, once: true })
+      return api.on(name, listener)
     },
 
     emit(name: string, ...args: EmitterArgs) {
       if (!_cache[name]) return
-      _cache[name]?.forEach(({ once, callback }) => {
+
+      _cache[name]?.forEach((callback) => {
         callback?.(args)
-        if (once) {
-          const index = findIndex(_cache[name] as EmitterCacheItem, (item) => {
-            return item.callback === callback && item.once
-          })
-          _cache[name]?.splice(index, 1)
-        }
       })
     },
 
     off(name: string, callback: EmitterCallback) {
-      if (!(_cache[name]?.length! > 0)) return
+      if (!_cache[name]) return
 
-      const index = findIndex(_cache[name] as EmitterCacheItem, (item) => {
-        return item.callback === callback
-      })
-      _cache[name]?.splice(index, 1)
+      const newCache = []
+      for(const item of _cache[name] as EmitterCallback[]) {
+        if (item === callback) continue
+        item && newCache.push(item)
+      }
+
+      // 防止内存泄漏
+      (_cache[name]?.length)
+      ? _cache[name] = newCache
+      : delete _cache[name]
     },
 
     offAll() {
-      _cache = {}
+      _cache
     }
   }
   
