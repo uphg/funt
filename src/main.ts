@@ -10,13 +10,13 @@ const eventName = 'update-demo'
 const onFun = (value: string) => {
   console.log(`emit: ${value}`)
 }
-console.log('-- on')
-eventBus.on(eventName, onFun)
+// console.log('-- on')
+// eventBus.on(eventName, onFun)
 
-// console.log('-- once')
-// eventBus.once('update-demo', onFun)
+console.log('-- once')
+eventBus.once('update-demo', onFun)
 
-eventBus.off(eventName, onFun)
+// eventBus.off(eventName, onFun)
 
 eventBus.emit(eventName, 'hi')
 eventBus.emit(eventName, 'hello')

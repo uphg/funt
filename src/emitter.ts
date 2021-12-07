@@ -1,4 +1,4 @@
-import indexOf from "./indexOf"
+import findIndex from "./findIndex"
 
 type EmitterArgs = any[]
 
@@ -6,8 +6,13 @@ interface EmitterCallback {
   (...args: EmitterArgs): void
 }
 
+type EmitterCacheItem = {
+  callback: EmitterCallback,
+  once?: boolean
+}[]
+
 interface EmitterCache {
-  [key: string]: EmitterCallback[] | null
+  [key: string]: EmitterCacheItem | null
 }
 
 /**
@@ -20,21 +25,33 @@ function emitter() {
 
   const api = {
     on(name: string, callback: EmitterCallback) {
-      if (!_cache[name]) { _cache[name] = [callback]; return }
+      if (!_cache[name]) {
+        _cache[name] = [{ callback }]
+        return
+      }
 
-      _cache[name]?.push(callback)
+      _cache[name]?.push({ callback })
+    },
+
+    once(name: string, callback: EmitterCallback) {
+      _cache[name] = [{ callback, once: true }]
     },
 
     emit(name: string, ...args: EmitterArgs) {
       if (!_cache[name]) return
 
-      _cache[name]?.forEach(callback => callback?.(args))
+      _cache[name]?.forEach(({ once, callback }) => {
+        callback?.(args)
+        once && api.off(name, callback)
+      })
     },
 
     off(name: string, callback: EmitterCallback) {
       if (!(_cache[name]?.length! > 0)) return
 
-      const index = indexOf(_cache[name] as EmitterCallback[], callback)
+      const index = findIndex(_cache[name] as EmitterCacheItem, (item) => {
+        return item.callback === callback
+      })
       _cache[name]?.splice(index, 1)
     },
 
