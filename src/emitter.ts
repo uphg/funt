@@ -34,15 +34,24 @@ function emitter() {
     },
 
     once(name: string, callback: EmitterCallback) {
-      _cache[name] = [{ callback, once: true }]
+      if (!_cache[name]) {
+        _cache[name] = [{ callback, once: true }]
+        return
+      }
+
+      _cache[name]?.push({ callback, once: true })
     },
 
     emit(name: string, ...args: EmitterArgs) {
       if (!_cache[name]) return
-
       _cache[name]?.forEach(({ once, callback }) => {
         callback?.(args)
-        once && api.off(name, callback)
+        if (once) {
+          const index = findIndex(_cache[name] as EmitterCacheItem, (item) => {
+            return item.callback === callback && item.once
+          })
+          _cache[name]?.splice(index, 1)
+        }
       })
     },
 

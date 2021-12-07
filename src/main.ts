@@ -8,13 +8,11 @@ const eventBus = emitter()
 const eventName = 'update-demo'
 
 const onFun = (value: string) => {
-  console.log(`emit: ${value}`)
+  console.log(`on - emit: ${value}`)
 }
-// console.log('-- on')
-// eventBus.on(eventName, onFun)
+eventBus.on(eventName, onFun)
 
-console.log('-- once')
-eventBus.once('update-demo', onFun)
+eventBus.once(eventName, onFun)
 
 // eventBus.off(eventName, onFun)
 
