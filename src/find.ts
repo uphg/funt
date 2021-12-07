@@ -4,10 +4,10 @@ import type { FindIndexPredicate } from './_createFindIndexFunc'
 /**
  * find 函数
  * 
- * @param {*} collection 要查询的数组
- * @param {*} predicate 每次迭代调用的函数
- * @param {*} fromIndex 搜索的索引
- * @returns {string} 返回满足条件的项
+ * @param {Array} array 要查询的数组
+ * @param {Function} predicate 每次迭代调用的函数
+ * @param {number} fromIndex 搜索的索引
+ * @returns {unknown} 返回满足条件的项
  * @example
  * 
  * splitCapsWord('TheCaseOfThisConversionString')
@@ -17,12 +17,12 @@ import type { FindIndexPredicate } from './_createFindIndexFunc'
  * // => 'the_case_of_this_conversion_string'
  */
 function find(
-  collection: Array<unknown>,
+  array: Array<unknown>,
   predicate: FindIndexPredicate,
   fromIndex?: number
 ) {
-  const index = findIndex(collection, predicate, fromIndex)
-  return index === -1 ? undefined : collection[index]
+  const index = findIndex(array, predicate, fromIndex)
+  return index === -1 ? undefined : array[index]
 }
 
 export default find

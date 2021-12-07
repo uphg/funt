@@ -1,3 +1,6 @@
-const isNullish = (value: unknown) => value === undefined || value === null
+
+function isNullish(value: unknown) {
+  return value === undefined || value === null
+}
 
 export default isNullish

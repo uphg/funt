@@ -1,23 +1,22 @@
-// import findIndex from '../dist/es/findIndex'
+import emitter from "./emitter"
+import indexOf from "./indexOf"
+import lastIndexOf from "./lastIndexOf"
 
-// console.log('findIndex')
-// console.log(findIndex([1, 3, 4, 1, 3], (item) => item === 3))
+const eventBus = emitter()
 
-import { find, /* findIndex, findLast, findLastIndex */ } from "./index"
+eventBus.emit('update-demo', 'hi')
+eventBus.emit('update-demo', 'hello')
 
-const a = [
-  { key: 'a', index: 0},
-  { key: 'b', index: 1},
-  { key: 'c', index: 2},
-  { key: 'd', index: 3},
-  { key: 'e', index: 4},
-  { key: 'f', index: 5}
-]
+eventBus.on('update-demo', (value) => {
+  console.log(`emit: ${value}`)
+})
 
-const obj = find(a, (item: { key: string, index: number}) => item.key === 'z')
+console.log('# lastIndexOf')
+console.log(lastIndexOf([1, 2, 3, 4, 5, 6], 2, 0))
 
-console.log('obj')
-console.log(obj)
+console.log('# indexOf')
+console.log(indexOf([1, 2, 3], 2))
+
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 

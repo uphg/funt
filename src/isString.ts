@@ -1,5 +1,5 @@
-import hasToStringTag from './_hasToStringTag'
-
-const isString = (value: unknown) => hasToStringTag(value, 'String')
+function isString(value: unknown) {
+  return typeof value === 'string'
+}
 
 export default isString

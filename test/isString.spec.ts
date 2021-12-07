@@ -18,6 +18,8 @@ describe('isString', () => {
     expect(isString(symbol)).toBe(false)
     expect(isString(null)).toBe(false)
     expect(isString(undefined)).toBe(false)
+
+    expect(isString(new String('a'))).toBe(false)
     expect(isString({ a: 'b' })).toBe(false)
     expect(isString([1, 2, 3])).toBe(false)
     expect(isString(new Error())).toBe(false)

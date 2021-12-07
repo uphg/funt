@@ -14,6 +14,7 @@ describe('eventEmitter', () => {
       { id: 4, name: 'd' },
       { id: 5, name: 'e' },
     ]
+    
     expect(find(array, (item) => item === 3)).toBe(3)
     expect(find(objectArray, (item) => item.id === 3)).toBe(objectArray[2])
     expect(find(objectArray, (item) => item.name === 'd')).toBe(objectArray[3])

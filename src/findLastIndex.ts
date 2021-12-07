@@ -1,3 +1,3 @@
 import createFindIndexFunc from "./_createFindIndexFunc"
 
-export default createFindIndexFunc('last')
+export default createFindIndexFunc(true)

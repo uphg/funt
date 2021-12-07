@@ -1,4 +1,4 @@
-const isObject = (value: unknown) => {
+function isObject(value: unknown) {
   if (value === null) return false
 
   const type = typeof value

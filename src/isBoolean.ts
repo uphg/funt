@@ -1,3 +1,5 @@
-const isBoolean = (value: unknown) => value === true || value === false
+function isBoolean(value: unknown) {
+  return value === true || value === false
+}
 
 export default isBoolean

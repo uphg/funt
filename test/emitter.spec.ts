@@ -1,7 +1,5 @@
 import emitter from '../src/emitter'
 
-
-
 describe('eventEmitter', () => {
   it('is a function', () => {
     const eventBus = emitter()

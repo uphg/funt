@@ -18,6 +18,8 @@ describe('isBoolean', () => {
     expect(isBoolean(symbol)).toBe(false)
     expect(isBoolean(null)).toBe(false)
     expect(isBoolean(undefined)).toBe(false)
+
+    expect(isBoolean(new Boolean(true))).toBe(false)
     expect(isBoolean({ a: 'b' })).toBe(false)
     expect(isBoolean([1, 2, 3])).toBe(false)
     expect(isBoolean(new Error())).toBe(false)

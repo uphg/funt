@@ -1,7 +1,7 @@
 import isArray from "./isArray"
 
 export interface FindIndexPredicate {
-  (collectionItem: any, index: number, collection: Array<unknown>): boolean
+  (arrayItem: any, index: number, array: unknown[]): boolean
 }
 
 /**
@@ -9,19 +9,18 @@ export interface FindIndexPredicate {
  * @param direction 遍历方向
  * @returns {Function} 返回一个 findIndex 函数 
  */
-function createFindIndexFunc(direction = 'first') {
-  const back = direction === 'last'
+function createFindIndexFunc(isLast = false) {
   return function (
-    collection: Array<unknown>,
+    array: unknown[],
     predicate: FindIndexPredicate,
-    fromIndex = 0
+    fromIndex = isLast ? array.length - 1 : 0
   ) {
-    if (!isArray(collection)) return -1
+    if (!isArray(array)) return -1
     
-    for (let i = fromIndex; i < collection.length; i++) {
-      const index = back ? collection.length - i - 1 : i
-      if (predicate(collection[index], index, collection)) {
-        return back ? index : i
+    for (let i = 0; i < array.length; i++) {
+      const index = isLast ? fromIndex - i : i
+      if (predicate(array[index], index, array)) {
+        return isLast ? index : i
       }
     }
     return -1
