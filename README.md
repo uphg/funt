@@ -8,10 +8,14 @@
 /**
  * 函数概括
  * 
- * @param {*} a 参数 a 说明
- * @param {*} b 参数 b 说明
- * @param {*} c 参数 c 说明
- * @returns {string} return 内容
+ * @private 内置函数
+ * @since 0.1.0 该方法加入的版本
+ * @alias each 别名
+ * @category Collection 类别
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array|Object} Returns `collection`.
+ * @see forEachRight, forIn, forInRight, forOwn, forOwnRight
  * @example
  * 
  * demo1 xxx

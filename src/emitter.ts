@@ -22,9 +22,10 @@ interface EmitterCache {
  * eventBus.once('event-a', fn)
  * eventBus.emit('event-a', 'hi')
  * eventBus.off('event-a', fn)
- * eventBus.offAll('event-a')
+ * eventBus.clear('event-a')
  * 
  */
+
 class Emitter {
   private cache: EmitterCache = {}
   on(name: string, callback: EmitterCallback) {
@@ -68,7 +69,7 @@ class Emitter {
     : delete this.cache[name]
   }
 
-  offAll() {
+  clear() {
     this.cache = {}
   }
 }

@@ -1,3 +1,8 @@
+import * as funny from './index'
+
+console.log('funny')
+console.log(funny)
+
 import Emitter from "./emitter"
 
 console.log('# eventBus')
@@ -21,7 +26,7 @@ const eventName2 = 'update-demo1'
 eventBus.once(eventName2, onFun)
 eventBus.on(eventName2, onFun)
 
-eventBus.off(eventName2, onFun)
+eventBus.clear()
 
 eventBus.emit(eventName2, 'hi2')
 eventBus.emit(eventName2, 'hello2')

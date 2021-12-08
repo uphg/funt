@@ -1,21 +1,14 @@
-import emitter from '../src/emitter'
+import Emitter from '../src/emitter'
 
 describe('eventEmitter', () => {
   it('is a function', () => {
-    const eventBus = emitter()
-    expect(emitter).toBeInstanceOf(Function)
+    const eventBus = new Emitter()
+    expect(Emitter).toBeInstanceOf(Function)
 
     expect(eventBus.on).toBeInstanceOf(Function)
     expect(eventBus.once).toBeInstanceOf(Function)
     expect(eventBus.emit).toBeInstanceOf(Function)
     expect(eventBus.off).toBeInstanceOf(Function)
-    expect(eventBus.offAll).toBeInstanceOf(Function)
+    expect(eventBus.clear).toBeInstanceOf(Function)
   })
-
-  // it('on event available', () => {
-  //   const eventBus = emitter()
-  //   eventBus.on('hi', () => {
-  //     console.log('hi')
-  //   })
-  // })
 })
