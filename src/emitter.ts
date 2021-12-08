@@ -1,71 +1,76 @@
-// 部分内容参考：https://github.com/scottcorgan/tiny-emitter/blob/master/index.js
-
 type EmitterArgs = any[]
 
 interface EmitterCallback {
   (...args: EmitterArgs): void
+  _?: () => void
 }
 
 interface EmitterCache {
   [key: string]: EmitterCallback[] | null
 }
 
-
 /**
  * event emitter
  * 
- * @returns 
+ * @returns {Object} 返回一个包含 Event API 的对象
+ * @example
+ * 
+ * const eventBus = new Emitter()
+ * const fn = (value) => console.log(value)
+ * 
+ * eventBus.on('event-a', fn)
+ * eventBus.once('event-a', fn)
+ * eventBus.emit('event-a', 'hi')
+ * eventBus.off('event-a', fn)
+ * eventBus.offAll('event-a')
+ * 
  */
-function emitter() {
-  const _cache: EmitterCache = {}
-
-  const api = {
-    on(name: string, callback: EmitterCallback) {
-      if (!_cache[name]) {
-        _cache[name] = [callback]
-        return
-      }
-      _cache[name]?.push(callback)
-    },
-
-    once(name: string, callback: EmitterCallback) {
-      const listener = (...args: EmitterArgs) => {
-        api.off(name, listener);
-        callback(...args);
-      }
-      return api.on(name, listener)
-    },
-
-    emit(name: string, ...args: EmitterArgs) {
-      if (!_cache[name]) return
-
-      _cache[name]?.forEach((callback) => {
-        callback?.(args)
-      })
-    },
-
-    off(name: string, callback: EmitterCallback) {
-      if (!_cache[name]) return
-
-      const newCache = []
-      for(const item of _cache[name] as EmitterCallback[]) {
-        if (item === callback) continue
-        item && newCache.push(item)
-      }
-
-      // 防止内存泄漏
-      (_cache[name]?.length)
-      ? _cache[name] = newCache
-      : delete _cache[name]
-    },
-
-    offAll() {
-      _cache
+class Emitter {
+  private cache: EmitterCache = {}
+  on(name: string, callback: EmitterCallback) {
+    if (!this.cache[name]) {
+      this.cache[name] = [callback]
+      return
     }
+    this.cache[name]?.push(callback)
   }
-  
-  return api
+
+  once(name: string, callback: EmitterCallback) {
+    const listener = (...args: EmitterArgs) => {
+      this.off(name, listener);
+      callback(...args);
+    }
+
+    // 记录原函数，在执行 off 时清除（on/once 同时清除）
+    listener._ = callback
+    return this.on(name, listener)
+  }
+
+  emit(name: string, ...args: EmitterArgs) {
+    if (!this.cache[name]) return
+
+    this.cache[name]?.forEach((callback) => {
+      callback?.(args)
+    })
+  }
+
+  off(name: string, callback: EmitterCallback) {
+    if (!this.cache[name]) return
+    const newCache = []
+    for(const item of this.cache[name] as EmitterCallback[]) {
+      if (item === callback || item._ === callback) continue
+      item && newCache.push(item)
+    }
+
+    // 防止内存泄漏
+    (this.cache[name]?.length)
+    ? this.cache[name] = newCache
+    : delete this.cache[name]
+  }
+
+  offAll() {
+    this.cache = {}
+  }
 }
 
-
-export default emitter
+export default Emitter
