@@ -1,5 +1,3 @@
-import isArray from "./isArray"
-
 export interface FindIndexPredicate {
   (arrayItem: any, index: number, array: unknown[]): boolean
 }
@@ -15,7 +13,7 @@ function createFindIndexFunc(isLast = false) {
     predicate: FindIndexPredicate,
     fromIndex = isLast ? array.length - 1 : 0
   ) {
-    if (!isArray(array)) return -1
+    if (!Array.isArray(array)) return -1
     
     for (let i = 0; i < array.length; i++) {
       const index = isLast ? fromIndex - i : i
