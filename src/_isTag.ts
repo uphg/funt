@@ -5,8 +5,8 @@
  * @param name 该值类型的字符串
  * @returns {boolean} 返回判断结果
  */
-const hasToStringTag = (value: unknown, name: string) => {
+const isTag = (value: unknown, name: string) => {
   return Object.prototype.toString.call(value) === `[object ${name}]`
 }
 
-export default hasToStringTag
+export default isTag
