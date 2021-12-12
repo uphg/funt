@@ -1,6 +1,6 @@
 function indexOf(
-  array: any[],
-  value: any,
+  array: unknown[],
+  value: unknown,
   fromIndex: number = 0
 ) {
   for (let i = fromIndex; i < array.length; i++) {

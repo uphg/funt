@@ -1,5 +1,5 @@
 export interface FindIndexPredicate {
-  (arrayItem: any, index: number, array: unknown[]): boolean
+  (arrayItem: unknown, index: number, array: unknown[]): boolean
 }
 
 /**

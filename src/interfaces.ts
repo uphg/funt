@@ -4,7 +4,7 @@ export interface ArrayLike<T> {
 }
 
 // export interface IArguments {
-//   [index: number]: any;
+//   [index: number]: unknown;
 //   length: number;
 //   callee: Function;
 // }

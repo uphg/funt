@@ -1,6 +1,6 @@
 import isTag from "./_isTag";
 
-function isArrayBuffer(value: any) {
+function isArrayBuffer(value: unknown) {
   return isTag(value, 'ArrayBuffer')
 }
 

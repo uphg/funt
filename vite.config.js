@@ -7,7 +7,7 @@ module.exports = defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'funny',
       formats: ['umd'], // default：['es', 'umd']
-      fileName: (format) => `umd/index.js`
-    },
+      fileName: (format) => `index.js`
+    }
   }
 })

@@ -1,5 +1,5 @@
 
-function isFunction(value: any) {
+function isFunction(value: unknown) {
   return typeof value === 'function'
 }
 

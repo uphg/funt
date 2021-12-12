@@ -1,6 +1,6 @@
 import isTag from "./_isTag"
 
-function isRegExp(value?: any) {
+function isRegExp(value?: unknown) {
   return isTag(value, 'RegExp')
 }
 
