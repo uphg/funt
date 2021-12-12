@@ -1,9 +1,8 @@
 import findLastIndex from "./findLastIndex"
-import type { FindIndexPredicate } from './_createFindIndexFunc'
 
 function findLast(
   array: Array<unknown>,
-  predicate: FindIndexPredicate,
+  predicate: (arrayItem: unknown, index: number, array: unknown[]) => boolean,
   fromIndex?: number
 ) {
   const index = findLastIndex(array, predicate, fromIndex)

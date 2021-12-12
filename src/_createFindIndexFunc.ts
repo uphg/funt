@@ -1,7 +1,3 @@
-export interface FindIndexPredicate {
-  (arrayItem: unknown, index: number, array: unknown[]): boolean
-}
-
 /**
  * 生成 findIndex 与 findLastIndex 函数
  * @param direction 遍历方向
@@ -10,7 +6,7 @@ export interface FindIndexPredicate {
 function createFindIndexFunc(isLast = false) {
   return function (
     array: unknown[],
-    predicate: FindIndexPredicate,
+    predicate: (arrayItem: unknown, index: number, array: unknown[]) => boolean,
     fromIndex = isLast ? array.length - 1 : 0
   ) {
     if (!Array.isArray(array)) return -1

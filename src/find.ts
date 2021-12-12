@@ -1,5 +1,4 @@
 import findIndex from "./findIndex"
-import type { FindIndexPredicate } from './_createFindIndexFunc'
 
 /**
  * find 函数
@@ -18,7 +17,7 @@ import type { FindIndexPredicate } from './_createFindIndexFunc'
  */
 function find(
   array: Array<unknown>,
-  predicate: FindIndexPredicate,
+  predicate: (arrayItem: unknown, index: number, array: unknown[]) => boolean,
   fromIndex?: number
 ) {
   const index = findIndex(array, predicate, fromIndex)
