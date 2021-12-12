@@ -1,7 +1,14 @@
 /**
  * 生成 findIndex 与 findLastIndex 函数
- * @param direction 遍历方向
+ * 
+ * @private
+ * @since 0.1.0
+ * @param {boolean} isLast 是否从最后开始遍历
  * @returns {Function} 返回一个 findIndex 函数 
+ * @example
+ * 
+ * createFindIndexFunc()
+ * // => (array, predicate, fromIndex) => number
  */
 function createFindIndexFunc(isLast = false) {
   return function (
