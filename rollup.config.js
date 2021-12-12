@@ -1,7 +1,7 @@
 import path from 'path'
 import typescript from 'rollup-plugin-typescript2';
 import esbuild from 'rollup-plugin-esbuild'
-import { terser } from 'rollup-plugin-terser'
+// import { terser } from 'rollup-plugin-terser'
 
 export default {
   input: `src/index.ts`,
@@ -37,6 +37,6 @@ export default {
       minify: process.env.NODE_ENV === 'production',
       target: 'es2015' 
     }),
-    terser() // 压缩代码
+    // terser() // 压缩代码
   ]
 }
