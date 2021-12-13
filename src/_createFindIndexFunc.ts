@@ -11,9 +11,9 @@
  * // => (array, predicate, fromIndex) => number
  */
 function createFindIndexFunc(isLast = false) {
-  return function (
-    array: unknown[],
-    callback: (currentValue: unknown, index: number, array: unknown[]) => boolean,
+  return function <T> (
+    array: T[],
+    callback: (currentValue: T, index: number, array: T[]) => boolean,
     fromIndex = isLast ? array.length - 1 : 0
   ) {
     if (!Array.isArray(array)) return -1

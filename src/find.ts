@@ -9,18 +9,18 @@ import findIndex from "./findIndex"
  * @returns {unknown} 返回满足条件的项
  * @example
  * 
- * splitCapsWord('TheCaseOfThisConversionString')
- * // => 'the-case-of-this-conversion-string'
+ * find([1, 2, 3, 4, 5, 6], (item) => item === 2)
+ * // => 2
  * 
- * splitCapsWord('TheCaseOfThisConversionString', '_')
- * // => 'the_case_of_this_conversion_string'
+ * find([1, 2, 3, 4, 5, 6], (item) => item % 3 === 0)
+ * // => 3
  */
-function find(
-  array: Array<unknown>,
-  callback: (currentValue: unknown, index: number, array: unknown[]) => boolean,
+function find<T>(
+  array: Array<T>,
+  callback: (currentValue: T, index: number, array: T[]) => boolean,
   fromIndex?: number
 ) {
-  const index = findIndex(array, callback, fromIndex)
+  const index = findIndex<T>(array, callback, fromIndex)
   return index === -1 ? undefined : array[index]
 }
 
