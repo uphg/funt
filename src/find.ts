@@ -17,10 +17,10 @@ import findIndex from "./findIndex"
  */
 function find(
   array: Array<unknown>,
-  predicate: (arrayItem: unknown, index: number, array: unknown[]) => boolean,
+  callback: (currentValue: unknown, index: number, array: unknown[]) => boolean,
   fromIndex?: number
 ) {
-  const index = findIndex(array, predicate, fromIndex)
+  const index = findIndex(array, callback, fromIndex)
   return index === -1 ? undefined : array[index]
 }
 

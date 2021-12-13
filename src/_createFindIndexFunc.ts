@@ -13,14 +13,14 @@
 function createFindIndexFunc(isLast = false) {
   return function (
     array: unknown[],
-    predicate: (arrayItem: unknown, index: number, array: unknown[]) => boolean,
+    callback: (currentValue: unknown, index: number, array: unknown[]) => boolean,
     fromIndex = isLast ? array.length - 1 : 0
   ) {
     if (!Array.isArray(array)) return -1
     
     for (let i = 0; i < array.length; i++) {
       const index = isLast ? fromIndex - i : i
-      if (predicate(array[index], index, array)) {
+      if (callback(array[index], index, array)) {
         return isLast ? index : i
       }
     }
