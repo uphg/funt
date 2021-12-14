@@ -1,14 +1,14 @@
----
-title: Home
-footer: MIT Licensed | Copyright © 2018-present Evan You
----
+# 快速开始
 
-## 快速安装
+## 安装
 
 ```sh
 npm install funny
 ```
 
-## Collections
+## 使用
 
-Collection Functions
+```js
+import { each } from '@uphg/fun'
+
+```

@@ -1,4 +1,6 @@
 export { default as each } from './each'
+export { default as map } from './map'
+export { default as mapObject } from './mapObject'
 export { default as find } from './find'
 export { default as findIndex } from './findIndex'
 export { default as findLast } from './findLast'

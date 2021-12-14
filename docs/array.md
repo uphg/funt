@@ -1,6 +1,4 @@
----
-title: Array
----
+# 数组
 
 hi
 ## find

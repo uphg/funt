@@ -1,6 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
-const path = require('path')
+const { path } = require('@vuepress/utils')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -25,7 +25,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               link: '/'
             },
             {
-              text: '公共函数',
+              text: '合集',
               link: '/collection.md'
             },
             {
@@ -66,14 +66,18 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
   },
 
+  markdown: {
+    importCode: {
+      handleImportPath: (str) =>
+        str.replace(
+          /^@vuepress/,
+          path.resolve(__dirname, '../../packages/@vuepress')
+        ),
+    },
+    code: { lineNumbers: false }
+  },
   // markdown: {
-  //   importCode: {
-  //     handleImportPath: (str) =>
-  //       str.replace(
-  //         /^@vuepress/,
-  //         path.resolve(__dirname, '../../packages/@vuepress')
-  //       ),
-  //   },
+  //   code: { lineNumbers: false }
   // },
 
   plugins: [
