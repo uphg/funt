@@ -9,12 +9,12 @@ import type { ArrayLike } from './interfaces'
  * @returns {ArrayLike | Object} 返回原对象
  */
 function each(
-  obj: { [key: string]: unknown },
+  obj: { [key: string]: unknown } | ArrayLike<unknown> | Array<unknown>,
   callback: (
-    currentValue: unknown,
-    index: unknown,
-    obj: unknown
-  ) => unknown
+    currentValue?: unknown,
+    index?: unknown,
+    obj?: { [key: string]: unknown } | ArrayLike<unknown> | Array<unknown>
+  ) => { [key: string]: unknown } | ArrayLike<unknown> | Array<unknown>
 ) {
   if (isArrayLike(obj)) {
     const length = (obj as unknown as ArrayLike<unknown>).length
@@ -25,7 +25,7 @@ function each(
     const keys = Object.keys(obj)
     for (let i = 0; i < keys.length; i++) {
       const item = keys[i]
-      callback(obj[item], item, obj)
+      callback((obj as { [key: string]: unknown })[item], item, obj)
     }
   }
 
