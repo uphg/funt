@@ -10,4 +10,4 @@ console.log(lastIndexOf([1, 2, 3, 4, 5, 4, 3, 2, 1], 5))
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
-app.innerHTML = `<h1>Hello Vite!</h1>`
+app.innerHTML = '<h1>Hello Vite!</h1>'

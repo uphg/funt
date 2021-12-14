@@ -15,54 +15,55 @@ export default defineUserConfig<DefaultThemeOptions>({
     // navbar: navbar,
 
     // sidebar
-    sidebar: [
-      {
-        text: 'Funny',
-        link: '/',
-        children: [
-          {
-            text: '快速开始',
-            link: '/'
-          },
-          {
-            text: 'Array',
-            link: '/array.md'
-          },
-          {
-            text: 'Collection',
-            link: '/collection.md'
-          }
-        ]
-      }
-    ],
+    sidebar: {
+      '/': [
+        {
+          text: 'Funny',
+          children: [
+            {
+              text: '快速上手',
+              link: '/'
+            },
+            {
+              text: '公共函数',
+              link: '/collection.md'
+            },
+            {
+              text: '数组',
+              link: '/array.md'
+            },
+          ]
+        }
+      ]
+    },
 
     // page meta
-    // editLinkText: '在 GitHub 上编辑此页',
-    // lastUpdatedText: '上次更新',
-    // contributorsText: '贡献者',
+    editLinkText: '在 GitHub 上编辑此页',
+    lastUpdatedText: '上次更新',
+    contributorsText: '贡献者',
 
-    // // custom containers
-    // tip: '提示',
-    // warning: '注意',
-    // danger: '警告',
+    // custom containers
+    tip: '提示',
+    warning: '注意',
+    danger: '警告',
 
-    // // 404 page
-    // notFound: [
-    //   '这里什么都没有',
-    //   '我们怎么到这来了？',
-    //   '这是一个 404 页面',
-    //   '看起来我们进入了错误的链接',
-    // ],
-    // backToHome: '返回首页',
+    // 404 page
+    notFound: [
+      '这里什么都没有',
+      '我们怎么到这来了？',
+      '这是一个 404 页面',
+      '看起来我们进入了错误的链接',
+    ],
+    backToHome: '返回首页',
 
     // // a11y
-    // openInNewWindow: '在新窗口打开',
-    // toggleDarkMode: '切换夜间模式',
-    // toggleSidebar: '切换侧边栏',
-    // themePlugins: {
-    //   // only enable git plugin in production mode
-    //   git: isProd,
-    // },
+    openInNewWindow: '在新窗口打开',
+    toggleDarkMode: '切换夜间模式',
+    toggleSidebar: '切换侧边栏',
+    themePlugins: {
+      // only enable git plugin in production mode
+      git: isProd,
+    },
   },
 
   // markdown: {
@@ -84,6 +85,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             theme: 'dark-plus',
           }
         : false,
+    ],
+    [
+      '@vuepress/plugin-search',
+      { placeholder: '搜索' },
     ],
   ],
 })

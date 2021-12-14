@@ -1,7 +1,5 @@
-import isTag from "./_isTag"
+import isTag from './_isTag'
 
-function isRegExp(value?: unknown) {
+export default function isRegExp(value?: unknown) {
   return isTag(value, 'RegExp')
 }
-
-export default isRegExp

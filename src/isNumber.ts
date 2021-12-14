@@ -1,5 +1,3 @@
-function isNumber(value: unknown) {
+export default function isNumber(value: unknown) {
   return typeof value === 'number'
 }
-
-export default isNumber

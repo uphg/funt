@@ -1,6 +1,6 @@
-import { find, findIndex, findLast, findLastIndex } from '../src/index'
+import { find } from '../src/index'
 
-describe('eventEmitter', () => {
+describe('find methods', () => {
   it('is a function', () => {
     expect(find).toBeInstanceOf(Function)
   })
@@ -12,7 +12,7 @@ describe('eventEmitter', () => {
       { id: 2, name: 'b' },
       { id: 3, name: 'c' },
       { id: 4, name: 'd' },
-      { id: 5, name: 'e' },
+      { id: 5, name: 'e' }
     ]
     
     expect(find(array, (item) => item === 3)).toBe(3)

@@ -1,7 +1,5 @@
-import isLength from "./isLength"
+import isLength from './isLength'
 
-function isArrayLike(value: any) {
+export default function isArrayLike(value: any) {
   return value !== undefined && value !== null && typeof value !== 'function' && isLength(value.length)
 }
-
-export default isArrayLike

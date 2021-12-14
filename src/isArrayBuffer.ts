@@ -1,7 +1,5 @@
-import isTag from "./_isTag";
+import isTag from './_isTag';
 
-function isArrayBuffer(value: unknown) {
+export default function isArrayBuffer(value: unknown) {
   return isTag(value, 'ArrayBuffer')
 }
-
-export default isArrayBuffer

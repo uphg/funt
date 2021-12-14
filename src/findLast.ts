@@ -1,12 +1,11 @@
-import findLastIndex from "./findLastIndex"
+import findLastIndex from './findLastIndex'
 
-function findLast(
-  array: Array<unknown>,
-  callback: (currentValue: unknown, index: number, array: unknown[]) => boolean,
+// 返回通过 if 判断为真的数组（或类数组）的最后一项
+export default function findLast<T>(
+  array: Array<T>,
+  callback: (currentValue: T, index: number, array: T[]) => boolean,
   fromIndex?: number
 ) {
   const index = findLastIndex(array, callback, fromIndex)
   return index === -1 ? undefined : array[index]
 }
-
-export default findLast
