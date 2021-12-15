@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
   .synta {
-    padding: 0 0.8em;
+    padding: 0 1em;
     font-weight: 400;
     font-family: var(--font-family-code);
     // color: var(--c-text-lighter);

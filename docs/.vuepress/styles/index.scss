@@ -1,0 +1,20 @@
+:root {
+  // // brand colors
+  // --c-brand: #3eaf7c;
+  // --c-brand-light: #4abf8a;
+  // brand colors
+  --c-brand: #1a73e8;
+  --c-brand-light: #2783fc;
+}
+
+html.dark {
+  // brand colors
+  --c-brand: #00b2ff;
+  --c-brand-light: #3e8ed0;
+  .home-header .logo {
+    display: none;
+  }
+  .home-header .logo-dark {
+    display: block;
+  }
+}

@@ -1,4 +1,9 @@
-# 快速开始
+---
+sidebar: false
+pageClass: home
+---
+
+<HomeHeader />
 
 ## 安装
 
@@ -10,5 +15,10 @@ npm install funny
 
 ```js
 import { each } from '@uphg/fun'
-
 ```
+
+<style>
+  .home #main-title {
+    display: none;
+  }
+</style>

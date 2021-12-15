@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="265" height="188" viewBox="0 0 265 188">
+  <defs>
+    <filter id="funt" x="0" y="0" width="265" height="188" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="5" input="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood flood-color="#ffc947"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#funt)">
+    <text id="funt-2" data-name="funt" transform="translate(0 143)" fill="#2c3e50" font-size="150" font-family="Calibri-Bold, Calibri" font-weight="700"><tspan x="0" y="0">funt</tspan></text>
+  </g>
+</svg>

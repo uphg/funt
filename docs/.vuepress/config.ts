@@ -4,38 +4,31 @@ const { path } = require('@vuepress/utils')
 
 const isProd = process.env.NODE_ENV === 'production'
 
+const nav = [
+  {
+    text: '快速开始',
+    link: '/'
+  },
+  {
+    text: 'API 文档',
+    link: '/docs'
+  }
+]
+
 export default defineUserConfig<DefaultThemeOptions>({
   base: '/',
+  title: 'funt',
+  description: 'JavaScript 处理数组对象字符串等函数库合集',
 
   themeConfig: {
     docsDir: 'docs',
-
+    // logo: '/images/logo.svg',
     // theme-level locales config
     // navbar
-    // navbar: navbar,
+    navbar: nav,
 
     // sidebar
-    sidebar: {
-      '/': [
-        {
-          text: 'Funny',
-          children: [
-            {
-              text: '快速上手',
-              link: '/'
-            },
-            {
-              text: '合集',
-              link: '/collection.md'
-            },
-            {
-              text: '数组',
-              link: '/array.md'
-            },
-          ]
-        }
-      ]
-    },
+    sidebar: nav,
 
     // page meta
     editLinkText: '在 GitHub 上编辑此页',
