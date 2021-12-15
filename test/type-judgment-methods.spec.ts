@@ -11,7 +11,8 @@ describe('Common types methods', () => {
     new Boolean(true),
     new Error(),
     new Date(),
-    /a/
+    /a/,
+    () => {}
   ]
 
   const typesMap = {
@@ -46,6 +47,10 @@ describe('Common types methods', () => {
     isArray: [
       [testTypes[8]],
       remain(testTypes, 8, 1)
+    ],
+    isFunction: [
+      [() => {}],
+      remain(testTypes, 13, 1)
     ]
   }
 
