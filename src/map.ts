@@ -6,7 +6,7 @@ export default function map<T>(
     currentValue?: T,
     index?: number | string,
     array?: ArrayLike<T> | Array<T>
-  ) => any
+  ) => unknown
 ): (number | T)[] {
   const length = array?.length || 0
   const result = new Array(length)

@@ -8,7 +8,7 @@ export default function each<T>(
     currentValue?: T,
     index?: number | string,
     obj?: { [key: string]: T } | ArrayLike<T> | Array<T>
-  ) => any
+  ) => unknown
 ) {
   if (isArrayLike(obj)) {
     const length = obj.length

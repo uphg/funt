@@ -1,6 +1,5 @@
-import { each } from '../src'
+import { each, getFunName } from '../src/index'
 import hasInstance from '../src/hasInstance'
-import { getFunName } from './_utils'
 
 
 

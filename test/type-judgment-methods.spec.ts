@@ -2,7 +2,7 @@ import * as _ from '../src/index'
 import { each, remain } from '../src/index'
 import { symbol, bigInt } from './_utils'
 
-describe('type judgment methods', () => {
+describe('Common types methods', () => {
 
   const testTypes = [
     true, 1, 'a', bigInt, symbol, null, undefined,
@@ -66,4 +66,32 @@ describe('type judgment methods', () => {
       })
     })
   })
+})
+
+describe('Other types methods', () => {
+  const object = { a: 'b' }
+  const array = [1, 2, 3]
+  const arrayLike = { 0: 'a', 1: 'b', 2: 'c', length: 3 }
+  const arrayBuffer = new ArrayBuffer(0)
+  const booleanObj = new Boolean(true)
+  const error = new Error()
+  const date = new Date()
+  const regex = /a/ 
+  const testTypes = [
+    object,               // Object
+    array,                // Array
+    arrayLike,            // ArrayLike
+    arrayBuffer,          // ArrayBuffer
+    booleanObj,           // Boolean Object
+    error,                // Error
+    date,                 // Date
+    regex                 // RegExp
+  ]
+
+  const typesMap = {
+    isArray: [
+      [array, arrayLike, arrayBuffer],
+      [booleanObj, error]
+    ]
+  }
 })

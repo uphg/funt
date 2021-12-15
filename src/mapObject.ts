@@ -4,7 +4,7 @@ export default function mapObject<T>(
     currentValue?: T,
     index?: number | string,
     object?: { [key: string]: T }
-  ) => any
+  ) => unknown
 ): (number | T)[] {
   const keys = Object.keys(object)
   const result = new Array(keys.length)
