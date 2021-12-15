@@ -1,6 +1,7 @@
 import isLength from './isLength'
 
-export default function remainPart(
+// 根据给定参数分割数组，返回分割后的剩下的部分
+export default function remain(
   array: any[],
   start: number,
   deleteCount?: number,

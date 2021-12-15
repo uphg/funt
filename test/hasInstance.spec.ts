@@ -12,7 +12,7 @@ describe('hasInstance', () => {
   const constructorMap = [
     [{}, Object],
     [[], Array],
-    [() => void 0, Object],
+    [() => {}, Object],
     [new Map(), Map],
     [new ArrayBuffer(0), ArrayBuffer],
     [new Set(), Set],
@@ -22,7 +22,7 @@ describe('hasInstance', () => {
     [/x/, RegExp],
     [new String(), String],
     [new Boolean(), Boolean],
-    [new Promise(() => void 0), Promise],
+    [new Promise(() => {}), Promise],
     [new WeakMap(), WeakMap],
     [new WeakSet(), WeakSet]
   ]
