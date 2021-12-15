@@ -1,6 +1,15 @@
 {
-  "name": "tulp-fun",
-  "version": "0.0.1",
+  "name": "funt",
+  "version": "0.1.0",
+  "author": "Lv Heng",
+  "description": "A javascript method collection library",
+  "keywords": [
+    "javascript",
+    "array",
+    "object",
+    "string",
+    "methods"
+  ],
   "main": "./cjs/index.js",
   "module": "./es/index.js",
   "types": "./index.d.js",
@@ -14,5 +23,13 @@
       "require": "./cjs/*"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uphg/funt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uphg/funt/issues"
+  },
+  "homepage": "https://github.com/uphg/funt#readme"
 }
