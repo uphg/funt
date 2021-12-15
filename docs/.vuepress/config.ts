@@ -6,11 +6,11 @@ const isProd = process.env.NODE_ENV === 'production'
 
 const nav = [
   {
-    text: '快速开始',
+    text: '首页',
     link: '/'
   },
   {
-    text: 'API 文档',
+    text: '文档',
     link: '/docs'
   }
 ]

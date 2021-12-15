@@ -42,6 +42,31 @@ mapObject({ a: 1, b: 2, c: 3 }, (num, key) => num * 3)
 // => [3, 6, 9]
 ```
 
+## isArrayLike <Synta text="isArrayLike(value)" />
+
+判断指定值是否为类数组类型
+
+```js
+isArrayLike('hello')
+// => true
+
+isArrayLike({ 0: 'a', 1: 'b', 2: 'c', length: 3 })
+// => true
+
+cosnt fn = () => arguments
+isArrayLike(fn(1, 2, 3))
+// => true
+```
+
+## hasInstance <Synta text="hasInstance(value, constructor)" />
+
+检测指定值的构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上
+
+```js
+hasInstance({}, Object)
+// => true
+```
+
 ## 数组
 
 ### find <Synta text="find(array, callback)" />

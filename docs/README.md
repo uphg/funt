@@ -7,18 +7,19 @@ pageClass: home
 
 ## 安装
 
+使用 npm 安装
+
 ```sh
-npm install funny
+npm install @uphg/fun
+# or yarn add @uphg/fun
 ```
 
-## 使用
+在项目中引入
 
 ```js
-import { each } from '@uphg/fun'
-```
+// ES6 modules
+import each from 'uphg/fun/each'
 
-<style>
-  .home #main-title {
-    display: none;
-  }
-</style>
+// CommonJS modules
+const each = require('@uphg/fun/each')
+```
