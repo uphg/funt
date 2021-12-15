@@ -1,12 +1,8 @@
-import * as funny from './index'
-import lastIndexOf from './lastIndexOf'
+import remainPart from './remainPart'
 
-console.log('funny')
-console.log(funny)
-
-console.log('lastIndexOf')
-console.log(lastIndexOf([1, 2, 3, 4, 5, 4, 3, 2, 1], 3))
-console.log(lastIndexOf([1, 2, 3, 4, 5, 4, 3, 2, 1], 5))
+console.log('remainPart')
+console.log(remainPart([1, 2, 3, 4, 5], 1, 2))
+console.log(remainPart([1, 2, 3, 4, 5], 2))
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 

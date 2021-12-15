@@ -4,18 +4,18 @@ import esbuild from 'rollup-plugin-esbuild'
 // import { terser } from 'rollup-plugin-terser'
 
 export default {
-  input: `src/index.ts`,
+  input: 'src/index.ts',
   output: [
     {
       preserveModules: true, // 保留导入的模块为单独文件
-      dir: `dist/es`,
+      dir: 'dist/es',
       format: 'es'
     },
     {
       preserveModules: true, // 保留导入的模块为单独文件
-      dir: `dist/cjs`,
+      dir: 'dist/cjs',
       format: 'cjs',
-      exports: 'auto'
+      exports: 'named'
     }
   ],
   plugins: [
@@ -29,14 +29,14 @@ export default {
           rootDir: './src',
           outDir: 'dist',
           declarationDir: 'dist'
-        },
-      },
+        }
+      }
     }),
     esbuild({
       include: /\.[jt]s$/,
       minify: process.env.NODE_ENV === 'production',
-      target: 'es2015' 
-    }),
+      target: 'es2015'
+    })
     // terser() // 压缩代码
   ]
 }
