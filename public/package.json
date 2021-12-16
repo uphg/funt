@@ -1,6 +1,7 @@
 {
   "name": "funt",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "license": "MIT",
   "author": "Lv Heng",
   "description": "A javascript method collection library",
   "keywords": [
