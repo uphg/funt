@@ -5,7 +5,7 @@ import {
   regex, func, argsFn, mapObj,weakMapObj, setObj, weakSetObj
 } from './_utils'
 
-describe('Common types methods', () => {
+describe('type judgment methods', () => {
 
   const baseTypes = [
     true, 1, -Infinity, NaN, 'a', bigInt, symbol, null, undefined

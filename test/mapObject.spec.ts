@@ -1,6 +1,6 @@
 import { mapObject } from '../src/index'
 
-describe('each', () => {
+describe('map', () => {
   it('is a function', () => {
     expect(mapObject).toBeInstanceOf(Function)
   })

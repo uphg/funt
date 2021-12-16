@@ -33,5 +33,7 @@ export { default as isNaN } from './isNaN'
 export { default as isArguments } from './isArguments'
 export { default as isFinite } from './isFinite'
 
+export { default as trim } from './trim'
+
 export { default as remain } from './remain'
 export { default as getFuncName } from './getFuncName'
