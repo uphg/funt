@@ -42,6 +42,19 @@ mapObject({ a: 1, b: 2, c: 3 }, (num, key) => num * 3)
 // => [3, 6, 9]
 ```
 
+
+
+## 数组
+
+### find <Synta text="find(array, callback)" />
+
+```js
+
+```
+
+
+## 类型
+
 ## isArrayLike <Synta text="isArrayLike(value)" />
 
 判断指定值是否为类数组类型
@@ -66,7 +79,3 @@ isArrayLike(fn(1, 2, 3))
 hasInstance({}, Object)
 // => true
 ```
-
-## 数组
-
-### find <Synta text="find(array, callback)" />

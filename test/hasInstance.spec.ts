@@ -1,4 +1,4 @@
-import { each, getFunName } from '../src/index'
+import { each, getFuncName } from '../src/index'
 import hasInstance from '../src/hasInstance'
 
 
@@ -11,7 +11,7 @@ describe('hasInstance', () => {
   const constructorMap = [
     [{}, Object],
     [[], Array],
-    [() => {}, Object],
+    [() => void 0, Function],
     [new Map(), Map],
     [new ArrayBuffer(0), ArrayBuffer],
     [new Set(), Set],
@@ -21,13 +21,13 @@ describe('hasInstance', () => {
     [/x/, RegExp],
     [new String(), String],
     [new Boolean(), Boolean],
-    [new Promise(() => {}), Promise],
+    [new Promise(() => void 0), Promise],
     [new WeakMap(), WeakMap],
     [new WeakSet(), WeakSet]
   ]
 
   each(constructorMap, (item) => {
-    it(`Exist ${ getFunName(item[1]) } return \`true\``, () => {
+    it(`Exist ${ getFuncName(item[1]) } return \`true\``, () => {
       expect(hasInstance(item[0], item[1])).toBe(true)
     })
   })
@@ -39,8 +39,8 @@ describe('hasInstance', () => {
   ]
 
   each(constructors, (item) => {
-    it(`Object hasInstance ${ getFunName(item) } return \`false\``, () => {
-      expect(hasInstance(new Proxy({}, {}), item)).toBe(false)
+    it(`Object hasInstance ${ getFuncName(item) } return \`false\``, () => {
+      expect(hasInstance(new Object(), item)).toBe(false)
     })
   })
   

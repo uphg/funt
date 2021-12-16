@@ -1,56 +1,81 @@
 import * as _ from '../src/index'
 import { each, remain } from '../src/index'
-import { symbol, bigInt } from './_utils'
+import { symbol, bigInt, error, stringObj, numberObj, booleanObj, date, regex, func, argsFn } from './_utils'
 
 describe('Common types methods', () => {
 
-  const testTypes = [
-    true, 1, 'a', bigInt, symbol, null, undefined,
-    { a: 'b' },
+  const baseTypes = [
+    true, 1, -Infinity, NaN, 'a', bigInt, symbol, null, undefined
+  ]
+  const objTypes = [
+    { a: 1 },
     [1, 2, 3],
-    new Boolean(true),
-    new Error(),
-    new Date(),
-    /a/,
-    () => {}
+    func,
+    stringObj,
+    numberObj,
+    booleanObj,
+    error,
+    date,
+    regex,
+    argsFn()
   ]
 
   const typesMap = {
     isBoolean: [
       [true, false],
-      remain(testTypes, 0, 1)
+      [...remain(baseTypes, 0, 1), ...objTypes]
     ],
     isNumber: [
       [0, 1],
-      remain(testTypes, 1, 1)
+      [...remain(baseTypes, 1, 3), ...objTypes]
     ],
     isString: [
       ['', 'hi'],
-      remain(testTypes, 2, 1)
+      [...remain(baseTypes, 4, 1), ...objTypes]
     ],
     isBigInt: [
       [bigInt],
-      remain(testTypes, 3, 1)
+      [...remain(baseTypes, 5, 1), ...objTypes]
     ],
     isSymbol: [
       [symbol],
-      remain(testTypes, 4, 1)
+      [...remain(baseTypes, 6, 1), ...objTypes]
     ],
     isNil: [
       [null, undefined],
-      remain(testTypes, 5, 2)
+      [...remain(baseTypes, 7, 2), ...objTypes]
+    ],
+    isFinite: [
+      [1, 0],
+      [...remain(baseTypes, 1, 1), ...objTypes]
     ],
     isObject: [
-      [testTypes[7]],
-      remain(testTypes, 7)
+      objTypes,
+      baseTypes
     ],
     isArray: [
-      [testTypes[8]],
-      remain(testTypes, 8, 1)
+      [objTypes[1]],
+      [...remain(objTypes, 1, 1), ...baseTypes]
     ],
     isFunction: [
-      [() => {}],
-      remain(testTypes, 13, 1)
+      [func],
+      [...remain(objTypes, 2, 1), ...baseTypes]
+    ],
+    isError: [
+      [error],
+      [...remain(objTypes, 6, 1), ...baseTypes]
+    ],
+    isDate: [
+      [date],
+      [...remain(objTypes, 7, 1), ...baseTypes]
+    ],
+    isRegExp: [
+      [regex],
+      [...remain(objTypes, 8, 1), ...baseTypes]
+    ],
+    isArguments: [
+      [argsFn()],
+      [...remain(objTypes, 9, 1), ...baseTypes]
     ]
   }
 
@@ -71,32 +96,4 @@ describe('Common types methods', () => {
       })
     })
   })
-})
-
-describe('Other types methods', () => {
-  const object = { a: 'b' }
-  const array = [1, 2, 3]
-  const arrayLike = { 0: 'a', 1: 'b', 2: 'c', length: 3 }
-  const arrayBuffer = new ArrayBuffer(0)
-  const booleanObj = new Boolean(true)
-  const error = new Error()
-  const date = new Date()
-  const regex = /a/ 
-  const testTypes = [
-    object,               // Object
-    array,                // Array
-    arrayLike,            // ArrayLike
-    arrayBuffer,          // ArrayBuffer
-    booleanObj,           // Boolean Object
-    error,                // Error
-    date,                 // Date
-    regex                 // RegExp
-  ]
-
-  const typesMap = {
-    isArray: [
-      [array, arrayLike, arrayBuffer],
-      [booleanObj, error]
-    ]
-  }
 })

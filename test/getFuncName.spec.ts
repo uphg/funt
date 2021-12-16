@@ -1,13 +1,13 @@
-import { each, getFunName } from '../src/index'
+import { each, getFuncName } from '../src/index'
 
 describe('getFunName', () => {
   it('is a function', () => {
-    expect(getFunName).toBeInstanceOf(Function)
+    expect(getFuncName).toBeInstanceOf(Function)
   })
 
   it('get function name', () => {
     function fn1() { console.log(1) }
-    expect(getFunName(fn1)).toBe('fn1')
+    expect(getFuncName(fn1)).toBe('fn1')
   })
 
   it('get native function name', () => {
@@ -19,11 +19,11 @@ describe('getFunName', () => {
       [Boolean, 'Boolean'],
       [RegExp, 'RegExp'],
       [Error, 'Error'],
-      [Date, 'Date'],
+      [Date, 'Date']
     ]
 
     each(natives, (item) => {
-      expect(getFunName(item[0])).toBe(item[1])
+      expect(getFuncName(item[0])).toBe(item[1])
     })
   })
 })
