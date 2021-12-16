@@ -11,6 +11,10 @@ function argsFn() {
 const stringObj = new String('a')
 const numberObj = new Number(0)
 const booleanObj = new Boolean(true)
+const mapObj = new Map()
+const weakMapObj = new WeakMap()
+const setObj = new Set()
+const weakSetObj = new WeakSet()
 
 const arrayLike = { 0: 'a', 1: 'b', 2: 'c', length: 3 }
 const arrayBuffer = new ArrayBuffer(0)
@@ -27,5 +31,9 @@ export {
   numberObj,
   booleanObj,
   arrayLike,
-  arrayBuffer
+  arrayBuffer,
+  mapObj,
+  weakMapObj,
+  setObj,
+  weakSetObj
 }

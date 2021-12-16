@@ -1,6 +1,9 @@
 import * as _ from '../src/index'
 import { each, remain } from '../src/index'
-import { symbol, bigInt, error, stringObj, numberObj, booleanObj, date, regex, func, argsFn } from './_utils'
+import {
+  symbol, bigInt, error, stringObj, numberObj, booleanObj, date,
+  regex, func, argsFn, mapObj,weakMapObj, setObj, weakSetObj
+} from './_utils'
 
 describe('Common types methods', () => {
 
@@ -17,6 +20,10 @@ describe('Common types methods', () => {
     error,
     date,
     regex,
+    mapObj,
+    weakMapObj,
+    setObj,
+    weakSetObj,
     argsFn()
   ]
 
@@ -28,6 +35,10 @@ describe('Common types methods', () => {
     isNumber: [
       [0, 1],
       [...remain(baseTypes, 1, 3), ...objTypes]
+    ],
+    isNaN: [
+      [NaN],
+      [...remain(baseTypes, 3, 1), ...objTypes]
     ],
     isString: [
       ['', 'hi'],
@@ -73,9 +84,25 @@ describe('Common types methods', () => {
       [regex],
       [...remain(objTypes, 8, 1), ...baseTypes]
     ],
+    isMap: [
+      [mapObj],
+      [...remain(objTypes, 9, 1), ...baseTypes]
+    ],
+    isWeakMap: [
+      [weakMapObj],
+      [...remain(objTypes, 10, 1), ...baseTypes]
+    ],
+    isSet: [
+      [setObj],
+      [...remain(objTypes, 11, 1), ...baseTypes]
+    ],
+    isWeakSet: [
+      [weakSetObj],
+      [...remain(objTypes, 12, 1), ...baseTypes]
+    ],
     isArguments: [
       [argsFn()],
-      [...remain(objTypes, 9, 1), ...baseTypes]
+      [...remain(objTypes, 13, 1), ...baseTypes]
     ]
   }
 

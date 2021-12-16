@@ -1,5 +1,6 @@
 import isTag from './_isTag';
 
-export default function isError(value: unknown) {
-  return isTag(value, 'Error')
+// Error/DOMException
+export default function isError(value: any) {
+  return isTag(value, 'Error') || isTag(value, 'DOMException')
 }
