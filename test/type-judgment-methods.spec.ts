@@ -103,23 +103,29 @@ describe('type judgment methods', () => {
     isArguments: [
       [argsFn()],
       [...remain(objTypes, 13, 1), ...baseTypes]
+    ],
+    isObjectLike: [
+      [{ a: 1 }, [1, 2, 3]],
+      [...baseTypes, func]
     ]
   }
 
   each(typesMap, (item, name) => {
-    it(`${name} is a function`, () => {
-      expect(_[name]).toBeInstanceOf(Function);
-    })
-
-    it(`${name} values return \`true\``, () => {
-      each(item[0], (value) => {
-        expect(_[name](value)).toBe(true);
+    describe(`${name} method`, () => {
+      it(`${name} is a function`, () => {
+        expect(_[name]).toBeInstanceOf(Function);
       })
-    })
-
-    it(`${name} values return \`false\``, () => {
-      each(item[1], (value) => {
-        expect(_[name](value)).toBe(false);
+  
+      it(`${name} values return \`true\``, () => {
+        each(item[0], (value) => {
+          expect(_[name](value)).toBe(true);
+        })
+      })
+  
+      it(`${name} values return \`false\``, () => {
+        each(item[1], (value) => {
+          expect(_[name](value)).toBe(false);
+        })
       })
     })
   })

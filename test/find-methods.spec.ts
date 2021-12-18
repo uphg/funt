@@ -12,22 +12,31 @@ describe('find methods', () => {
     { id: 5, name: 'e' }
   ]
 
+  const objects2 = [
+    { id: 1, name: 'a' },
+    { id: 2, name: 'b' },
+    { id: 3, name: 'c' },
+    { id: 4, name: 'a' },
+    { id: 5, name: 'b' },
+    { id: 6, name: 'c' }
+  ]
+
   const methods = [
     [
       'find',
-      [2, objects[2]]
+      [2, objects[2], objects2[1]]
     ],
     [
       'findIndex',
-      [1, 2]
+      [1, 2, 1]
     ],
     [
       'findLast',
-      [2, objects[2]]
+      [2, objects[2], objects2[4]]
     ],
     [
       'findLastIndex',
-      [1, 2]
+      [1, 2, 4]
     ],
   ]
 
@@ -43,6 +52,7 @@ describe('find methods', () => {
       it(`Desired result`, () => {
         expect(func(arrays, (item) => item === 2)).toBe(result[0])
         expect(func(objects, ({ id }) => id === 3)).toBe(result[1])
+        expect(func(objects2, ({ name }) => name === 'b')).toBe(result[2])
       })
     })
   })
