@@ -1,7 +1,5 @@
-import { each, getFuncName } from '../src/index'
+import { each } from '../src/index'
 import hasInstance from '../src/hasInstance'
-
-
 
 describe('hasInstance', () => {
   it('is a function', () => {
@@ -27,7 +25,7 @@ describe('hasInstance', () => {
   ]
 
   each(constructorMap, (item) => {
-    it(`Exist ${ getFuncName(item[1]) } return \`true\``, () => {
+    it(`Exist ${ (item[1] as Function).name } return \`true\``, () => {
       expect(hasInstance(item[0], item[1])).toBe(true)
     })
   })
@@ -39,7 +37,7 @@ describe('hasInstance', () => {
   ]
 
   each(constructors, (item) => {
-    it(`Object hasInstance ${ getFuncName(item) } return \`false\``, () => {
+    it(`Object hasInstance ${ item.name } return \`false\``, () => {
       expect(hasInstance(new Object(), item)).toBe(false)
     })
   })
