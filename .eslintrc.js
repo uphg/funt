@@ -39,11 +39,12 @@ module.exports = {
     'no-dupe-args': 'error',
     'key-spacing': ['error', { 'afterColon': true }],
     'keyword-spacing': ['error', { 'before': true }],
+    'eol-last': ['error', 'always'],
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    // '@typescript-eslint/no-non-null-assertion': 'off', // 关闭：禁止使用 ! 进行非空断言
+    '@typescript-eslint/no-non-null-assertion': 'off', // 关闭：禁止使用 ! 进行非空断言
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'off'
   }
 };

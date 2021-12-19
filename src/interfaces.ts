@@ -4,3 +4,7 @@ export interface ArrayLike<T> {
 }
 
 export type ConstructorType = any
+
+export interface ObjectLike {
+  [key: string]: any
+}

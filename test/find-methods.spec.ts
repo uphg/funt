@@ -37,7 +37,7 @@ describe('find methods', () => {
     [
       'findLastIndex',
       [1, 2, 4]
-    ],
+    ]
   ]
 
   each(methods, (method) => {
@@ -49,7 +49,7 @@ describe('find methods', () => {
         expect(func).toBeInstanceOf(Function)
       })
   
-      it(`Desired result`, () => {
+      it('Desired result', () => {
         expect(func(arrays, (item) => item === 2)).toBe(result[0])
         expect(func(objects, ({ id }) => id === 3)).toBe(result[1])
         expect(func(objects2, ({ name }) => name === 'b')).toBe(result[2])

@@ -25,7 +25,7 @@ describe('hasInstance', () => {
   ]
 
   each(constructorMap, (item) => {
-    it(`Exist ${ (item[1] as Function).name } return \`true\``, () => {
+    it(`Exist ${ (item[1] as () => void).name } return \`true\``, () => {
       expect(hasInstance(item[0], item[1])).toBe(true)
     })
   })
