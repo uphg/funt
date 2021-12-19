@@ -38,7 +38,6 @@ describe('deepClone', () => {
   it('Copy object type', () => {
     const obj = { a: 'hi' }
     const array = [1, 'a', true, NaN, symbol]
-
     const obj2 = deepClone(obj)
     const array2 = deepClone(array)
 
@@ -102,13 +101,23 @@ describe('deepClone', () => {
   it('Can refer to itself', () => {
     const obj: { [key: string]: unknown } = { a: 'hi' }
     obj.self = obj
-
     const obj2 = deepClone(obj)
 
-    expect(obj).toEqual(obj2)
+    expect(obj).toEqual(obj2) 
   })
 
   xit('Will not burst the stack', () => {
     // ...
+    const obj: any = {
+      child: {}
+    }
+    let temp = obj.child
+    for (let i = 0; i < 10000; i++) {
+      temp.child = {}
+      temp = temp.child
+    }
+
+    const obj2 = deepClone(obj)
+    expect(obj).toEqual(obj2)
   })
 })
