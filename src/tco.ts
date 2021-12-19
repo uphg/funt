@@ -1,4 +1,4 @@
-// total cost of 尾递归优化函数
+// tailCallOptimize 尾递归优化函数
 export default function tco(func: (...args: any) => any) {
   let returnValue: any = undefined
   let active = false
