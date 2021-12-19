@@ -34,6 +34,10 @@ export { default as isNaN } from './isNaN'
 export { default as isArguments } from './isArguments'
 export { default as isFinite } from './isFinite'
 
+// string
 export { default as trim } from './trim'
 
+// mixins
 export { default as remain } from './remain'
+export { default as deepClone } from './deepClone'
+
