@@ -32,6 +32,49 @@ console.log(remain([1, 2, 3, 4, 5], 2))
   console.log(obj2 !== obj)
 }
 
+// {
+//   // clone Set
+//   const obj = {
+//     a: [1, 2, 3],
+//     b: new Set([4, 5, 6]),
+//     c: {
+//       d: 'hi',
+//       e: new Set([7, 8, 9])
+//     }
+//   }
+
+//   const obj2 = deepClone(obj)
+//   console.log('Set')
+//   console.log(obj)
+//   console.log(obj2)
+// }
+
+// {
+//   // clone Map
+//   const obj = {
+//     a: [1, 2, 3],
+//     b: new Map([
+//       ['a', 1],
+//       ['b', 2],
+//       ['c', 3],
+//     ]),
+//     c: {
+//       d: 'hi',
+//       e: new Map([
+//         ['a', 1],
+//         ['b', 2],
+//         ['c', 3],
+//       ])
+//     }
+//   }
+
+
+//   const obj2 = deepClone(obj)
+//   console.log('Map')
+//   console.log(obj)
+//   console.log(obj2)
+// }
+
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = '<h1>Hello Vite!</h1>'

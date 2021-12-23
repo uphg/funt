@@ -118,6 +118,38 @@ describe('deepClone', () => {
 
     const obj2 = deepClone(obj)
     done()
-    // expect(obj).toEqual(obj2)
+  })
+  xit('Support Set objects', () => {
+    const obj = {
+      a: [1, 2, 3],
+      b: new Set([4, 5, 6]),
+      c: {
+        d: 'hi',
+        e: new Set([7, 8, 9])
+      }
+    }
+    const obj2 = deepClone(obj)
+    expect(obj).toEqual(obj2) 
+  })
+
+  xit('Support Map objects', () => {
+    const obj = {
+      a: [1, 2, 3],
+      b: new Map([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3],
+      ]),
+      c: {
+        d: 'hi',
+        e: new Map([
+          ['a', 1],
+          ['b', 2],
+          ['c', 3],
+        ])
+      }
+    }
+    const obj2 = deepClone(obj)
+    expect(obj).toEqual(obj2) 
   })
 })

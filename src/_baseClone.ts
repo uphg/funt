@@ -1,37 +1,40 @@
-import isArray from './isArray'
 import type { ObjectLike } from './interfaces'
 import isRegExp from './isRegExp'
 import isFunction from './isFunction'
 import isDate from './isDate'
 import find from './find'
 import each from './each'
+import isArray from './isArray'
 
-function createTypeObj(value: any) {
-  let dist: any = null
+function createTypeObj(value: unknown) {
+  let result: unknown = null
   if (isRegExp(value)) {
-    dist = new RegExp((value as RegExp).source, (value as RegExp).flags)
+    result = new RegExp((value as RegExp).source, (value as RegExp).flags)
   } else if (isDate(value)) {
-    dist = new Date(value as Date)
+    result = new Date(value as Date)
   } else if (isFunction(value)) {
-    dist = function(this: any, ...args: unknown[]) {
+    result = function(this: any, ...args: unknown[]) {
       (value as () => any).apply<any, any[], any>(this, args)
     }
   } else if (isArray(value)) {
-    dist = new Array((value as any[]).length)
+    result = new Array((value as []).length)
   } else {
-    dist = new Object()
+    result = new Object()
   }
-  return dist
+  return result
+}
+
+function getStack(stack: [any, any][], value: any) {
+  return find(stack, (currentStack) => currentStack[0] === value)?.[1]
 }
 
 function baseClone(value: any, count?: any): any {
   if (value === null || typeof value !== 'object') return value
-  const dist: ObjectLike = createTypeObj(value)
+  const result = createTypeObj(value) as ObjectLike
   const stack: any[] = []
 
-  const temp: any = [
-    [value, dist]
-  ]
+  stack.push([value, result])
+  const temp: any = [[value, result]]
 
   while (temp.length) {
     // 临时计数
@@ -39,27 +42,24 @@ function baseClone(value: any, count?: any): any {
 
     const current = temp.shift() as any[]
     const source = current[0]
-    const copy = current[1]
-
-    stack.push([source, copy])
+    const dist = current[1]
 
     each(source, (item, key) => {
-      const findStack = find(stack, (currentStack) => currentStack[0] === item)?.[1]
-
+      const findStack = getStack(stack, item)
       if(findStack) {
-        copy[key] = findStack
+        dist[key] = findStack
       } else if (item === null || typeof item !== 'object') {
-        copy[key] = item
+        dist[key] = item
       } else {
-        copy[key] = createTypeObj(item)
+        dist[key] = createTypeObj(item)
 
-        stack.push([item, copy[key]])
-        temp.push([item, copy[key]])
+        stack.push([item, dist[key]])
+        temp.push([item, dist[key]])
       }
     })
   }
 
-  return dist
+  return result
 }
 
 export default baseClone
