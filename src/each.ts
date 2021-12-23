@@ -5,8 +5,8 @@ import type { ArrayLike } from './interfaces'
 export default function each<T>(
   obj: { [key: string]: T } | ArrayLike<T> | Array<T>,
   callback: (
-    currentValue?: T,
-    index?: number | string,
+    currentValue: T,
+    index: number | string,
     obj?: { [key: string]: T } | ArrayLike<T> | Array<T>
   ) => unknown
 ) {
@@ -18,8 +18,8 @@ export default function each<T>(
   } else {
     const keys = Object.keys(obj)
     for (let i = 0; i < keys.length; i++) {
-      const item = keys[i]
-      callback((obj as { [key: string]: T })[item], item, obj)
+      const key = keys[i]
+      callback((obj as { [key: string]: T })[key], key, obj)
     }
   }
 
