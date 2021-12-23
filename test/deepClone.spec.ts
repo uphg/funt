@@ -116,10 +116,35 @@ describe('deepClone', () => {
       temp = temp.child
     }
 
-    const obj2 = deepClone(obj)
+    void deepClone(obj)
     done()
   })
-  xit('Support Set objects', () => {
+
+  it('Packaging object', () => {
+    const numberObj = new Number(3)
+    const booleanObj = new Boolean(false)
+    const stringObj = new String('')
+    const obj = {
+      a: [numberObj, booleanObj, booleanObj, 1, 2, 3],
+      b: {
+        p1: stringObj,
+        p2: 'hi'
+      },
+      c: {
+        b1: numberObj,
+        b2: booleanObj,
+        b3: booleanObj,
+        b4: 1,
+        b5: 2,
+        b6: 3
+      }
+    }
+    
+    const obj2 = deepClone(obj)
+    expect(obj2).toEqual(obj)
+  })
+
+  it('Support Set objects', () => {
     const obj = {
       a: [1, 2, 3],
       b: new Set([4, 5, 6]),
@@ -129,27 +154,27 @@ describe('deepClone', () => {
       }
     }
     const obj2 = deepClone(obj)
-    expect(obj).toEqual(obj2) 
+    expect(obj2).toEqual(obj) 
   })
 
-  xit('Support Map objects', () => {
+  it('Support Map objects', () => {
     const obj = {
       a: [1, 2, 3],
       b: new Map([
         ['a', 1],
         ['b', 2],
-        ['c', 3],
+        ['c', 3]
       ]),
       c: {
         d: 'hi',
         e: new Map([
           ['a', 1],
           ['b', 2],
-          ['c', 3],
+          ['c', 3]
         ])
       }
     }
     const obj2 = deepClone(obj)
-    expect(obj).toEqual(obj2) 
+    expect(obj2).toEqual(obj) 
   })
 })

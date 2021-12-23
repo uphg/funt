@@ -25,55 +25,81 @@ console.log(remain([1, 2, 3, 4, 5], 2))
   // console.log(count.value)
 }
 
+// {
+//   const obj: { [key: string]: unknown } = { a: 'hi' }
+//   obj.self = obj
+//   const obj2 = deepClone(obj)
+//   console.log(obj2 !== obj)
+// }
+
 {
-  const obj: { [key: string]: unknown } = { a: 'hi' }
-  obj.self = obj
+  // clone Set
+  const obj = {
+    a: [1, 2, 3],
+    b: new Set([4, 5, 6]),
+    c: {
+      d: 'hi',
+      e: new Set([7, 8, 9])
+    }
+  }
+
   const obj2 = deepClone(obj)
-  console.log(obj2 !== obj)
+  console.log('Set')
+  console.log(obj)
+  console.log(obj2)
 }
 
-// {
-//   // clone Set
-//   const obj = {
-//     a: [1, 2, 3],
-//     b: new Set([4, 5, 6]),
-//     c: {
-//       d: 'hi',
-//       e: new Set([7, 8, 9])
-//     }
-//   }
-
-//   const obj2 = deepClone(obj)
-//   console.log('Set')
-//   console.log(obj)
-//   console.log(obj2)
-// }
-
-// {
-//   // clone Map
-//   const obj = {
-//     a: [1, 2, 3],
-//     b: new Map([
-//       ['a', 1],
-//       ['b', 2],
-//       ['c', 3],
-//     ]),
-//     c: {
-//       d: 'hi',
-//       e: new Map([
-//         ['a', 1],
-//         ['b', 2],
-//         ['c', 3],
-//       ])
-//     }
-//   }
+{
+  // clone Map
+  const obj = {
+    a: [1, 2, 3],
+    b: new Map([
+      ['a', 1],
+      ['b', 2],
+      ['c', 3]
+    ]),
+    c: {
+      d: 'hi',
+      e: new Map([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3]
+      ])
+    }
+  }
 
 
-//   const obj2 = deepClone(obj)
-//   console.log('Map')
-//   console.log(obj)
-//   console.log(obj2)
-// }
+  const obj2 = deepClone(obj)
+  console.log('Map')
+  console.log(obj)
+  console.log(obj2)
+}
+
+{
+  const numberObj = new Number(3)
+  const booleanObj = new Boolean(false)
+  const stringObj = new String('')
+  const obj = {
+    a: [numberObj, booleanObj, booleanObj, 1, 2, 3],
+    b: {
+      p1: stringObj,
+      p2: 'hi'
+    },
+    c: {
+      b1: numberObj,
+      b2: booleanObj,
+      b3: booleanObj,
+      b4: 1,
+      b5: 2,
+      b6: 3
+    }
+  }
+    
+  const obj2 = deepClone(obj)
+  console.log('Packaging Object')
+  console.log(obj)
+  console.log(obj2)
+}
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 

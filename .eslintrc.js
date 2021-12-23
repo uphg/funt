@@ -15,7 +15,7 @@ module.exports = {
   ],
   rules: {
     // js/ts
-    indent: ['error', 2],
+    indent: ['error', 2, { 'SwitchCase': 1 }],
     quotes: ['error', 'single', { 'avoidEscape': true }],
     'comma-dangle': ['error', 'never'], // 禁止对象尾逗号
     // 禁止特定语法
@@ -40,6 +40,7 @@ module.exports = {
     'key-spacing': ['error', { 'afterColon': true }],
     'keyword-spacing': ['error', { 'before': true }],
     'eol-last': ['error', 'always'],
+    // 'no-duplicate-case': 'off',
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off',

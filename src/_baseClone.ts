@@ -1,28 +1,8 @@
-import type { ObjectLike } from './interfaces'
-import isRegExp from './isRegExp'
-import isFunction from './isFunction'
-import isDate from './isDate'
 import find from './find'
 import each from './each'
-import isArray from './isArray'
-
-function createTypeObj(value: unknown) {
-  let result: unknown = null
-  if (isRegExp(value)) {
-    result = new RegExp((value as RegExp).source, (value as RegExp).flags)
-  } else if (isDate(value)) {
-    result = new Date(value as Date)
-  } else if (isFunction(value)) {
-    result = function(this: any, ...args: unknown[]) {
-      (value as () => any).apply<any, any[], any>(this, args)
-    }
-  } else if (isArray(value)) {
-    result = new Array((value as []).length)
-  } else {
-    result = new Object()
-  }
-  return result
-}
+import createTypeObject from './internal/createTypeObject'
+import type { ObjectLike } from './interfaces'
+import getTag from './internal/getTag'
 
 function getStack(stack: [any, any][], value: any) {
   return find(stack, (currentStack) => currentStack[0] === value)?.[1]
@@ -30,33 +10,68 @@ function getStack(stack: [any, any][], value: any) {
 
 function baseClone(value: any, count?: any): any {
   if (value === null || typeof value !== 'object') return value
-  const result = createTypeObj(value) as ObjectLike
+  const result = createTypeObject(value, getTag(value)) as ObjectLike
   const stack: any[] = []
 
   stack.push([value, result])
-  const temp: any = [[value, result]]
+  const temp: [any, any][] = [[value, result]]
 
   while (temp.length) {
     // 临时计数
     count && (count.value += 1)
 
-    const current = temp.shift() as any[]
-    const source = current[0]
-    const dist = current[1]
+    const current = temp.shift()
+    const source = current?.[0]
+    const dist = current?.[1]
 
-    each(source, (item, key) => {
-      const findStack = getStack(stack, item)
-      if(findStack) {
-        dist[key] = findStack
-      } else if (item === null || typeof item !== 'object') {
-        dist[key] = item
-      } else {
-        dist[key] = createTypeObj(item)
+    switch (getTag(source)) {
+      case 'Set':
+        source.forEach((item: any) => {
+          const findStack = getStack(stack, item)
+          if (findStack) {
+            dist.add(findStack)
+          } else if (item === null || typeof item !== 'object') {
+            dist.add(item)
+          } else {
+            const newObj = createTypeObject(item, getTag(item))
+            dist.add(newObj)
 
-        stack.push([item, dist[key]])
-        temp.push([item, dist[key]])
-      }
-    })
+            stack.push([item, newObj])
+            temp.push([item, newObj])
+          }
+        });
+        break
+      case 'Map':
+        source.forEach((item: any, key: any) => {
+          const findStack = getStack(stack, item)
+          if (findStack) {
+            dist.set(key, findStack)
+          } else if (item === null || typeof item !== 'object') {
+            dist.set(key, item)
+          } else {
+            const newValue = createTypeObject(item, getTag(item))
+            dist.set(key, newValue)
+
+            stack.push([item, newValue])
+            temp.push([item, newValue])
+          }
+        });
+        break
+      default:
+        each(source, (item, key) => {
+          const findStack = getStack(stack, item)
+          if (findStack) {
+            dist[key] = findStack
+          } else if (item === null || typeof item !== 'object') {
+            dist[key] = item
+          } else {
+            dist[key] = createTypeObject(item, getTag(item))
+    
+            stack.push([item, dist[key]])
+            temp.push([item, dist[key]])
+          }
+        })
+    }
   }
 
   return result
