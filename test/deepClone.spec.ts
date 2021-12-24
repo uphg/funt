@@ -147,7 +147,18 @@ describe('deepClone', () => {
   it('Support Set objects', () => {
     const obj = {
       a: [1, 2, 3],
-      b: new Set([4, 5, 6]),
+      b: new Set([
+        {
+          p1: 'hi',
+          p2: 'hello',
+          p3: new Set([1, 2, 3]),
+          p4: new Map([
+            ['a', 1],
+            ['b', 2],
+            ['c', 3]
+          ])
+        }
+      ]),
       c: {
         d: 'hi',
         e: new Set([7, 8, 9])
@@ -160,11 +171,27 @@ describe('deepClone', () => {
   it('Support Map objects', () => {
     const obj = {
       a: [1, 2, 3],
-      b: new Map([
-        ['a', 1],
-        ['b', 2],
-        ['c', 3]
-      ]),
+      b: new Map<string, any>([
+          ['a', 1],
+          ['b', 2],
+          [
+            'c',
+            {
+              p1: 'hi',
+              p2: 'hello',
+              p3: new Map([
+                ['a', 1],
+                ['b', 2],
+                ['c', 3]
+              ]),
+              p4: {
+                p1: 'hi',
+                p2: 'hello'
+              },
+              p5: new Set([1, 2, 3]),
+            }
+          ]
+        ]),
       c: {
         d: 'hi',
         e: new Map([

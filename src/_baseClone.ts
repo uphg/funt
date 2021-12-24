@@ -12,8 +12,6 @@ function baseClone(value: any, count?: any): any {
   if (value === null || typeof value !== 'object') return value
   const result = createTypeObject(value, getTag(value)) as ObjectLike
   const stack: any[] = []
-
-  stack.push([value, result])
   const temp: [any, any][] = [[value, result]]
 
   while (temp.length) {
@@ -23,6 +21,8 @@ function baseClone(value: any, count?: any): any {
     const current = temp.shift()
     const source = current?.[0]
     const dist = current?.[1]
+
+    stack.push(current)
 
     switch (getTag(source)) {
       case 'Set':
@@ -36,7 +36,6 @@ function baseClone(value: any, count?: any): any {
             const newObj = createTypeObject(item, getTag(item))
             dist.add(newObj)
 
-            stack.push([item, newObj])
             temp.push([item, newObj])
           }
         });
@@ -52,7 +51,6 @@ function baseClone(value: any, count?: any): any {
             const newValue = createTypeObject(item, getTag(item))
             dist.set(key, newValue)
 
-            stack.push([item, newValue])
             temp.push([item, newValue])
           }
         });
@@ -67,7 +65,6 @@ function baseClone(value: any, count?: any): any {
           } else {
             dist[key] = createTypeObject(item, getTag(item))
     
-            stack.push([item, dist[key]])
             temp.push([item, dist[key]])
           }
         })
