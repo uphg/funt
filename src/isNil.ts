@@ -1,3 +1,3 @@
 export default function isNil(value: unknown) {
-  return value === undefined || value === null
+  return value === void 0 || value === null
 }

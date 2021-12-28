@@ -7,5 +7,5 @@ export default function find<T>(
   fromIndex?: number
 ) {
   const index = findIndex<T>(array, callback, fromIndex)
-  return index === -1 ? undefined : array[index]
+  return index === -1 ? void 0 : array[index]
 }

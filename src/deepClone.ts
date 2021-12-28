@@ -1,34 +1,47 @@
 import find from './find'
 import each from './each'
-import getTag from './_getTag'
 import type { ObjectLike } from 'src/interfaces'
+
+const numberTag = '[object Number]'
+const stringTag = '[object String]'
+const booleanTag = '[object Boolean]'
+const dateTag = '[object Date]'
+const regExpTag = '[object RegExp]'
+const mapTag = '[object Map]'
+const setTag = '[object Set]'
+const functionTag = '[object Function]'
+const arrayTag = '[object Array]'
+
+function getTag(value: unknown) {
+  return Object.prototype.toString.call(value)
+}
 
 function initTypeObject(value: ObjectLike): object {
   let result: object | null = null
   const tag = getTag(value)
   const Constr = value.constructor as any
   switch (tag) {
-    case 'Number':
-    case 'String':
+    case numberTag:
+    case stringTag:
       result = new Constr(value)
       break
-    case 'Boolean':
-    case 'Date':
+    case booleanTag:
+    case dateTag:
       result = new Constr(+value)
       break
-    case 'RegExp':
+    case regExpTag:
       result = new RegExp(value.source, value.flags)
       break
-    case 'Map':
-    case 'Set':
+    case mapTag:
+    case setTag:
       result = new Constr
       break
-    case 'Function':
+    case functionTag:
       result = function(this: any, ...args: unknown[]) {
         (value as (...args: any) => any).apply<any, any[], any>(this, args)
       }
       break
-    case 'Array':
+    case arrayTag:
       result = new Array((value as []).length)
       break
     default:
@@ -59,7 +72,7 @@ function deepClone(value: unknown, count?: { value: number }): any {
     stack.push(current)
 
     switch (getTag(source)) {
-      case 'Set':
+      case setTag:
         source.forEach((item: any) => {
           const findStack = getStack(stack, item)
           if (findStack) {
@@ -74,7 +87,7 @@ function deepClone(value: unknown, count?: { value: number }): any {
           }
         })
         break
-      case 'Map':
+      case mapTag:
         source.forEach((item: any, key: any) => {
           const findStack = getStack(stack, item)
           if (findStack) {
