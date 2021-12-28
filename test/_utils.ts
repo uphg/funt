@@ -5,6 +5,7 @@ const date = new Date()
 const regex = /a/
 const func = () => void 0
 function argsFn() {
+  // eslint-disable-next-line prefer-rest-params
   return arguments
 }
 

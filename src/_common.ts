@@ -8,4 +8,3 @@ export const MIN_SAFE_INTEGER = -9007199254740991
 export const _isNaN = isNaN
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty
-

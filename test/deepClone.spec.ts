@@ -172,26 +172,26 @@ describe('deepClone', () => {
     const obj = {
       a: [1, 2, 3],
       b: new Map<string, any>([
-          ['a', 1],
-          ['b', 2],
-          [
-            'c',
-            {
+        ['a', 1],
+        ['b', 2],
+        [
+          'c',
+          {
+            p1: 'hi',
+            p2: 'hello',
+            p3: new Map([
+              ['a', 1],
+              ['b', 2],
+              ['c', 3]
+            ]),
+            p4: {
               p1: 'hi',
-              p2: 'hello',
-              p3: new Map([
-                ['a', 1],
-                ['b', 2],
-                ['c', 3]
-              ]),
-              p4: {
-                p1: 'hi',
-                p2: 'hello'
-              },
-              p5: new Set([1, 2, 3]),
-            }
-          ]
-        ]),
+              p2: 'hello'
+            },
+            p5: new Set([1, 2, 3])
+          }
+        ]
+      ]),
       c: {
         d: 'hi',
         e: new Map([

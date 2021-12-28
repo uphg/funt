@@ -5,7 +5,7 @@ import {
   regex, func, argsFn, mapObj,weakMapObj, setObj, weakSetObj
 } from './_utils'
 
-describe('type judgment methods', () => {
+describe('type assert', () => {
 
   const baseTypes = [
     true, 1, -Infinity, NaN, 'a', bigInt, symbol, null, undefined
@@ -111,18 +111,18 @@ describe('type judgment methods', () => {
   }
 
   each(typesMap, (item, name) => {
-    describe(`${name} method`, () => {
-      it(`${name} is a function`, () => {
+    describe(name, () => {
+      it('is a function', () => {
         expect(_[name]).toBeInstanceOf(Function);
       })
   
-      it(`${name} values return \`true\``, () => {
+      it('values return `true`', () => {
         each(item[0], (value) => {
           expect(_[name](value)).toBe(true);
         })
       })
   
-      it(`${name} values return \`false\``, () => {
+      it('values return `false`', () => {
         each(item[1], (value) => {
           expect(_[name](value)).toBe(false);
         })

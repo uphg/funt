@@ -9,7 +9,7 @@ describe('tco', () => {
       else {
         return x
       }
-    });
+    })
     
     expect(sum(1, 100000)).toBe(100001)
   })
