@@ -107,6 +107,10 @@ describe('type assert', () => {
     isObjectLike: [
       [{ a: 1 }, [1, 2, 3]],
       [...baseTypes, func]
+    ],
+    isInteger: [
+      [1, 2, 3, -1],
+      [...remain(baseTypes, 1, 1), 1.1, 3.1415926, ...objTypes]
     ]
   }
 

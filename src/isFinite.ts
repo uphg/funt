@@ -1,3 +1,3 @@
-export default function isFinite(value: unknown) {
-  return Number.isFinite(value)
-}
+import { _isFinite } from './_common'
+
+export default _isFinite

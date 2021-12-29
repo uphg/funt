@@ -33,6 +33,7 @@ export { default as isWeakSet } from './isWeakSet'
 export { default as isNaN } from './isNaN'
 export { default as isArguments } from './isArguments'
 export { default as isFinite } from './isFinite'
+export { default as isInteger } from './isInteger'
 
 // string
 export { default as trim } from './trim'
