@@ -1,6 +1,10 @@
 import tco from '../src/tco'
 
 describe('tco', () => {
+  it('is a function', () => {
+    expect(typeof tco).toBe('function')
+  })
+
   it('Optimize tail recursive function', () => {
     const sum = tco(function(x, y) {
       if (y > 0) {

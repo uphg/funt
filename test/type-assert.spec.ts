@@ -117,9 +117,9 @@ describe('type assert', () => {
   each(typesMap, (item, name) => {
     describe(name, () => {
       it('is a function', () => {
-        expect(_[name]).toBeInstanceOf(Function);
+        expect(typeof _[name]).toBe('function')
       })
-  
+
       it('values return `true`', () => {
         each(item[0], (value) => {
           expect(_[name](value)).toBe(true);

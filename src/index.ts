@@ -38,6 +38,9 @@ export { default as isInteger } from './isInteger'
 // string
 export { default as trim } from './trim'
 
+// number
+export { default as toNumber } from './toNumber'
+
 // mixins
 export { default as remain } from './remain'
 export { default as deepClone } from './deepClone'

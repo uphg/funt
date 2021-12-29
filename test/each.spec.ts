@@ -2,7 +2,7 @@ import { each } from '../src/index'
 
 describe('each', () => {
   it('is a function', () => {
-    expect(each).toBeInstanceOf(Function)
+    expect(typeof each).toBe('function')
   })
 
   it('Iterate the array', () => {

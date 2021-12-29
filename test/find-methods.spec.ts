@@ -46,7 +46,7 @@ describe('find methods', () => {
     const func = _[name as string]
     describe(`${name} methods`, () => {
       it(`${name} is a function`, () => {
-        expect(func).toBeInstanceOf(Function)
+        expect(typeof func).toBe('function')
       })
   
       it('Desired result', () => {

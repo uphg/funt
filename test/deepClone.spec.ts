@@ -2,6 +2,10 @@ import { deepClone } from '../src/index'
 import { symbol } from './_utils'
 
 describe('deepClone', () => {
+  it('is a function', () => {
+    expect(typeof deepClone).toBe('function')
+  })
+
   it('Copy basic type', () => {
     const s = 'hi'
     const b = false

@@ -2,7 +2,7 @@ import { remain } from '../src/index'
 
 describe('remain', () => {
   it('is a function', () => {
-    expect(remain).toBeInstanceOf(Function)
+    expect(typeof remain).toBe('function')
   })
 
   it('Get the remaining part of the array', () => {

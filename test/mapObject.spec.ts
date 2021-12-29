@@ -2,7 +2,7 @@ import { mapObject } from '../src/index'
 
 describe('map', () => {
   it('is a function', () => {
-    expect(mapObject).toBeInstanceOf(Function)
+    expect(typeof mapObject).toBe('function')
   })
 
   it('Iterate the object', () => {
