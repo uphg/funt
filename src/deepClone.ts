@@ -64,6 +64,7 @@ function initTypeObject(value: ObjectLike): object {
 
 function deepClone(value: unknown, count?: { value: number }): any {
   if (value === null || typeof value !== 'object') return value
+
   const result = initTypeObject(value) as object
   const stack: [any, any][] = []
   const temp: [any, any][] = [[value, result]]
