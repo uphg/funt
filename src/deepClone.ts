@@ -1,7 +1,7 @@
 import find from './find'
 import cloneArrayBuffer from './_cloneArrayBuffer'
-import type { ObjectLike } from 'src/interfaces'
 import initCloneObject from './_initCloneObject'
+import type { ObjectLike } from 'src/interfaces'
 
 const objectTag = '[object Object]'
 const numberTag = '[object Number]'

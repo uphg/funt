@@ -1,6 +1,6 @@
-import isNumber from './isNumber';
 import { _isNaN } from './_common'
+import isNumber from './isNumber'
 
 export default function isNaN(value: unknown): boolean {
-  return Number.isNaN ? Number.isNaN(value) : isNumber(value) && _isNaN(value as number)
+  return isNumber(value) && _isNaN(value as number)
 }

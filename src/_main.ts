@@ -101,16 +101,27 @@ import deepClone from './deepClone'
 //   console.log(obj2)
 // }
 
+// {
+//   const a = [1, 2, 3] as any
+//   a.p1 = '123'
+//   a.p2 = '456'
+//   a[Symbol()] = 'hi'
+//   const a2 = deepClone(a)
+//   console.log('a')
+//   console.log(a)
+//   console.log('a2')
+//   console.log(a2)
+// }
+
 {
-  const a = [1, 2, 3] as any
-  a.p1 = '123'
-  a.p2 = '456'
-  a[Symbol()] = 'hi'
-  const a2 = deepClone(a)
-  console.log('a')
-  console.log(a)
-  console.log('a2')
-  console.log(a2)
+  console.log()
+  let index = 0
+  const length = 10
+  
+  while (index < length) {
+    console.log(index)
+    index += 1
+  }
 }
 
 const app = document.querySelector<HTMLDivElement>('#app')!
