@@ -124,6 +124,21 @@ import deepClone from './deepClone'
   }
 }
 
+{
+  const object = {
+    p1: 'a',
+    p2: 'b',
+    p3: 'c',
+    [Symbol()]: 'd',
+    [Symbol()]: 'e',
+    [Symbol()]: 'f'
+  }
+  const object2 = deepClone(object)
+  console.log('deepClone copy symbol property')
+  console.log(object)
+  console.log(object2)
+}
+
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = '<h1>Hello Vite!</h1>'

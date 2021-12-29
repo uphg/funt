@@ -216,4 +216,17 @@ describe('deepClone', () => {
     const a2 = deepClone(a)
     expect(a2).toEqual(a) 
   })
+
+  it('Copy objects containing symbol', () => {
+    const object = {
+      p1: 'a',
+      p2: 'b',
+      p3: 'c',
+      [Symbol()]: 'd',
+      [Symbol()]: 'e',
+      [Symbol()]: 'f'
+    }
+    const object2 = deepClone(object)
+    expect(object2).toEqual(object) 
+  })
 })

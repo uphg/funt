@@ -11,6 +11,7 @@ export const NAN = 0 / 0
 export const _isNaN = isNaN
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty
+export const nativeGetSymbols = Object.getOwnPropertySymbols
 
 export const _isFinite = Number.isFinite
 export const _isInteger = Number.isInteger

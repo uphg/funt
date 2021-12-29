@@ -1,6 +1,8 @@
 import find from './find'
 import cloneArrayBuffer from './_cloneArrayBuffer'
 import initCloneObject from './_initCloneObject'
+import keys from './keys'
+import getSymbols from './getSymobls'
 import type { ObjectLike } from 'src/interfaces'
 
 const objectTag = '[object Object]'
@@ -108,10 +110,10 @@ function deepClone(value: unknown, count?: { value: number }): any {
         }
       })
     } else {
-      const keys = Object.keys(source)
+      const props = [...keys(source), ...getSymbols(source)]
 
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i]
+      for (let i = 0; i < props.length; i++) {
+        const key = props[i]
         const item = source[key]
         const findStack = getStack(stack, item)
 
