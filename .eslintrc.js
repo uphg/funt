@@ -41,6 +41,7 @@ module.exports = {
     'keyword-spacing': ['error', { 'before': true }],
     'eol-last': ['error', 'always'],
     // 'no-duplicate-case': 'off',
+    'no-case-declarations': 'off',
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off',

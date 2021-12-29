@@ -204,4 +204,12 @@ describe('deepClone', () => {
     const obj2 = deepClone(obj)
     expect(obj2).toEqual(obj) 
   })
+
+  it('Copy array custom property', () => {
+    const a = [1, 2, 3] as any
+    a.p1 = '123'
+    a.p2 = '456'
+    const a2 = deepClone(a)
+    expect(a2).toEqual(a) 
+  })
 })
