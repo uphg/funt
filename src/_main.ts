@@ -1,5 +1,6 @@
 // import remain from './remain'
 import deepClone from './deepClone'
+import isFinite from './isFinite'
 
 // console.log('remain')
 // console.log(remain([1, 2, 3, 4, 5], 1, 2))
@@ -114,7 +115,6 @@ import deepClone from './deepClone'
 // }
 
 {
-  console.log()
   let index = 0
   const length = 10
   
@@ -125,6 +125,7 @@ import deepClone from './deepClone'
 }
 
 {
+  console.log('## Copy symbol')
   const object = {
     p1: 'a',
     p2: 'b',
@@ -137,6 +138,14 @@ import deepClone from './deepClone'
   console.log('deepClone copy symbol property')
   console.log(object)
   console.log(object2)
+}
+
+{
+  console.log('## isFinite')
+  console.log('isFinite(true)')
+  console.log(isFinite(true))
+  console.log('isFinite(Infinity)')
+  console.log(isFinite(Infinity))
 }
 
 const app = document.querySelector<HTMLDivElement>('#app')!

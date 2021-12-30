@@ -1,3 +1,6 @@
-import { _isFinite } from './_common'
+import { _isFinite, _isNaN } from './_common'
 
-export default _isFinite
+// 判断是否为有限的数字
+export default function isFinite(value: unknown) {
+  return typeof value === 'number' && _isFinite(value) && !_isNaN(value)
+}

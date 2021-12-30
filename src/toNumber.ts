@@ -1,7 +1,7 @@
 import isObject from './isObject'
 import isSymbol from './isSymbol'
 import trim from './trim'
-import { NAN, freeParseInt } from './_common'
+import { NAN, _parseInt } from './_common'
 
 // 检测不规范的十六进制字符串值
 const reIsBadHex = /^[-+]0x[0-9a-f]+$/i
@@ -29,6 +29,6 @@ export default function toNumber(value: any) {
   const isBinary = reIsBinary.test(value)
 
   return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    ? _parseInt(value.slice(2), isBinary ? 2 : 8)
     : (reIsBadHex.test(value) ? NAN : +value)
 }

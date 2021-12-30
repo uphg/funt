@@ -13,6 +13,9 @@ export const _isNaN = isNaN
 export const hasOwnProperty = Object.prototype.hasOwnProperty
 export const nativeGetSymbols = Object.getOwnPropertySymbols
 
-export const _isFinite = Number.isFinite
-export const _isInteger = Number.isInteger
-export const freeParseInt = parseInt
+export const _isFinite = isFinite
+export const _parseInt = parseInt
+
+export const NumberIsFinite = Number.isFinite
+export const NumberIsInteger = Number.isInteger
+
