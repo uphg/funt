@@ -2,10 +2,11 @@
 import deepClone from './deepClone'
 import isFinite from './isFinite'
 import debounce from './debounce'
+import throttle from './throttle'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
-app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button>'
+app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <button id="btn2">点击节流</button>'
 
 // console.log('remain')
 // console.log(remain([1, 2, 3, 4, 5], 1, 2))
@@ -176,6 +177,18 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button>'
   }, 2000)
   const btn1 = document.querySelector('#btn1')
   btn1?.addEventListener('click', clickButton)
+}
+
+
+{
+  console.log('## throttle')
+
+  const clickButton = throttle((e) => {
+    console.log('e')
+    console.log(e)
+  }, 2000)
+  const btn2 = document.querySelector('#btn2')
+  btn2?.addEventListener('click', clickButton)
 }
 
 
