@@ -1,6 +1,11 @@
 // import remain from './remain'
 import deepClone from './deepClone'
 import isFinite from './isFinite'
+import debounce from './debounce'
+
+const app = document.querySelector<HTMLDivElement>('#app')!
+
+app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button>'
 
 // console.log('remain')
 // console.log(remain([1, 2, 3, 4, 5], 1, 2))
@@ -161,6 +166,18 @@ import isFinite from './isFinite'
   console.log(view2)
   console.log(view4)
 }
-const app = document.querySelector<HTMLDivElement>('#app')!
 
-app.innerHTML = '<h1>Hello Vite!</h1>'
+{
+  console.log('## debounce')
+
+  const clickButton = debounce((e) => {
+    console.log('e')
+    console.log(e)
+  }, 2000)
+  const btn1 = document.querySelector('#btn1')
+  btn1?.addEventListener('click', clickButton)
+}
+
+
+
+
