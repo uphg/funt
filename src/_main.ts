@@ -148,6 +148,19 @@ import isFinite from './isFinite'
   console.log(isFinite(Infinity))
 }
 
+{
+  console.log('deepClone DataView')
+  const buffer = new ArrayBuffer(16)
+  const view1 = new DataView(buffer)
+  const view2 = new DataView(buffer, 12, 4)
+
+  const view3 = deepClone(view1)
+  const view4 = deepClone(view2)
+  console.log(view1)
+  console.log(view3)
+  console.log(view2)
+  console.log(view4)
+}
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = '<h1>Hello Vite!</h1>'

@@ -1,9 +1,13 @@
 import find from './find'
-import cloneArrayBuffer from './_cloneArrayBuffer'
-import initCloneObject from './_initCloneObject'
 import keys from './keys'
 import getSymbols from './getSymobls'
-import type { ObjectLike } from 'src/interfaces'
+import getTag from './_getTag'
+import initCloneObject from './_initCloneObject'
+import cloneArrayBuffer from './_cloneArrayBuffer'
+import cloneDataView from './_cloneDataView'
+import cloneTypedArray from './_cloneTypedArray'
+
+import type { ObjectLike, TypedArray } from 'src/interfaces'
 
 const objectTag = '[object Object]'
 const numberTag = '[object Number]'
@@ -15,12 +19,19 @@ const mapTag = '[object Map]'
 const setTag = '[object Set]'
 const functionTag = '[object Function]'
 const arrayTag = '[object Array]'
-const arrayBufferTag = '[object ArrayBuffer]'
 const argsTag = '[object Arguments]'
 
-function getTag(value: unknown) {
-  return Object.prototype.toString.call(value)
-}
+const arrayBufferTag = '[object ArrayBuffer]'
+const dataViewTag = '[object DataView]'
+const float32Tag = '[object Float32Array]'
+const float64Tag = '[object Float64Array]'
+const int8Tag = '[object Int8Array]'
+const int16Tag = '[object Int16Array]'
+const int32Tag = '[object Int32Array]'
+const uint8Tag = '[object Uint8Array]'
+const uint8ClampedTag = '[object Uint8ClampedArray]'
+const uint16Tag = '[object Uint16Array]'
+const uint32Tag = '[object Uint32Array]'
 
 function getStack(stack: [any, any][], value: any) {
   return find(stack, (currentStack) => currentStack[0] === value)?.[1]
@@ -34,13 +45,27 @@ function initTypeObject(value: ObjectLike): object {
     case arrayBufferTag:
       result = cloneArrayBuffer(value as ArrayBuffer)
       break
-    case numberTag:
-    case stringTag:
-      result = new Constr(value)
-      break
     case booleanTag:
     case dateTag:
       result = new Constr(+value)
+      break
+    case dataViewTag:
+      result = cloneDataView(value as DataView)
+      break
+    case float32Tag:
+    case float64Tag:
+    case int8Tag:
+    case int16Tag:
+    case int32Tag:
+    case uint8Tag:
+    case uint8ClampedTag:
+    case uint16Tag:
+    case uint32Tag:
+      result = cloneTypedArray(value as TypedArray)
+      break
+    case numberTag:
+    case stringTag:
+      result = new Constr(value)
       break
     case regExpTag:
       result = new RegExp(value.source, value.flags)

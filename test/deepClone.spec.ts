@@ -229,4 +229,40 @@ describe('deepClone', () => {
     const object2 = deepClone(object)
     expect(object2).toEqual(object) 
   })
+
+  it('Copy ArrayBuffer', () => {
+    const buffer = new ArrayBuffer(8)
+    const buffer2 = deepClone(buffer)
+    expect(buffer2).toEqual(buffer) 
+  })
+
+  it('Copy DataView', () => {
+    const buffer = new ArrayBuffer(16)
+    const view1 = new DataView(buffer)
+    const view2 = new DataView(buffer, 12, 4)
+
+    const view3 = deepClone(view1)
+    const view4 = deepClone(view2)
+    expect(view3).toEqual(view1)
+    expect(view4).toEqual(view2)
+  })
+
+  it('Copy TypedArray', () => {
+    const buffer = new ArrayBuffer(16)
+
+    const typedArrays = [
+      new Float32Array(buffer),
+      new Float64Array(buffer),
+      new Int8Array(buffer),
+      new Int16Array(buffer),
+      new Int32Array(buffer),
+      new Uint8Array(buffer),
+      new Uint8ClampedArray(buffer),
+      new Uint16Array(buffer),
+      new Uint32Array(buffer)
+    ]
+
+    const typedArrays2 = deepClone(typedArrays)
+    expect(typedArrays2).toEqual(typedArrays)
+  })
 })
