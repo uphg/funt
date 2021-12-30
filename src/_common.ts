@@ -9,6 +9,7 @@ export const nativeGetSymbols = Object.getOwnPropertySymbols
 
 export const _isFinite = isFinite
 export const _parseInt = parseInt
+export const _Number = Number
 
 export const NumberIsFinite = Number.isFinite
 export const NumberIsInteger = Number.isInteger

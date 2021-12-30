@@ -1,7 +1,7 @@
 import isObject from './isObject'
 import isSymbol from './isSymbol'
 import trim from './trim'
-import { NAN, _parseInt } from './_common'
+import { _Number, NAN, _parseInt } from './_common'
 
 // 检测不规范的十六进制字符串值
 const reIsBadHex = /^[-+]0x[0-9a-f]+$/i
@@ -13,8 +13,8 @@ const reIsBinary = /^0b[01]+$/i
 const reIsOctal = /^0o[0-7]+$/i
 
 export default function toNumber(value: any) {
-  if (typeof value === 'number' || typeof value === 'bigint') return value
-
+  if (typeof value === 'number') return value
+  if (typeof value === 'bigint') return _Number(value)
   if (isSymbol(value)) return NAN
 
   if (isObject(value)) {
