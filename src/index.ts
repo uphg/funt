@@ -39,6 +39,8 @@ export { default as isInteger } from './isInteger'
 export { default as trim } from './trim'
 
 // number
+export { default as toFinite } from './toFinite'
+export { default as toInteger } from './toInteger'
 export { default as toNumber } from './toNumber'
 
 // mixins
