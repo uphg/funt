@@ -43,6 +43,10 @@ export { default as toFinite } from './toFinite'
 export { default as toInteger } from './toInteger'
 export { default as toNumber } from './toNumber'
 
+// array
+export { default as chunk } from './chunk'
+export { default as compact } from './compact'
+
 // mixins
 export { default as remain } from './remain'
 export { default as deepClone } from './deepClone'

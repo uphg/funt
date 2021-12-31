@@ -3,6 +3,7 @@ import deepClone from './deepClone'
 import isFinite from './isFinite'
 import debounce from './debounce'
 import throttle from './throttle'
+import chunk from './chunk'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -189,6 +190,15 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
   }, 2000)
   const btn2 = document.querySelector('#btn2')
   btn2?.addEventListener('click', clickButton)
+}
+
+{
+  console.log('## chunk')
+  const a = [1, 2, 3, 4, 5]
+
+  const a1 = chunk(a, 2)
+  console.log(a)
+  console.log(a1)
 }
 
 
