@@ -16,8 +16,8 @@ export default function debounce<T extends Function>(
     args: unknown
 
   const later = function() {
-    const passed = now() - (previous as number)
     clearTimeout(timerId as number)
+    const passed = now() - (previous as number)
 
     if (wait > passed) {
       timerId = setTimeout(later, wait - passed)
