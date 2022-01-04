@@ -47,6 +47,9 @@ export { default as toNumber } from './toNumber'
 export { default as chunk } from './chunk'
 export { default as compact } from './compact'
 
+// Date
+export { default as now } from './now'
+
 // mixins
 export { default as remain } from './remain'
 export { default as deepClone } from './deepClone'

@@ -13,6 +13,7 @@ export const nativeGetSymbols = Object.getOwnPropertySymbols
 
 export const _isFinite = isFinite
 export const _parseInt = parseInt
+export const _now = Date.now
 export const _Number = Number
 
 export const NumberIsFinite = Number.isFinite
