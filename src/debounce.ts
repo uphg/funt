@@ -2,18 +2,18 @@ import now from './now'
 import isNumber from './isNumber'
 
 // 防抖函数
-export default function debounce(
-  func: (...args: any) => any,
+export default function debounce<T extends Function>(
+  func: T,
   wait: number,
   options?: { immediate: boolean }
 ) {
   const { immediate=false } = options || {}
 
-  let timerId: null | number | NodeJS.Timeout,
+  let timerId: null | number | NodeJS.Timeout = null,
     previous: number | null,
-    context: ThisType<any> | null,
-    result: any,
-    args: any
+    context: unknown,
+    result: unknown,
+    args: unknown
 
   const later = function() {
     const passed = now() - (previous as number)
@@ -43,7 +43,7 @@ export default function debounce(
     return result
   }
 
-  debounced.clear = function() {
+  debounced.cancel = function() {
     clearTimeout(timerId as number)
     timerId = args = context = null
   }

@@ -26,7 +26,7 @@ describe('debounce', () => {
     const debouncedIncrease = debounce(increase, 32)
 
     debouncedIncrease()
-    debouncedIncrease.clear()
+    debouncedIncrease.cancel()
 
     setTimeout(() => {
       expect(counts).toBe(0)
