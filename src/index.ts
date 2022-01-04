@@ -43,6 +43,9 @@ export { default as toFinite } from './toFinite'
 export { default as toInteger } from './toInteger'
 export { default as toNumber } from './toNumber'
 
+// Function
+export { default as debounce } from './debounce'
+
 // array
 export { default as chunk } from './chunk'
 export { default as compact } from './compact'
