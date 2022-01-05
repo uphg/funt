@@ -9,7 +9,7 @@ import cloneTypedArray from './_cloneTypedArray'
 
 import type { ObjectLike, TypedArray } from 'src/interfaces'
 
-const objectTag = '[object Object]'
+// const objectTag = '[object Object]'
 const numberTag = '[object Number]'
 const stringTag = '[object String]'
 const booleanTag = '[object Boolean]'
@@ -19,7 +19,7 @@ const mapTag = '[object Map]'
 const setTag = '[object Set]'
 const functionTag = '[object Function]'
 const arrayTag = '[object Array]'
-const argsTag = '[object Arguments]'
+// const argsTag = '[object Arguments]'
 
 const arrayBufferTag = '[object ArrayBuffer]'
 const dataViewTag = '[object DataView]'
@@ -82,8 +82,9 @@ function initTypeObject(value: ObjectLike): object {
     case arrayTag:
       result = new Constr((value as any[]).length)
       break
-    case objectTag:
-    case argsTag:
+    default:
+    // case objectTag:
+    // case argsTag:
       result = initCloneObject(value)
   }
   return result as object
