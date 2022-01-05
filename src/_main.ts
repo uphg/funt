@@ -172,10 +172,9 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
 {
   console.log('## debounce')
 
-  const clickButton = debounce((e) => {
-    console.log('e')
-    console.log(e)
-  }, 2000)
+  const clickButton = debounce(() => {
+    console.log('debounce 被点击了')
+  }, 5000)
   const btn1 = document.querySelector('#btn1')
   btn1?.addEventListener('click', clickButton)
 }

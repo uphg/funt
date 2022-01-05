@@ -1,6 +1,6 @@
 import { now } from '../src/index'
 
-describe('map', () => {
+describe('now', () => {
   it('is a function', () => {
     expect(typeof now).toBe('function')
   })
@@ -14,6 +14,6 @@ describe('map', () => {
     setTimeout(() => {
       expect(now() > actual).toBe(true)
       done()
-    }, 1)
+    }, 32)
   })
 })

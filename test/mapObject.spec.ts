@@ -1,6 +1,6 @@
 import { mapObject } from '../src/index'
 
-describe('map', () => {
+describe('mapObject', () => {
   it('is a function', () => {
     expect(typeof mapObject).toBe('function')
   })

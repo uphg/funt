@@ -1,7 +1,7 @@
 import toInteger from './toInteger';
 
 // 以指定大小分割数组
-export default function chunk<T>(array: T[], size=1) {
+function chunk<T>(array: T[], size=1): T[][] {
   size = Math.max(toInteger(size), 0) // 过滤负值
   const length = (array === null || array === void 0 ? 0 : array.length)
 
@@ -16,3 +16,5 @@ export default function chunk<T>(array: T[], size=1) {
 
   return result
 }
+
+export default chunk
