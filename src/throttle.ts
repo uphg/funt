@@ -2,8 +2,11 @@ import now from './now'
 
 function throttle(
   func: (...args: unknown[]) => unknown,
-  wait: number
+  wait: number,
+  options?: { leading?: boolean, trailing?: boolean } 
 ) {
+  const { leading = true, trailing = true } = options || {}
+
   let timerId: null | number | NodeJS.Timeout = null,
     context: unknown,
     args: unknown[] | null,
@@ -14,7 +17,7 @@ function throttle(
   const later = function() {
     clearTimeout(timerId as number)
 
-    previous = now()
+    previous = !leading ? 0 : now()
     timerId = null
     result = func.apply(context, args as unknown[])
 
@@ -23,6 +26,7 @@ function throttle(
 
   const throttled = function(..._args: any) {
     const _now = now()
+    if (!previous && !leading) previous = _now
     const remaining = wait - (_now - previous)
     context = this
     args = _args
@@ -38,7 +42,7 @@ function throttle(
       result = func.apply(context, args as unknown[])
 
       if (!timerId) context = args = null
-    } else if (!timerId) {
+    } else if (!timerId && trailing) {
       timerId = setTimeout(later, remaining)
     }
 
