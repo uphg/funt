@@ -1,6 +1,6 @@
 import now from './now'
 
-export default function throttle(
+function throttle(
   func: (...args: unknown[]) => unknown,
   wait: number
 ) {
@@ -26,7 +26,8 @@ export default function throttle(
     const remaining = wait - (_now - previous)
     context = this
     args = _args
-    // remaining > wait，客户端系统时间被调整过，马上执行 func 函数
+
+    // remaining > wait，表示客户端系统时间被调整过，立即执行 func 函数，并且清除之前的定时器
     if (remaining <= 0 || remaining > wait) {
       if (timerId) {
         clearTimeout(timerId as number)
@@ -46,3 +47,5 @@ export default function throttle(
 
   return throttled
 }
+
+export default throttle
