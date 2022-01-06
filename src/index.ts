@@ -45,6 +45,8 @@ export { default as toNumber } from './toNumber'
 
 // Function
 export { default as debounce } from './debounce'
+export { default as throttle } from './throttle'
+export { default as delay } from './delay'
 
 // array
 export { default as chunk } from './chunk'

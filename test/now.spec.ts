@@ -1,4 +1,4 @@
-import { now } from '../src/index'
+import { delay, now } from '../src/index'
 
 describe('now', () => {
   it('is a function', () => {
@@ -11,7 +11,7 @@ describe('now', () => {
 
     expect(actual >= stamp).toBe(true)
 
-    setTimeout(() => {
+    delay(() => {
       expect(now() > actual).toBe(true)
       done()
     }, 32)

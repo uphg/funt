@@ -1,4 +1,4 @@
-import { debounce } from '../src/index'
+import { delay, debounce } from '../src/index'
 
 describe('debounce', () => {
   it('is a function', () => {
@@ -12,8 +12,8 @@ describe('debounce', () => {
     const debouncedIncrease = debounce(increase, 32)
 
     debouncedIncrease(); debouncedIncrease()
-    setTimeout(debouncedIncrease, 16)
-    setTimeout(() => {
+    delay(debouncedIncrease, 16)
+    delay(() => {
       expect(counts).toBe(1)
       done()
     }, 96)
@@ -28,7 +28,7 @@ describe('debounce', () => {
     debouncedIncrease()
     debouncedIncrease.cancel()
 
-    setTimeout(() => {
+    delay(() => {
       expect(counts).toBe(0)
       done()
     }, 96)
