@@ -121,84 +121,98 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
 //   console.log(a2)
 // }
 
-{
-  let index = 0
-  const length = 10
+// {
+//   let index = 0
+//   const length = 10
   
-  while (index < length) {
-    console.log(index)
-    index += 1
+//   while (index < length) {
+//     console.log(index)
+//     index += 1
+//   }
+// }
+
+// {
+//   console.log('## Copy symbol')
+//   const object = {
+//     p1: 'a',
+//     p2: 'b',
+//     p3: 'c',
+//     [Symbol()]: 'd',
+//     [Symbol()]: 'e',
+//     [Symbol()]: 'f'
+//   }
+//   const object2 = deepClone(object)
+//   console.log('deepClone copy symbol property')
+//   console.log(object)
+//   console.log(object2)
+// }
+
+// {
+//   console.log('## isFinite')
+//   console.log('isFinite(true)')
+//   console.log(isFinite(true))
+//   console.log('isFinite(Infinity)')
+//   console.log(isFinite(Infinity))
+// }
+
+// {
+//   console.log('deepClone DataView')
+//   const buffer = new ArrayBuffer(16)
+//   const view1 = new DataView(buffer)
+//   const view2 = new DataView(buffer, 12, 4)
+
+//   const view3 = deepClone(view1)
+//   const view4 = deepClone(view2)
+//   console.log(view1)
+//   console.log(view3)
+//   console.log(view2)
+//   console.log(view4)
+// }
+
+// {
+//   console.log('## debounce')
+
+//   const clickButton = debounce(() => {
+//     console.log('debounce 被点击了')
+//   }, 5000)
+//   const btn1 = document.querySelector('#btn1')
+//   btn1?.addEventListener('click', clickButton)
+// }
+
+{
+  console.log('# debounce test')
+  let counts = 0
+  const fn = () => {
+    counts += 1
+    console.log('counts')
+    console.log(counts)
+    if (counts < 10) debouncedFn()
   }
-}
 
-{
-  console.log('## Copy symbol')
-  const object = {
-    p1: 'a',
-    p2: 'b',
-    p3: 'c',
-    [Symbol()]: 'd',
-    [Symbol()]: 'e',
-    [Symbol()]: 'f'
-  }
-  const object2 = deepClone(object)
-  console.log('deepClone copy symbol property')
-  console.log(object)
-  console.log(object2)
-}
-
-{
-  console.log('## isFinite')
-  console.log('isFinite(true)')
-  console.log(isFinite(true))
-  console.log('isFinite(Infinity)')
-  console.log(isFinite(Infinity))
-}
-
-{
-  console.log('deepClone DataView')
-  const buffer = new ArrayBuffer(16)
-  const view1 = new DataView(buffer)
-  const view2 = new DataView(buffer, 12, 4)
-
-  const view3 = deepClone(view1)
-  const view4 = deepClone(view2)
-  console.log(view1)
-  console.log(view3)
-  console.log(view2)
-  console.log(view4)
-}
-
-{
-  console.log('## debounce')
-
-  const clickButton = debounce(() => {
-    console.log('debounce 被点击了')
-  }, 5000)
-  const btn1 = document.querySelector('#btn1')
-  btn1?.addEventListener('click', clickButton)
+  const debouncedFn = debounce(fn, 32, true)
+  debouncedFn()
 }
 
 
-{
-  console.log('## throttle')
+// {
+//   console.log('## throttle')
 
-  const clickButton = throttle((e) => {
-    console.log('e')
-    console.log(e)
-  }, 2000)
-  const btn2 = document.querySelector('#btn2')
-  btn2?.addEventListener('click', clickButton)
-}
+//   const clickButton = throttle((e) => {
+//     console.log('e')
+//     console.log(e)
+//   }, 2000)
+//   const btn2 = document.querySelector('#btn2')
+//   btn2?.addEventListener('click', clickButton)
+// }
 
-{
-  console.log('## chunk')
-  const a = [1, 2, 3, 4, 5]
+// {
+//   console.log('## chunk')
+//   const a = [1, 2, 3, 4, 5]
 
-  const a1 = chunk(a, 2)
-  console.log(a)
-  console.log(a1)
-}
+//   const a1 = chunk(a, 2)
+//   console.log(a)
+//   console.log(a1)
+// }
 
 
 
