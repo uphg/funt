@@ -49,6 +49,12 @@ function throttle(
     return result
   }
 
+  throttled.cancel = function() {
+    clearTimeout(timerId as number)
+    previous = 0
+    timerId = context = args = null
+  }
+
   return throttled
 }
 

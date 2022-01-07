@@ -2,7 +2,7 @@ import { chunk } from '../src/index'
 
 describe('chunk', () => {
   it('is a function', () => {
-    expect(typeof chunk === 'function').toBe(true)
+    expect(typeof chunk === 'function').toBeTruthy()
   })
 
   it('chunk array', () => {
