@@ -1,5 +1,4 @@
 import now from './now'
-import isNumber from './isNumber'
 
 // 防抖函数
 function debounce<T extends Function>(
@@ -7,7 +6,7 @@ function debounce<T extends Function>(
   wait: number,
   immediate?: boolean
 ) {
-  let timerId: null | number | NodeJS.Timeout = null,
+  let timerId: null | number | NodeJS.Timeout,
     previous: number | null,
     context: unknown,
     result: unknown,
@@ -24,7 +23,7 @@ function debounce<T extends Function>(
       if (!immediate) result = func.apply(context, args)
 
       // 避免 func 函数递归调用 `debounced`。
-      if (!isNumber(timerId)) args = context = null
+      if (!timerId) args = context = null
     }
   }
 
@@ -32,7 +31,8 @@ function debounce<T extends Function>(
     context = this
     args = _args
     previous = now() // 函数执行时的时间
-    if (!isNumber(timerId)) {
+
+    if (!timerId) {
       timerId = setTimeout(later, wait)
       if (immediate) result = func.apply(context, args)
     }
