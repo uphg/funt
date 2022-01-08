@@ -2,7 +2,7 @@ import { compact } from '../src/index'
 
 describe('compact', () => {
   it('is a function', () => {
-    expect(typeof compact === 'function').toBe(true)
+    expect(typeof compact).toBe('function')
   })
 
   it('compact array', () => {

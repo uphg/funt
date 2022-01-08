@@ -1,7 +1,7 @@
 import { each, toNumber } from '../src/index'
 import {
-  symbol, bigInt, error, stringObj, regex, func,
-  argsFn, mapObj,weakMapObj, setObj, weakSetObj
+  symbol, error, stringObj, regex, func, argsFn,
+  mapObj,weakMapObj, setObj, weakSetObj
 } from './_utils'
 
 describe('toNumber', () => {
@@ -54,8 +54,9 @@ describe('toNumber', () => {
   })
 
   it('Number type is not converted', () => {
-    const numbers = [1, -Infinity, NaN, bigInt]
-    expect(numbers).toEqual([1, -Infinity, NaN, bigInt])
+    expect(toNumber(1)).toBe(1)
+    expect(toNumber(-Infinity)).toBe(-Infinity)
+    expect(toNumber(NaN)).toBe(NaN)
   })
 
   it('null to number return 0', () => {

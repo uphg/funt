@@ -6,7 +6,7 @@ describe('throttle', () => {
   })
 
   it('is a function', () => {
-    expect(typeof throttle === 'function').toBeTruthy()
+    expect(typeof throttle).toBe('function')
   })
 
   it('Throttling', (done) => {

@@ -2,7 +2,7 @@ import { delay } from '../src/index'
 
 describe('delay', () => {
   it('is a function', () => {
-    expect(typeof delay === 'function').toBe(true)
+    expect(typeof delay).toBe('function')
   })
 
   it('delay call', (done) => {
