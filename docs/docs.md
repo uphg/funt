@@ -124,25 +124,9 @@ indexOf(array, (item) => item === 2, 2)
 
 ## 类型判断
 
-### <synta text="isArrayLike(value)">isArrayLike</synta>
-
-判断指定值是否为类数组类型
-
-```js
-isArrayLike('hello')
-// => true
-
-isArrayLike({ 0: 'a', 1: 'b', 2: 'c', length: 3 })
-// => true
-
-cosnt fn = () => arguments
-isArrayLike(fn(1, 2, 3))
-// => true
-```
-
 ### <synta text="isLength(value)">isLength</synta>
 
-判断是否为数组/类数组的 length
+检测 value 是否为有效的数组/类数组 length 属性
 
 ```js
 isLength(2)
@@ -154,6 +138,226 @@ isLength(-2)
 isLength(Number.Number.MIN_VALUE)
 // => false
 ```
+
+### <synta text="isBoolean(value)">isBoolean</synta>
+
+检测 value 是否为布尔值
+
+```js
+isBoolean(NaN)
+// => false
+
+isBoolean(true)
+// => true
+
+isBoolean(new Boolean(false))
+// => false
+```
+
+### <synta text="isString(value)">isString</synta>
+
+检测 value 是否为字符串类型
+
+```js
+isString(1)
+// => false
+
+isString('hi')
+// => true
+```
+
+### <synta text="isNumber(value)">isNumber</synta>
+
+检测 value 是否为数字类型
+
+```js
+isNumber(1)
+// => true
+
+isNumber(NaN)
+// => true
+
+isNumber(Infinity)
+// => true
+```
+
+### <synta text="isBigInt(value)">isBigInt</synta>
+
+检测 value 是否为 BigInt 类型
+
+```js
+const bigInt = BigInt("9007199254740991")
+
+isBigInt(bigInt)
+// => true
+
+isBigInt(1)
+// => false
+
+isBigInt(NaN)
+// => false
+```
+
+### <synta text="isSymbol(value)">isSymbol</synta>
+
+检测 value 是否为 Symobl 类型
+
+```js
+isSymbol(Symbol())
+// true
+
+isSymbol('hi')
+// false
+```
+
+### <synta text="isNil(value)">isNil</synta>
+
+检测 value 是否为空值，包括 `null` 和 `undefined`
+
+```js
+isNil(null)
+// true
+
+isNil(undefined)
+// true
+
+isNil('')
+// false
+```
+
+### <synta text="isFunction(value)">isFunction</synta>
+
+检测 value 是否为函数
+
+```js
+isFunction(() => {})
+// true
+
+isFunction(class Foo {})
+// true
+
+isFunction(async () => {})
+// true
+
+isFunction(function* foo() {})
+// true
+
+isFunction({})
+// false
+```
+
+### <synta text="isObject(value)">isObject</synta>
+
+检测 value 是否为 Object 类型，如：数组、函数、对象、正则表达式、`new Number(0)` 和 `new String('')`
+
+```js
+isObject({})
+// => true
+
+isObject([])
+// => true
+
+isObject(Function)
+// => true
+
+isObject(null)
+// => false
+```
+
+### <synta text="isObjectLike(value)">isObjectLike</synta>
+
+检测 value 是否为类似对象的结构，如果值不为 `null`，并且 typeof 的结果为 `'object'`，则该值类似对象
+
+```js
+isObjectLike({})
+// => true
+
+isObjectLike([])
+// => true
+
+isObjectLike(Function)
+// => false
+
+isObjectLike(null)
+// => false
+```
+
+### <synta text="isArray(value)">isArray</synta>
+
+检测 value 是否为数组
+
+```js
+isArray([])
+// => true
+
+isArray({})
+// => false
+
+isArray('hi')
+// => false
+
+isArray(null)
+// => false
+```
+
+### <synta text="isArrayLike(value)">isArrayLike</synta>
+
+检测 value 是否为类数组，如果值不是函数，并且 value.length 是一个大于等于 0 且小于等于 Number.MAX_SAFE_INTEGER 的整数，它就是一个类数组
+
+```js
+isArrayLike([1, 2, 3])
+// => true
+
+isArrayLike(document.body.children)
+// => true
+
+isArrayLike('hi')
+// => true
+
+isArrayLike(Function)
+// => false
+```
+
+### <synta text="isArrayLikeObject(value)">isArrayLikeObject</synta>
+
+此方法与 isArrayLike 类似，不一样的地方是它还会检查 value 是否为对象
+
+```js
+isArrayLike([1, 2, 3])
+// => true
+
+isArrayLike(document.body.children)
+// => true
+
+isArrayLike('hi')
+// => false
+
+isArrayLike(Function)
+// => false
+```
+
+### <synta text="isArrayBuffer(value)">isArrayBuffer</synta>
+
+检测 value 是否为 ArrayBuffer 对象
+
+```js
+isArrayLike([1, 2, 3])
+// => true
+
+isArrayLike(document.body.children)
+// => true
+
+isArrayLike('hi')
+// => false
+
+isArrayLike(Function)
+// => false
+```
+
+### <synta text="isError(value)">isError</synta>
+
+
+
 
 ### <synta text="hasInstance(value, constructor)">hasInstance</synta>
 
