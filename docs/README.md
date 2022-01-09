@@ -1,11 +1,10 @@
 ---
+home: true
 sidebar: false
 pageClass: home
 ---
 
 <HomeHeader />
-
-## 安装
 
 使用 npm 安装
 

@@ -45,4 +45,9 @@
       color: var(--c-text-lightest);
     }
   }
+  .home {
+    header.hero {
+      display: none;
+    }
+  }
 </style>

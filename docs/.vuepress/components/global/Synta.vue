@@ -1,5 +1,8 @@
 <template>
-  <code class="synta">{{ text }}</code>
+  <span class="synta">
+    <span class="synta-text"><slot /></span>
+    <code class="synta-code">{{ text }}</code>
+  </span>
 </template>
 
 <script>
@@ -12,13 +15,16 @@ export default {
 
 <style lang="scss">
   .synta {
-    padding: 0 1em;
-    font-weight: 400;
-    font-family: var(--font-family-code);
-    // color: var(--c-text-lighter);
-    color: var(--c-text-lightest);
-    // background-color: var(--c-bg-light);
-    background: none;
-    border-radius: 3px;
+    .synta-text {
+      display: none;
+    }
+    .synta-code {
+      padding: 0;
+      // color: var(--c-text-lightest);
+      font-family: var(--font-family-code);
+      font-weight: 500;
+      font-size: 1em;
+      background-color: transparent;
+    }
   }
 </style>
