@@ -7,7 +7,7 @@ import cloneArrayBuffer from './_cloneArrayBuffer'
 import cloneDataView from './_cloneDataView'
 import cloneTypedArray from './_cloneTypedArray'
 
-import type { ObjectLike, TypedArray } from 'src/interfaces'
+import type { ObjectLike, TypedArray } from 'src/_interfaces'
 
 // const objectTag = '[object Object]'
 const numberTag = '[object Number]'

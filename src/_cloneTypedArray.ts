@@ -1,4 +1,4 @@
-import type { TypedArray } from './interfaces';
+import type { TypedArray } from './_interfaces';
 import cloneArrayBuffer from './_cloneArrayBuffer';
 
 export default function cloneTypedArray(value: TypedArray) {

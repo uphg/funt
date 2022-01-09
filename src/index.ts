@@ -1,14 +1,11 @@
+// Collection
+export { default as remain } from './remain'
+export { default as deepClone } from './deepClone'
 export { default as each } from './each'
 export { default as map } from './map'
 export { default as mapObject } from './mapObject'
-export { default as find } from './find'
-export { default as findIndex } from './findIndex'
-export { default as findLast } from './findLast'
-export { default as findLastIndex } from './findLastIndex'
-export { default as indexOf } from './indexOf'
-export { default as lastIndexOf } from './lastIndexOf'
 
-// types
+// 类型判断
 export { default as hasInstance } from './hasInstance'
 export { default as isLength } from './isLength'
 export { default as isBoolean } from './isBoolean'
@@ -35,13 +32,13 @@ export { default as isArguments } from './isArguments'
 export { default as isFinite } from './isFinite'
 export { default as isInteger } from './isInteger'
 
-// string
-export { default as trim } from './trim'
-
-// number
+// 类型转换
 export { default as toFinite } from './toFinite'
 export { default as toInteger } from './toInteger'
 export { default as toNumber } from './toNumber'
+
+// string
+export { default as trim } from './trim'
 
 // Function
 export { default as debounce } from './debounce'
@@ -51,11 +48,12 @@ export { default as delay } from './delay'
 // array
 export { default as chunk } from './chunk'
 export { default as compact } from './compact'
+export { default as find } from './find'
+export { default as findIndex } from './findIndex'
+export { default as findLast } from './findLast'
+export { default as findLastIndex } from './findLastIndex'
+export { default as indexOf } from './indexOf'
+export { default as lastIndexOf } from './lastIndexOf'
 
 // Date
 export { default as now } from './now'
-
-// mixins
-export { default as remain } from './remain'
-export { default as deepClone } from './deepClone'
-

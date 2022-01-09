@@ -1,9 +1,8 @@
-// import remain from './remain'
-import deepClone from './deepClone'
-import isFinite from './isFinite'
-import debounce from './debounce'
-import throttle from './throttle'
-import chunk from './chunk'
+import {
+  remain, deepClone, isFinite, debounce, throttle,
+  chunk, each, map, find, findIndex, 
+  findLast, findLastIndex, hasInstance
+} from './index'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -12,6 +11,77 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
 // console.log('remain')
 // console.log(remain([1, 2, 3, 4, 5], 1, 2))
 // console.log(remain([1, 2, 3, 4, 5], 2))
+
+{
+  console.log('hasInstance([], Array)')
+  console.log(hasInstance([], Array))
+}
+
+{
+  const users = [
+    { id: 1, age: 16, name: 'Jack' },
+    { id: 2, age: 20, name: 'Church' },
+    { id: 3, age: 22, name: 'Turing' },
+    { id: 4, age: 18, name: 'Neumann' }
+  ]
+  
+  const result = findLast(users, (user) => user.age > 18)
+  // => { id: 3, age: 22, name: 'Turing' }
+  console.log('findLast')
+  console.log(result)
+}
+
+{
+  const array = [1, 2, 3, 4, 3, 2, 1]
+
+  const result = findLastIndex(array, (item) => item === 3, 3)
+  console.log('findLastIndex')
+  console.log(result)
+}
+
+{
+  const users = [
+    { id: 1, age: 16, name: 'Jack' },
+    { id: 2, age: 20, name: 'Church' },
+    { id: 3, age: 22, name: 'Turing' },
+    { id: 4, age: 18, name: 'Neumann' }
+  ]
+  
+  const result = findIndex(users, (user) => user.age > 18)
+  console.log('findIndex')
+  console.log(result)
+}
+
+{
+  const users = [
+    { id: 1, age: 16, name: 'Jack' },
+    { id: 2, age: 20, name: 'Church' },
+    { id: 3, age: 22, name: 'Turing' },
+    { id: 4, age: 18, name: 'Neumann' }
+  ]
+  
+  const result = find(users, (user) => user.age > 18)
+  console.log('find')
+  console.log(result)
+}
+
+{
+  const array = map<number>({
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+  }, (item) => item * 2)
+  console.log(array)
+}
+
+{
+  each<number>([1, 2, 3, 4, 5, 6, 7], (item) => {
+    console.log(item)
+  })
+
+  each([1, 2, 3], (item, index) => console.log(`${item} - ${index}`))
+}
 
 {
   // let count = {

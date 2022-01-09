@@ -1,13 +1,13 @@
-import type { ArrayLike } from './interfaces'
+import type { ArrayLike } from './_interfaces'
 
 export default function map<T>(
   array: ArrayLike<T> | Array<T>,
   callback: (
-    currentValue?: T,
-    index?: number | string,
-    array?: ArrayLike<T> | Array<T>
+    currentValue: T,
+    index: number | string,
+    array: ArrayLike<T> | Array<T>
   ) => unknown
-): (number | T)[] {
+): T[] {
   const length = array?.length || 0
   const result = new Array(length)
 
