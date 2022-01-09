@@ -2,7 +2,8 @@ import * as _ from '../src/index'
 import { each, remain } from '../src/index'
 import {
   symbol, bigInt, error, stringObj, numberObj, booleanObj, date,
-  regex, func, argsFn, mapObj,weakMapObj, setObj, weakSetObj
+  asyncFunc, generatorFunc, regex, func, argsFn, mapObj,
+  weakMapObj, setObj, weakSetObj
 } from './_utils'
 
 describe('type assert', () => {
@@ -69,7 +70,13 @@ describe('type assert', () => {
       [...remain(objTypes, 1, 1), ...baseTypes]
     ],
     isFunction: [
-      [func],
+      // [() => {}],
+      [
+        func,
+        asyncFunc,
+        generatorFunc,
+        Math.round
+      ],
       [...remain(objTypes, 2, 1), ...baseTypes]
     ],
     isError: [

@@ -1,9 +1,14 @@
+// 解决报错：regeneratorruntime is not defined
+import 'regenerator-runtime/runtime'
+
 const symbol = Symbol('a')
 const bigInt = BigInt(9007199254740991)
 const error = new Error()
 const date = new Date()
 const regex = /a/
-const func = () => void 0
+const func = () => {}
+const asyncFunc = async() => {}
+const generatorFunc = function * foo() {}
 function argsFn() {
   // eslint-disable-next-line prefer-rest-params
   return arguments
@@ -29,6 +34,8 @@ export {
   date,
   regex,
   func,
+  asyncFunc,
+  generatorFunc,
   argsFn,
   stringObj,
   numberObj,
