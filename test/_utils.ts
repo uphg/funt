@@ -1,5 +1,6 @@
 // 解决报错：regeneratorruntime is not defined
 import 'regenerator-runtime/runtime'
+import { create } from '../src/index'
 
 const symbol = Symbol('a')
 const bigInt = BigInt(9007199254740991)
@@ -13,6 +14,16 @@ function argsFn() {
   // eslint-disable-next-line prefer-rest-params
   return arguments
 }
+
+function CustomError(message) {
+  this.name = 'CustomError';
+  this.message = message;
+}
+
+CustomError.prototype = create(Error.prototype, {
+  constructor: CustomError
+});
+
 
 const stringObj = new String('a')
 const numberObj = new Number(0)
@@ -46,5 +57,6 @@ export {
   weakMapObj,
   setObj,
   weakSetObj,
-  MAX_INTEGER
+  MAX_INTEGER,
+  CustomError
 }

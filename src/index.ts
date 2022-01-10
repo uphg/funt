@@ -32,6 +32,7 @@ export { default as isNaN } from './isNaN'
 export { default as isArguments } from './isArguments'
 export { default as isFinite } from './isFinite'
 export { default as isInteger } from './isInteger'
+export { default as isPlainObject } from './isPlainObject'
 
 // 类型转换
 export { default as toFinite } from './toFinite'
@@ -40,6 +41,9 @@ export { default as toNumber } from './toNumber'
 
 // string
 export { default as trim } from './trim'
+
+// Object
+export { default as create } from './create'
 
 // Function
 export { default as debounce } from './debounce'

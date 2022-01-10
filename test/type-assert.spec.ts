@@ -3,7 +3,7 @@ import { each, remain } from '../src/index'
 import {
   symbol, bigInt, error, stringObj, numberObj, booleanObj, date,
   asyncFunc, generatorFunc, regex, func, argsFn, mapObj,
-  weakMapObj, setObj, weakSetObj
+  weakMapObj, setObj, weakSetObj, CustomError
 } from './_utils'
 
 describe('type assert', () => {
@@ -80,8 +80,12 @@ describe('type assert', () => {
       [...remain(objTypes, 2, 1), ...baseTypes]
     ],
     isError: [
-      [error],
-      [...remain(objTypes, 6, 1), ...baseTypes]
+      [error, new CustomError('hi')],
+      [
+        { name: 'error', message: 'hi' },
+        ...remain(objTypes, 6, 1),
+        ...baseTypes
+      ]
     ],
     isDate: [
       [date],
@@ -122,6 +126,10 @@ describe('type assert', () => {
     isLength: [
       [1, 0],
       [...remain(baseTypes, 1, 1), -2, Number.MIN_VALUE, ...objTypes]
+    ],
+    isPlainObject: [
+      [{}, new Object(), Object.create(null)],
+      [...remain(objTypes, 0, 1), ...baseTypes]
     ]
   }
 

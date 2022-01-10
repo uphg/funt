@@ -1,7 +1,7 @@
 import {
   remain, deepClone, isFinite, debounce, throttle,
   chunk, each, map, find, findIndex, 
-  findLast, findLastIndex, hasInstance
+  findLast, findLastIndex, hasInstance, create, isError
 } from './index'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -11,6 +11,17 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
 // console.log('remain')
 // console.log(remain([1, 2, 3, 4, 5], 1, 2))
 // console.log(remain([1, 2, 3, 4, 5], 2))
+
+{
+  console.log('isError')
+  console.log(isError({ name: 'hi', message: 'hi' }))
+}
+
+{
+  console.log('create')
+  console.log(create(Array.prototype))
+  console.log(create(Array.prototype, { 0: 1, 1: 2, length: 2 }))
+}
 
 {
   console.log('hasInstance([], Array)')
