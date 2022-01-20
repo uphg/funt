@@ -1,6 +1,6 @@
 import {
-  remain, deepClone, isFinite, debounce, throttle,
-  chunk, each, map, find, findIndex, 
+  /* remain, deepClone, isFinite, throttle,
+  chunk, */ debounce, each, map, find, findIndex, 
   findLast, findLastIndex, hasInstance, create, isError
 } from './index'
 

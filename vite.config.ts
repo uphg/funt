@@ -1,5 +1,7 @@
-const path = require('path')
-const { defineConfig } = require('vite')
+// const path = require('path')
+// const { defineConfig } = require('vite')
+import path from 'path'
+import { defineConfig } from 'vite'
 
 module.exports = defineConfig({
   build: {
