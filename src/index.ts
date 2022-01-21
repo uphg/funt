@@ -49,6 +49,7 @@ export { default as create } from './create'
 export { default as debounce } from './debounce'
 export { default as throttle } from './throttle'
 export { default as delay } from './delay'
+export { default as tailCall } from './tailCall'
 
 // array
 export { default as chunk } from './chunk'

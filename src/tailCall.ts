@@ -1,5 +1,5 @@
 // tailCallOptimize 尾递归优化函数
-export default function tco(func: (...args: any) => any) {
+export default function tailCall(func: (...args: any) => any) {
   let returnValue: any = void 0
   let active = false
   const accumulated: any[] = []

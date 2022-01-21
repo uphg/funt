@@ -1,12 +1,12 @@
-import tco from '../src/tco'
+import { tailCall } from '../src/index'
 
 describe('tco', () => {
   it('is a function', () => {
-    expect(typeof tco).toBe('function')
+    expect(typeof tailCall).toBe('function')
   })
 
   it('Optimize tail recursive function', () => {
-    const sum = tco(function(x, y) {
+    const sum = tailCall(function(x, y) {
       return y > 0 ? sum(x + 1, y - 1) : x
     })
     
