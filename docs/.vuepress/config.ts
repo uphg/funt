@@ -16,7 +16,7 @@ const nav = [
 ]
 
 export default defineUserConfig<DefaultThemeOptions>({
-  base: '/',
+  base: '/funt/',
   title: 'funt',
   description: 'JavaScript 处理数组对象字符串等函数库合集',
 
