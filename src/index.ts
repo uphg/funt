@@ -38,6 +38,7 @@ export { default as isPlainObject } from './isPlainObject'
 export { default as toFinite } from './toFinite'
 export { default as toInteger } from './toInteger'
 export { default as toNumber } from './toNumber'
+export { default as toLength } from './toLength'
 
 // string
 export { default as trim } from './trim'

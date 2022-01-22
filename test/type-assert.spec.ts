@@ -25,7 +25,7 @@ describe('type assert', () => {
     weakMapObj,
     setObj,
     weakSetObj,
-    argsFn()
+    argsFn(),
   ]
 
   const typesMap = {
@@ -70,7 +70,6 @@ describe('type assert', () => {
       [...remain(objTypes, 1, 1), ...baseTypes]
     ],
     isFunction: [
-      // [() => {}],
       [
         func,
         asyncFunc,
@@ -80,11 +79,12 @@ describe('type assert', () => {
       [...remain(objTypes, 2, 1), ...baseTypes]
     ],
     isError: [
-      [error, new CustomError('hi')],
+      [error, new CustomError('hi'), new EvalError(), new RangeError(), new ReferenceError(), new SyntaxError(), new TypeError()],
       [
         { name: 'error', message: 'hi' },
         ...remain(objTypes, 6, 1),
-        ...baseTypes
+        ...baseTypes,
+        Error
       ]
     ],
     isDate: [
