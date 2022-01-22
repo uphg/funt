@@ -22,7 +22,7 @@ export default {
       padding: 0;
       // color: var(--c-text-lightest);
       font-family: var(--font-family-code);
-      font-weight: 500;
+      font-weight: 700;
       font-size: 1em;
       background-color: transparent;
     }

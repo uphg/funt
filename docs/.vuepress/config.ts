@@ -75,14 +75,14 @@ export default defineUserConfig<DefaultThemeOptions>({
 
   plugins: [
     // only enable shiki plugin in production mode
-    [
-      '@vuepress/plugin-shiki',
-      isProd
-        ? {
-            theme: 'dark-plus',
-          }
-        : false,
-    ],
+    // [
+    //   '@vuepress/plugin-shiki',
+    //   isProd
+    //     ? {
+    //         theme: 'dark-plus',
+    //       }
+    //     : false,
+    // ],
     [
       '@vuepress/plugin-search',
       { placeholder: '搜索' },
