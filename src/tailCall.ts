@@ -1,17 +1,19 @@
 // tailCallOptimize 尾递归优化函数
-export default function tailCall(func: (...args: any) => any) {
-  let returnValue: any = void 0
+function tailCall<T extends Function>(func: T) {
+  let result: unknown = void 0
   let active = false
-  const accumulated: any[] = []
-  return function(this: any,...args: any) {
+  const accumulated: unknown[] = []
+  return function(this: unknown, ...args: unknown[]) {
     accumulated.push(args)
     if (!active) {
       active = true
       while (accumulated.length) {
-        returnValue = func.apply(this, accumulated.shift())
+        result = func.apply(this, accumulated.shift())
       }
       active = false
-      return returnValue
+      return result
     }
   }
 }
+
+export default tailCall

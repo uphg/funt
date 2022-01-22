@@ -4,7 +4,7 @@ import now from './now'
 function debounce<T extends Function>(
   func: T,
   wait: number,
-  immediate?: boolean
+  immediate = false
 ) {
   let timerId: null | number | NodeJS.Timeout,
     previous: number | null,

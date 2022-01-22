@@ -1,7 +1,7 @@
 import {
   /* remain, deepClone, isFinite, throttle,
   chunk, */ debounce, each, map, /* find, findIndex, 
-  findLast, findLastIndex, */ hasInstance, create, isError, lastIndexOf
+  findLast, findLastIndex, */ hasInstance, create, isError, lastIndexOf, delay
 } from './index'
 import indexOf from './indexOf'
 
@@ -14,7 +14,10 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
 // console.log(remain([1, 2, 3, 4, 5], 2))
 
 {
-
+  console.log('delay')
+  delay((p1: string, p2: string) => {
+    console.log(p1, p2)
+  }, 1000, 'hello','hi')
 }
 
 {
