@@ -36,7 +36,7 @@ const weakSetObj = new WeakSet()
 const arrayLike = { 0: 'a', 1: 'b', 2: 'c', length: 3 }
 const arrayBuffer = new ArrayBuffer(0)
 
-const MAX_INTEGER = 1.7976931348623157e+308
+export * from '../src/_common'
 
 export {
   symbol,
@@ -57,6 +57,5 @@ export {
   weakMapObj,
   setObj,
   weakSetObj,
-  MAX_INTEGER,
   CustomError
 }

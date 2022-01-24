@@ -1,12 +1,23 @@
+import toInteger from "./toInteger"
+import isNaN from "./isNaN"
+import baseIndexOf from './_baseIndexOf'
+import baseFindIndex from "./_baseFindIndex"
+
 // 返回数组中某项第一次出现的位置
 export default function indexOf<T>(
-  array: T[],
+  array: T[] = [],
   value: T,
-  fromIndex = 0
+  fromIndex?: number
 ) {
-  for (let i = fromIndex; i < array.length; i++) {
-    if (array[i] === value) return i
+  const length = array.length
+
+  if (!length) {
+    return -1
+  }
+  let index = (!fromIndex ? 0 : toInteger(fromIndex)) as number
+  if (index < 0) {
+    index = Math.max(length + index, 0)
   }
 
-  return -1
+  return value === value ? baseIndexOf(array, value, index) : baseFindIndex<T>(array, isNaN, index)
 }

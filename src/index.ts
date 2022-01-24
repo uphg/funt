@@ -38,6 +38,7 @@ export { default as isPlainObject } from './isPlainObject'
 export { default as toFinite } from './toFinite'
 export { default as toInteger } from './toInteger'
 export { default as toNumber } from './toNumber'
+export { default as toLength } from './toLength'
 
 // string
 export { default as trim } from './trim'
@@ -49,6 +50,7 @@ export { default as create } from './create'
 export { default as debounce } from './debounce'
 export { default as throttle } from './throttle'
 export { default as delay } from './delay'
+export { default as tailCall } from './tailCall'
 
 // array
 export { default as chunk } from './chunk'

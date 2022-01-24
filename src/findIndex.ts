@@ -1,4 +1,26 @@
-import createFindIndexFunc from './_createFindIndexFunc'
+import toInteger from './toInteger'
+import baseFindIndex from './_baseFindIndex'
 
 // 返回通过 if 判断为真的数组（或类数组）的第一项的索引
-export default createFindIndexFunc()
+
+function findIndex<T>(
+  array: T[],
+  callback: (currentValue: T, index?: number, array?: T[]) => boolean,
+  fromIndex?: number,
+) {
+  const length = array?.length
+
+  if (!length) {
+    return -1
+  }
+
+  let index = 0
+  if (fromIndex) {
+    index = toInteger(fromIndex)
+    index = fromIndex < 0 ? Math.max(length + index, 0) : Math.min(index, length - 1)
+  }
+
+  return baseFindIndex(array, callback, index)
+}
+
+export default findIndex

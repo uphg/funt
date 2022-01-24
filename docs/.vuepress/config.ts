@@ -16,7 +16,7 @@ const nav = [
 ]
 
 export default defineUserConfig<DefaultThemeOptions>({
-  base: '/',
+  base: '/funt/',
   title: 'funt',
   description: 'JavaScript 处理数组对象字符串等函数库合集',
 
@@ -75,14 +75,14 @@ export default defineUserConfig<DefaultThemeOptions>({
 
   plugins: [
     // only enable shiki plugin in production mode
-    [
-      '@vuepress/plugin-shiki',
-      isProd
-        ? {
-            theme: 'dark-plus',
-          }
-        : false,
-    ],
+    // [
+    //   '@vuepress/plugin-shiki',
+    //   isProd
+    //     ? {
+    //         theme: 'dark-plus',
+    //       }
+    //     : false,
+    // ],
     [
       '@vuepress/plugin-search',
       { placeholder: '搜索' },

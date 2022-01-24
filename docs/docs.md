@@ -44,7 +44,33 @@ mapObject({ a: 1, b: 2, c: 3 }, (item, key) => key)
 
 ## 数组
 
+### <synta text="chunk(array, size=1)">chunk</synta>
+
+以指定大小分割数组
+
+```js
+
+const array = ['a', 'b', 'c', 'd']
+
+chunk(array, 2)
+// => [['a', 'b'], ['c', 'd']]
+ 
+chunk(array, 3)
+// => [['a', 'b', 'c'], ['d']]
+```
+
+### <synta text="compact(array)">compact</synta>
+
+创建一个清除所有 falsey 值的数组，falsey 值包括 `false`、`null`、`0`、`""`、`undefined` 和 `NaN`
+
+```js
+compact([0, 1, false, 2, '', 3, NaN, 4, undefined])
+// => [1, 2, 3, 4]
+```
+
 ### <synta text="find(array, callback, [fromIndex=0])">find</synta>
+
+迭代指定数组，返回 callback 函数为 true 的第一项的值
 
 ```js
 const users = [
@@ -60,6 +86,8 @@ find(users, (user) => user.age > 18)
 
 ### <synta text="findIndex(array, callback, [fromIndex=0])">findIndex</synta>
 
+迭代指定数组，返回 callback 函数为 true 的第一项的 index
+
 ```js
 const users = [
   { id: 1, age: 16, name: 'Jack' },
@@ -73,6 +101,8 @@ findIndex(users, (user) => user.age > 18)
 ```
 
 ### <synta text="findLast(array, callback, [fromIndex=array.length-1])">findLast</synta>
+
+此方法与 find 相似，只不过是从右向左迭代数组
 
 ```js
 const users = [
@@ -88,6 +118,8 @@ findLast(users, (user) => user.age > 18)
 
 ### <synta text="findLastIndex(array, callback, [fromIndex=array.length-1])">findLastIndex</synta>
 
+此方法与 findIndex 相似，只不过同样是从右向左迭代数组
+
 ```js
 const array = [1, 2, 3, 4, 3, 2, 1]
 
@@ -100,26 +132,158 @@ findLastIndex(array, (item) => item === 3, 3)
 
 ### <synta text="indexOf(array, searchElement, [fromIndex=0])">indexOf</synta>
 
+返回在数组中可以找到一个给定元素的第一个的索引，如果不存在，则返回 -1。可指定 fromIndex，表示从指定索引查询
+
 ```js
 const array = [1, 2, 3, 4, 2]
 
-indexOf(array, (item) => item === 2)
+indexOf(array, 2)
 // => 1
 
-indexOf(array, (item) => item === 2, 2)
+indexOf(array, 2, 2)
 // => 4
 ```
 
 ### <synta text="lastIndexOf(array, searchElement, [fromIndex=array.length-1])">lastIndexOf</synta>
 
+返回在数组中可以找到一个给定元素的最后一个的索引，如果不存在，则返回 -1。可指定 fromIndex，表示从指定索引查询
+
 ```js
 const array = [1, 2, 3, 4, 2]
 
-indexOf(array, (item) => item === 2)
+lastIndexOf(array, 2)
 // => 4
 
-indexOf(array, (item) => item === 2, 2)
+lastIndexOf(array, 2, 2)
 // => 1
+```
+
+## 函数
+
+### <synta text="debounce(func, [wait=0], [immediate=false])">debounce</synta>
+
+创建一个防抖函数，该函数会在指定时间后调用，如果中途调用，则会重新计时。可通过指定 immediate 设置是否在第一次调用时立即调用。
+
+```js
+// 1 秒后调用
+debounce(() => {}, 1000)
+
+// 立即调用一次
+debounce(() => {}, 1000, true)
+```
+
+### <synta text="throttle(func, [wait=0], [options={leading?: false, trailing?: false}])">throttle</synta>
+
+创建一个节流函数，该函数会间隔的指定时间内调用。可通过指定 leading、trailing 设置是否第一次调用和最后一次延迟调用。
+
+```js
+// 间隔 1 秒调用一次
+throttle(() => {}, 1000)
+
+// 间隔 1 秒调用一次，并且第一次调用会在一秒后
+throttle(() => {}, { leading: false })
+
+// 间隔 1 秒调用一次，并且不会存在最后一次延时调用
+throttle(() => {}, { trailing: false })
+```
+
+### <synta text="delay(func, [wait=0], [...args])">delay</synta>
+
+等待指定时间后调用函数，可传入多个参数。
+
+```js
+delay((p1, p2) => {
+  console.log(p1, p2)
+}, 1000, 'hello','hi')
+
+// hello hi
+```
+
+### <synta text="tailCall(value)">tailCall</synta>
+
+创建一个尾递归优化函数，防止函数尾递归调用过多时爆栈。
+
+```js
+const sum = tailCall((x, y) => {
+  return y > 0 ? sum(x + 1, y - 1) : x
+})
+
+sum(1, 100000)
+// => 100001
+```
+
+## 类型转换
+
+### <synta text="toFinite(value)">toFinite</synta>
+
+value 转有限数字
+
+```js
+toFinite(6.2)
+// => 6.2
+ 
+toFinite(Number.MIN_VALUE)
+// => 5e-324
+ 
+toFinite(Infinity)
+// => 1.7976931348623157e+308
+ 
+toFinite('6.2')
+// => 6.2
+```
+
+### <synta text="toInteger(value)">toInteger</synta>
+
+value 转整数
+
+```js
+toInteger(6.2)
+// => 6
+ 
+toInteger(Number.MIN_VALUE)
+// => 0
+ 
+toInteger(Infinity)
+// => 1.7976931348623157e+308
+ 
+toInteger('6.2')
+// => 6
+```
+
+### <synta text="toLength(value)">toLength</synta>
+
+将 value 转换为符合数组 length 属性长度的整数
+
+```js
+toLength(6.2)
+// => 6
+ 
+toLength(Number.MIN_VALUE)
+// => 0
+ 
+toLength(Infinity)
+// => 4294967295
+ 
+toLength('6.2')
+// => 6
+```
+
+### <synta text="toNumber(value)">toNumber</synta>
+
+value 转数字
+
+```js
+toNumber(6.2)
+// => 6.2
+ 
+toNumber(Number.MIN_VALUE)
+// => 5e-324
+ 
+toNumber(Infinity)
+// => Infinity
+ 
+toNumber('6.2')
+// => 6.2
 ```
 
 ## 类型判断
@@ -135,7 +299,7 @@ isLength(2)
 isLength(-2)
 // => false
 
-isLength(Number.Number.MIN_VALUE)
+isLength(Number.MIN_VALUE)
 // => false
 ```
 
@@ -302,7 +466,7 @@ isArray(null)
 
 ### <synta text="isArrayLike(value)">isArrayLike</synta>
 
-检测 value 是否为类数组，如果值不是函数，并且 value.length 是一个大于等于 0 且小于等于 Number.MAX_SAFE_INTEGER 的整数，它就是一个类数组
+检测 value 是否为类数组，如果值不是函数，并且 value.length 是一个大于等于 0 且小于等于 `Number.MAX_SAFE_INTEGER` 的整数，它就是一个类数组
 
 ```js
 isArrayLike([1, 2, 3])
@@ -356,8 +520,15 @@ isArrayLike(Function)
 
 ### <synta text="isError(value)">isError</synta>
 
+检测 value 是否为 `Error`、`EvalError`、`RangeError`、`ReferenceError`、`SyntaxError`、`TypeError` 构造的对象
 
+```js
+isError(new Error)
+// => true
 
+isError(Error)
+// => false
+```
 
 ### <synta text="hasInstance(value, constructor)">hasInstance</synta>
 

@@ -1,9 +1,10 @@
 import now from './now'
 
-function throttle(
-  func: (...args: unknown[]) => unknown,
+// 节流函数
+function throttle<T extends Function>(
+  func: T,
   wait: number,
-  options?: { leading?: boolean, trailing?: boolean } 
+  options?: { leading?: boolean, trailing?: boolean }
 ) {
   const { leading = true, trailing = true } = options || {}
 

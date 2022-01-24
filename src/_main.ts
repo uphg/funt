@@ -1,8 +1,9 @@
 import {
   /* remain, deepClone, isFinite, throttle,
-  chunk, */ debounce, each, map, find, findIndex, 
-  findLast, findLastIndex, hasInstance, create, isError
+  chunk, */ debounce, each, map, /* find, findIndex, 
+  findLast, findLastIndex, */ hasInstance, create, isError, lastIndexOf, delay
 } from './index'
+import indexOf from './indexOf'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -11,6 +12,35 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
 // console.log('remain')
 // console.log(remain([1, 2, 3, 4, 5], 1, 2))
 // console.log(remain([1, 2, 3, 4, 5], 2))
+
+{
+  console.log('delay')
+  delay((p1: string, p2: string) => {
+    console.log(p1, p2)
+  }, 1000, 'hello','hi')
+}
+
+{
+  console.log('indexOf 1、4')
+  const array = [1, 2, 3, 4, 2]
+
+  console.log(indexOf(array, 2))
+  // => 1
+
+  console.log(indexOf(array, 2, 2))
+  // => 4
+}
+
+{
+  console.log('lastIndexOf 4、1')
+  const array = [1, 2, 3, 4, 2]
+
+  console.log(lastIndexOf(array, 2))
+  // => 4
+  
+  console.log(lastIndexOf(array, 2, 2))
+  // => 4
+}
 
 {
   console.log('isError')
@@ -28,53 +58,53 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
   console.log(hasInstance([], Array))
 }
 
-{
-  const users = [
-    { id: 1, age: 16, name: 'Jack' },
-    { id: 2, age: 20, name: 'Church' },
-    { id: 3, age: 22, name: 'Turing' },
-    { id: 4, age: 18, name: 'Neumann' }
-  ]
+// {
+//   const users = [
+//     { id: 1, age: 16, name: 'Jack' },
+//     { id: 2, age: 20, name: 'Church' },
+//     { id: 3, age: 22, name: 'Turing' },
+//     { id: 4, age: 18, name: 'Neumann' }
+//   ]
   
-  const result = findLast(users, (user) => user.age > 18)
-  // => { id: 3, age: 22, name: 'Turing' }
-  console.log('findLast')
-  console.log(result)
-}
+//   const result = findLast(users, (user) => user.age > 18)
+//   // => { id: 3, age: 22, name: 'Turing' }
+//   console.log('findLast')
+//   console.log(result)
+// }
 
-{
-  const array = [1, 2, 3, 4, 3, 2, 1]
+// {
+//   const array = [1, 2, 3, 4, 3, 2, 1]
 
-  const result = findLastIndex(array, (item) => item === 3, 3)
-  console.log('findLastIndex')
-  console.log(result)
-}
+//   const result = findLastIndex(array, (item) => item === 3, 3)
+//   console.log('findLastIndex')
+//   console.log(result)
+// }
 
-{
-  const users = [
-    { id: 1, age: 16, name: 'Jack' },
-    { id: 2, age: 20, name: 'Church' },
-    { id: 3, age: 22, name: 'Turing' },
-    { id: 4, age: 18, name: 'Neumann' }
-  ]
+// {
+//   const users = [
+//     { id: 1, age: 16, name: 'Jack' },
+//     { id: 2, age: 20, name: 'Church' },
+//     { id: 3, age: 22, name: 'Turing' },
+//     { id: 4, age: 18, name: 'Neumann' }
+//   ]
   
-  const result = findIndex(users, (user) => user.age > 18)
-  console.log('findIndex')
-  console.log(result)
-}
+//   const result = findIndex(users, (user) => user.age > 18)
+//   console.log('findIndex')
+//   console.log(result)
+// }
 
-{
-  const users = [
-    { id: 1, age: 16, name: 'Jack' },
-    { id: 2, age: 20, name: 'Church' },
-    { id: 3, age: 22, name: 'Turing' },
-    { id: 4, age: 18, name: 'Neumann' }
-  ]
+// {
+//   const users = [
+//     { id: 1, age: 16, name: 'Jack' },
+//     { id: 2, age: 20, name: 'Church' },
+//     { id: 3, age: 22, name: 'Turing' },
+//     { id: 4, age: 18, name: 'Neumann' }
+//   ]
   
-  const result = find(users, (user) => user.age > 18)
-  console.log('find')
-  console.log(result)
-}
+//   const result = find(users, (user) => user.age > 18)
+//   console.log('find')
+//   console.log(result)
+// }
 
 {
   const array = map<number>({
