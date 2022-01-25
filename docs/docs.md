@@ -82,6 +82,15 @@ remain(array, 3)
 // => [1, 2, 3]
 ```
 
+### <synta text="tail(array)">tail</synta>
+
+获取除了数组第一个元素外的所有元素
+
+```js
+tail([1, 2, 3])
+// => [2, 3]
+```
+
 ### <synta text="find(array, callback, [fromIndex=0])">find</synta>
 
 迭代指定数组，返回 callback 函数为 true 的第一项的值
@@ -186,7 +195,7 @@ debounce(() => {}, 1000)
 debounce(() => {}, 1000, true)
 ```
 
-### <synta text="throttle(func, [wait=0], [options={leading?: false, trailing?: false}])">throttle</synta>
+### <synta text="throttle(func, [wait=0], [options={}])">throttle</synta>
 
 创建一个节流函数，该函数会间隔的指定时间内调用。可通过指定 leading、trailing 设置是否第一次调用和最后一次延迟调用。
 
@@ -210,20 +219,8 @@ delay((p1, p2) => {
   console.log(p1, p2)
 }, 1000, 'hello','hi')
 
+// after 1 second:
 // hello hi
-```
-
-### <synta text="tailCall(value)">tailCall</synta>
-
-创建一个尾递归优化函数，防止函数尾递归调用过多时爆栈。
-
-```js
-const sum = tailCall((x, y) => {
-  return y > 0 ? sum(x + 1, y - 1) : x
-})
-
-sum(1, 100000)
-// => 100001
 ```
 
 ## 类型转换
