@@ -33,8 +33,8 @@ const uint8ClampedTag = '[object Uint8ClampedArray]'
 const uint16Tag = '[object Uint16Array]'
 const uint32Tag = '[object Uint32Array]'
 
-function getStack(stack: [any, any][], value: any) {
-  return find(stack, (currentStack) => currentStack[0] === value)?.[1]
+function getQuote(quote: [any, any][], value: any) {
+  return find(quote, (item) => item[0] === value)?.[1]
 }
 
 function initTypeObject(value: ObjectLike): object {
@@ -90,49 +90,49 @@ function initTypeObject(value: ObjectLike): object {
   return result as object
 }
 
-function deepClone(value: unknown, count?: { value: number }): any {
+function cloneDeep(value: unknown, count?: { value: number }): any {
   if (value === null || typeof value !== 'object') return value
 
   const result = initTypeObject(value) as object
-  const stack: [any, any][] = []
-  const temp: [any, any][] = [[value, result]]
+  const quote: [any, any][] = []
+  const stack: [any, any][] = [[value, result]]
 
-  while (temp.length) {
+  while (stack.length) {
     // 临时计数
     count && (count.value += 1)
 
-    const current = temp.shift() as [any, any]
-    const source = current[0]
-    const dist = current[1]
-    stack.push(current)
+    const part = stack.shift() as [any, any]
+    const source = part[0]
+    const dist = part[1]
+    quote.push(part)
     const tag = getTag(source) 
 
     if (tag === setTag) {
       source.forEach((item: any) => {
-        const findStack = getStack(stack, item)
-        if (findStack) {
-          dist.add(findStack)
+        const findQuote = getQuote(quote, item)
+        if (findQuote) {
+          dist.add(findQuote)
         } else if (item === null || typeof item !== 'object') {
           dist.add(item)
         } else {
           const newObject = initTypeObject(item)
           dist.add(newObject)
 
-          temp.push([item, newObject])
+          stack.push([item, newObject])
         }
       })
     } else if (tag === mapTag) {
       source.forEach((item: any, key: any) => {
-        const findStack = getStack(stack, item)
-        if (findStack) {
-          dist.set(key, findStack)
+        const findQuote = getQuote(quote, item)
+        if (findQuote) {
+          dist.set(key, findQuote)
         } else if (item === null || typeof item !== 'object') {
           dist.set(key, item)
         } else {
           const newObject = initTypeObject(item)
           dist.set(key, newObject)
 
-          temp.push([item, newObject])
+          stack.push([item, newObject])
         }
       })
     } else {
@@ -141,16 +141,16 @@ function deepClone(value: unknown, count?: { value: number }): any {
       for (let i = 0; i < props.length; i++) {
         const key = props[i]
         const item = source[key]
-        const findStack = getStack(stack, item)
+        const findQuote = getQuote(quote, item)
 
-        if (findStack) {
-          dist[key] = findStack
+        if (findQuote) {
+          dist[key] = findQuote
         } else if (item === null || typeof item !== 'object') {
           dist[key] = item
         } else {
           dist[key] = initTypeObject(item)
 
-          temp.push([item, dist[key]])
+          stack.push([item, dist[key]])
         }
       }
     }
@@ -159,4 +159,4 @@ function deepClone(value: unknown, count?: { value: number }): any {
   return result
 }
 
-export default deepClone
+export default cloneDeep

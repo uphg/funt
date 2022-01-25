@@ -1,9 +1,9 @@
-import { deepClone } from '../src/index'
+import { cloneDeep } from '../src/index'
 import { symbol } from './_utils'
 
-describe('deepClone', () => {
+describe('cloneDeep', () => {
   it('is a function', () => {
-    expect(typeof deepClone).toBe('function')
+    expect(typeof cloneDeep).toBe('function')
   })
 
   it('Copy basic type', () => {
@@ -16,16 +16,16 @@ describe('deepClone', () => {
     const null1 = null
     const undefined1 = undefined
 
-    const s2 = deepClone(s)
-    const b2 = deepClone(b)
-    const n2 = deepClone(n)
+    const s2 = cloneDeep(s)
+    const b2 = cloneDeep(b)
+    const n2 = cloneDeep(n)
 
-    const infinity2 = deepClone(infinity)
-    const nan2 = deepClone(nan)
-    const bigInt2 = deepClone(bigInt)
-    const symbol2 = deepClone(symbol)
-    const null2 = deepClone(null1)
-    const undefined2 = deepClone(undefined1)
+    const infinity2 = cloneDeep(infinity)
+    const nan2 = cloneDeep(nan)
+    const bigInt2 = cloneDeep(bigInt)
+    const symbol2 = cloneDeep(symbol)
+    const null2 = cloneDeep(null1)
+    const undefined2 = cloneDeep(undefined1)
 
     expect(s).toBe(s2)
     expect(b).toBe(b2)
@@ -42,8 +42,8 @@ describe('deepClone', () => {
   it('Copy object type', () => {
     const obj = { a: 'hi' }
     const array = [1, 'a', true, NaN, symbol]
-    const obj2 = deepClone(obj)
-    const array2 = deepClone(array)
+    const obj2 = cloneDeep(obj)
+    const array2 = cloneDeep(array)
 
     expect(obj).not.toBe(obj2)
     expect(obj).toEqual(obj2)
@@ -76,8 +76,8 @@ describe('deepClone', () => {
       ]
     ]
 
-    const obj2 = deepClone(obj)
-    const array2 = deepClone(array)
+    const obj2 = cloneDeep(obj)
+    const array2 = cloneDeep(array)
 
     expect(obj).not.toBe(obj2)
     expect(obj).toEqual(obj2)
@@ -87,7 +87,7 @@ describe('deepClone', () => {
 
   it('Copy RegExp type', () => {
     const regex = new RegExp(/a/)
-    const regex2: RegExp = deepClone(regex)
+    const regex2: RegExp = cloneDeep(regex)
 
     expect(regex).not.toBe(regex2)
     expect(regex.source).toBe(regex2.source)
@@ -96,7 +96,7 @@ describe('deepClone', () => {
 
   it('Copy Date type', () => {
     const date = new Date()
-    const date2: Date = deepClone(date)
+    const date2: Date = cloneDeep(date)
 
     expect(date).not.toBe(date2)
     expect(date.getTime()).toBe(date2.getTime())
@@ -105,7 +105,7 @@ describe('deepClone', () => {
   it('Can refer to itself', () => {
     const obj: { [key: string]: unknown } = { a: 'hi' }
     obj.self = obj
-    const obj2 = deepClone(obj)
+    const obj2 = cloneDeep(obj)
     expect(obj).toEqual(obj2) 
   })
 
@@ -120,7 +120,7 @@ describe('deepClone', () => {
       temp = temp.child
     }
 
-    void deepClone(obj)
+    void cloneDeep(obj)
     done()
   })
 
@@ -144,7 +144,7 @@ describe('deepClone', () => {
       }
     }
     
-    const obj2 = deepClone(obj)
+    const obj2 = cloneDeep(obj)
     expect(obj2).toEqual(obj)
   })
 
@@ -168,7 +168,7 @@ describe('deepClone', () => {
         e: new Set([7, 8, 9])
       }
     }
-    const obj2 = deepClone(obj)
+    const obj2 = cloneDeep(obj)
     expect(obj2).toEqual(obj) 
   })
 
@@ -205,7 +205,7 @@ describe('deepClone', () => {
         ])
       }
     }
-    const obj2 = deepClone(obj)
+    const obj2 = cloneDeep(obj)
     expect(obj2).toEqual(obj) 
   })
 
@@ -213,7 +213,7 @@ describe('deepClone', () => {
     const a = [1, 2, 3] as any
     a.p1 = '123'
     a.p2 = '456'
-    const a2 = deepClone(a)
+    const a2 = cloneDeep(a)
     expect(a2).toEqual(a) 
   })
 
@@ -226,13 +226,13 @@ describe('deepClone', () => {
       [Symbol()]: 'e',
       [Symbol()]: 'f'
     }
-    const object2 = deepClone(object)
+    const object2 = cloneDeep(object)
     expect(object2).toEqual(object) 
   })
 
   it('Copy ArrayBuffer', () => {
     const buffer = new ArrayBuffer(8)
-    const buffer2 = deepClone(buffer)
+    const buffer2 = cloneDeep(buffer)
     expect(buffer2).toEqual(buffer) 
   })
 
@@ -241,8 +241,8 @@ describe('deepClone', () => {
     const view1 = new DataView(buffer)
     const view2 = new DataView(buffer, 12, 4)
 
-    const view3 = deepClone(view1)
-    const view4 = deepClone(view2)
+    const view3 = cloneDeep(view1)
+    const view4 = cloneDeep(view2)
     expect(view3).toEqual(view1)
     expect(view4).toEqual(view2)
   })
@@ -262,7 +262,7 @@ describe('deepClone', () => {
       new Uint32Array(buffer)
     ]
 
-    const typedArrays2 = deepClone(typedArrays)
+    const typedArrays2 = cloneDeep(typedArrays)
     expect(typedArrays2).toEqual(typedArrays)
   })
 })
