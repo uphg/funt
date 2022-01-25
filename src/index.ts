@@ -1,5 +1,4 @@
 // Collection
-export { default as remain } from './remain'
 export { default as deepClone } from './deepClone'
 export { default as each } from './each'
 export { default as map } from './map'
@@ -50,11 +49,12 @@ export { default as create } from './create'
 export { default as debounce } from './debounce'
 export { default as throttle } from './throttle'
 export { default as delay } from './delay'
-export { default as tailCall } from './tailCall'
 
 // array
 export { default as chunk } from './chunk'
 export { default as compact } from './compact'
+export { default as tail } from './tail'
+export { default as remain } from './remain'
 export { default as find } from './find'
 export { default as findIndex } from './findIndex'
 export { default as findLast } from './findLast'
