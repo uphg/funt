@@ -1,7 +1,10 @@
 ---
 home: true
 sidebar: false
-pageClass: home
+actions:
+  - text: 快速开始
+    link: /docs/
+    type: primary
 ---
 
 <HomeHeader />

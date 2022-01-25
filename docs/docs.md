@@ -11,10 +11,10 @@ sidebar: auto
 迭代指定数组/类数组、对象，并为每个元素调用 callback，callback 传入三个参数 (currentValue, index, obj)。使用对象时根据对象的每个 key 依次调用
 
 ```js
-each([1, 2, 3], (item, index) => console.log(item))
+each([1, 2, 3], (value, index) => console.log(value))
 // => 1, 2, 3
 
-each({ a: 1, b: 2, c: 3 }, (item, key) => console.log(key))
+each({ a: 1, b: 2, c: 3 }, (value, key) => console.log(key))
 // => 'a', 'b', 'c'
 ```
 
@@ -35,10 +35,10 @@ map([1, 2, 3], (number) => number * number)
 迭代指定对象，并根据 callback 函数的返回值组成一个新的数组返回。
 
 ```js
-mapObject({ a: 1, b: 2, c: 3 }, (item, key) => item * 3)
+mapObject({ a: 1, b: 2, c: 3 }, (value, key) => value * 3)
 // => [3, 6, 9]
 
-mapObject({ a: 1, b: 2, c: 3 }, (item, key) => key)
+mapObject({ a: 1, b: 2, c: 3 }, (value, key) => key)
 // => ['a', 'b', 'c']
 ```
 
