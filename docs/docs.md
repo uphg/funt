@@ -68,6 +68,20 @@ compact([0, 1, false, 2, '', 3, NaN, 4, undefined])
 // => [1, 2, 3, 4]
 ```
 
+### <synta text="remain(array, start, [deleteCount=array.length-1])">remain</synta>
+
+根据给定参数分割数组，返回分割后的剩下的部分
+
+```js
+const array = [1, 2, 3, 4, 5]
+
+remain(array, 2, 2)
+// => [1, 2, 5]
+
+remain(array, 3)
+// => [1, 2, 3]
+```
+
 ### <synta text="find(array, callback, [fromIndex=0])">find</synta>
 
 迭代指定数组，返回 callback 函数为 true 的第一项的值
