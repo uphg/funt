@@ -42,6 +42,18 @@ mapObject({ a: 1, b: 2, c: 3 }, (value, key) => key)
 // => ['a', 'b', 'c']
 ```
 
+### <synta text="cloneDeep(value)">cloneDeep</synta>
+
+对指定值进行深度克隆
+
+```js
+const object = [{ a: 1 }, { b: 2 }]
+
+const object2 = cloneDeep(object)
+console.log(object2[0] === object[0])
+// => false
+```
+
 ## 数组
 
 ### <synta text="chunk(array, size=1)">chunk</synta>
@@ -89,6 +101,24 @@ remain(array, 3)
 ```js
 tail([1, 2, 3])
 // => [2, 3]
+```
+
+### <synta text="flatMap(array, callback)">flatMap</synta>
+
+通过调用 callback 函数创建一个新的扁平化的数组，callback 包括三个参数 (value, index|key, array)
+
+```js
+flatMap([1, 2, 3], (item) => [item, item])
+// => [1, 1, 2, 2, 3, 3]
+```
+
+### <synta text="flatMapDeep(array, callback)">flatMapDeep</synta>
+
+该方法与 flatMap 类似，不同的地方是它会递归的展开所有数组
+
+```js
+flatMapDeep([1, 2, 3], (item) => [[[[item, item]]]])
+// => [1, 1, 2, 2, 3, 3]
 ```
 
 ### <synta text="find(array, callback, [fromIndex=0])">find</synta>
