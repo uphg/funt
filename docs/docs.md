@@ -501,16 +501,16 @@ isArrayLike(Function)
 此方法与 isArrayLike 类似，不一样的地方是它还会检查 value 是否为对象
 
 ```js
-isArrayLike([1, 2, 3])
+isArrayLikeObject([1, 2, 3])
 // => true
 
-isArrayLike(document.body.children)
+isArrayLikeObject(document.body.children)
 // => true
 
-isArrayLike('hi')
+isArrayLikeObject('hi')
 // => false
 
-isArrayLike(Function)
+isArrayLikeObject(Function)
 // => false
 ```
 
@@ -519,17 +519,7 @@ isArrayLike(Function)
 检测 value 是否为 ArrayBuffer 对象
 
 ```js
-isArrayLike([1, 2, 3])
-// => true
-
-isArrayLike(document.body.children)
-// => true
-
-isArrayLike('hi')
-// => false
-
-isArrayLike(Function)
-// => false
+...
 ```
 
 ### <synta text="isError(value)">isError</synta>
