@@ -20,7 +20,7 @@ each({ a: 1, b: 2, c: 3 }, (value, key) => console.log(key))
 
 ### <synta text="map(array, callback)">map</synta>
 
-迭代指定数组/类数组，并根据 callback 函数的返回值组成一个新的数组返回。
+迭代指定数组/类数组，并根据 callback 函数的返回值组成一个新的数组返回
 
 ```js
 map([1, 2, 3], (number) => number * 2)
@@ -32,7 +32,7 @@ map([1, 2, 3], (number) => number * number)
 
 ### <synta text="mapObject(object, callback)">mapObject</synta>
 
-迭代指定对象，并根据 callback 函数的返回值组成一个新的数组返回。
+迭代指定对象，并根据 callback 函数的返回值组成一个新的数组返回
 
 ```js
 mapObject({ a: 1, b: 2, c: 3 }, (value, key) => value * 3)
@@ -78,29 +78,6 @@ chunk(array, 3)
 ```js
 compact([0, 1, false, 2, '', 3, NaN, 4, undefined])
 // => [1, 2, 3, 4]
-```
-
-### <synta text="remain(array, start, [deleteCount=array.length-1])">remain</synta>
-
-根据给定参数分割数组，返回分割后的剩下的部分
-
-```js
-const array = [1, 2, 3, 4, 5]
-
-remain(array, 2, 2)
-// => [1, 2, 5]
-
-remain(array, 3)
-// => [1, 2, 3]
-```
-
-### <synta text="tail(array)">tail</synta>
-
-获取除了数组第一个元素外的所有元素
-
-```js
-tail([1, 2, 3])
-// => [2, 3]
 ```
 
 ### <synta text="flatMap(array, callback)">flatMap</synta>
@@ -211,6 +188,29 @@ lastIndexOf(array, 2, 2)
 // => 1
 ```
 
+### <synta text="remain(array, start, [deleteCount=array.length-1])">remain</synta>
+
+根据给定参数分割数组，返回分割后的剩下的部分
+
+```js
+const array = [1, 2, 3, 4, 5]
+
+remain(array, 2, 2)
+// => [1, 2, 5]
+
+remain(array, 3)
+// => [1, 2, 3]
+```
+
+### <synta text="tail(array)">tail</synta>
+
+获取除了数组第一个元素外的所有元素
+
+```js
+tail([1, 2, 3])
+// => [2, 3]
+```
+
 ## 函数
 
 ### <synta text="debounce(func, [wait=0], [immediate=false])">debounce</synta>
@@ -242,7 +242,7 @@ throttle(() => {}, { trailing: false })
 
 ### <synta text="delay(func, [wait=0], [...args])">delay</synta>
 
-等待指定时间后调用函数，可传入多个参数。
+等待指定时间后调用函数，可传入多个参数
 
 ```js
 delay((p1, p2) => {
@@ -328,21 +328,6 @@ toNumber('6.2')
 ```
 
 ## 类型判断
-
-### <synta text="isLength(value)">isLength</synta>
-
-检测 value 是否为有效的数组/类数组 length 属性
-
-```js
-isLength(2)
-// => true
-
-isLength(-2)
-// => false
-
-isLength(Number.MIN_VALUE)
-// => false
-```
 
 ### <synta text="isBoolean(value)">isBoolean</synta>
 
@@ -541,12 +526,28 @@ isArrayLikeObject(Function)
 // => false
 ```
 
+### <synta text="isArguments(value)">isArguments</synta>
+
+检测 value 是否为 arguments 对象
+
+```js
+isArguments(function() { return arguments })
+// => true
+
+isArguments([1, 2, 3])
+// => false
+```
+
 ### <synta text="isArrayBuffer(value)">isArrayBuffer</synta>
 
 检测 value 是否为 ArrayBuffer 对象
 
 ```js
-...
+isArrayBuffer(new ArrayBuffer(1))
+// => true
+ 
+isArrayBuffer(new Array(1))
+// => false
 ```
 
 ### <synta text="isError(value)">isError</synta>
@@ -558,6 +559,177 @@ isError(new Error)
 // => true
 
 isError(Error)
+// => false
+```
+
+### <synta text="isDate(value)">isDate</synta>
+
+检测 value 是否为 Date 时间对象
+
+```js
+isDate(new Date())
+// => true
+
+isDate('Tue Jan 25 2022')
+// => false
+```
+
+### <synta text="isRegExp(value)">isRegExp</synta>
+
+检测 value 是否为 RegExp 正则对象
+
+```js
+isRegExp(/a/)
+// => true
+
+isRegExp('/a/')
+// => false
+```
+
+### <synta text="isNaN(value)">isNaN</synta>
+
+检测 value 是否为 NaN
+
+```js
+isNaN(NaN)
+// => true
+
+isNaN(undefined)
+// => false
+```
+
+### <synta text="isNil(value)">isNil</synta>
+
+检测 value 是否为 falsy 值，falsy 值表示 严格等于 `null` 或 `undefined` 的值
+
+```js
+isNil(null)
+// => true
+
+isNil(undefined)
+// => true
+
+isNil('')
+// => false
+```
+### <synta text="isFinite(value)">isFinite</synta>
+
+检测 value 是否为有限数字
+
+```js
+isFinite(2)
+// => true
+
+isFinite(2e64)
+// => true
+
+isFinite(-Infinity)
+// => false
+
+isFinite(NaN)
+// => false
+```
+
+### <synta text="isInteger(value)">isInteger</synta>
+
+检测 value 是否为整数
+
+```js
+isInteger(2)
+// => true
+
+isInteger(2.3)
+// => false
+
+isInteger(Number.MIN_VALUE)
+// => false
+
+isInteger(Infinity)
+// => false
+```
+
+### <synta text="isLength(value)">isLength</synta>
+
+检测 value 是否为有效的数组/类数组 length 属性
+
+```js
+isLength(2)
+// => true
+
+isLength(-2)
+// => false
+
+isLength(Number.MIN_VALUE)
+// => false
+```
+
+### <synta text="isPlainObject(value)">isPlainObject</synta>
+
+检测 value 是否为原始对象，原始对象包括：由 Object 实例创建的对象，或者原型（`[[Prototype]]`）指向为 null 的对象
+
+```js
+function Fun() {
+  this.a = 0
+}
+
+isPlainObject(new Fun())
+// => false
+
+isPlainObject([1, 2, 3])
+// => false
+
+isPlainObject({ a: 1 })
+// => true
+
+isPlainObject(Object.create(null))
+// => true
+```
+
+### <synta text="isMap(value)">isMap</synta>
+
+检测 value 是否为 Map 对象
+
+```js
+isMap(new Map)
+// => true
+
+isMap(new WeakMap)
+// => false
+```
+
+### <synta text="isWeakMap(value)">isWeakMap</synta>
+
+检测 value 是否为 WeakMap 对象
+
+```js
+isWeakMap(new WeakMap)
+// => true
+
+isWeakMap(new Map)
+// => false
+```
+
+### <synta text="isSet(value)">isSet</synta>
+
+检测 value 是否为 Set 对象
+
+```js
+isSet(new Set)
+// => true
+
+isSet(new WeakSet)
+// => false
+```
+
+### <synta text="isWeakSet(value)">isWeakSet</synta>
+
+检测 value 是否为 WeakSet 对象
+
+```js
+isWeakSet(new WeakSet)
+// => true
+
+isWeakSet(new Set)
 // => false
 ```
 

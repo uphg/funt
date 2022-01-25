@@ -9,19 +9,19 @@ actions:
 
 <HomeHeader />
 
-使用 npm 安装
+## 安装
 
 ```sh
-npm install @uphg/fun
-# or yarn add @uphg/fun
+npm install funt
+# or yarn add funt
 ```
 
-在项目中引入
+## 在项目中引入
 
 ```js
 // ES6 modules
-import each from 'uphg/fun/each'
+import each from 'funt/each'
 
 // CommonJS modules
-const each = require('@uphg/fun/each')
+const each = require('funt/each')
 ```

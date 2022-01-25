@@ -68,9 +68,9 @@ const actions = computed(() => {
 <style lang="scss">
   .home-header {
     text-align: center;
+    padding: 1px 0 3rem;
     .logo-wrap {
-      width: 265px;
-      height: 188px;
+      width: 300px;
       max-width: 100%;
       max-height: 280px;
       display: block;

@@ -26,6 +26,8 @@ describe('type assert', () => {
     setObj,
     weakSetObj,
     argsFn(),
+    new ArrayBuffer(1)
+    
   ]
 
   const typesMap = {
@@ -130,7 +132,12 @@ describe('type assert', () => {
     isPlainObject: [
       [{}, new Object(), Object.create(null)],
       [...remain(objTypes, 0, 1), ...baseTypes]
+    ],
+    isArrayBuffer: [
+      [new ArrayBuffer(1)],
+      [...remain(objTypes, 14, 1), ...baseTypes]
     ]
+    
   }
 
   each(typesMap, (item, name) => {
