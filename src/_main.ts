@@ -1,7 +1,7 @@
 import {
   /* remain, deepClone, isFinite, throttle,
-  chunk, */ debounce, each, map, /* find, findIndex, 
-  findLast, findLastIndex, indexOf,  */ hasInstance, create, isError, lastIndexOf, delay,
+  chunk,  debounce, each, map, find, findIndex, 
+  findLast, findLastIndex, indexOf, hasInstance, create, isError, lastIndexOf, delay,  */
   flatMap, flatMapDeep
 } from './index'
 
