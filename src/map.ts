@@ -1,6 +1,6 @@
 import type { ArrayLike } from './_interfaces'
 
-export default function map<T>(
+function map<T>(
   array: ArrayLike<T> | Array<T>,
   callback: (
     currentValue: T,
@@ -17,3 +17,5 @@ export default function map<T>(
 
   return result
 }
+
+export default map

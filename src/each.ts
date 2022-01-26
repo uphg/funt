@@ -2,7 +2,7 @@ import isArrayLike from './isArrayLike'
 import type { ArrayLike } from './_interfaces'
 
 // 对数组或对象的每一项执行一次给定的函数
-export default function each<T>(
+function each<T>(
   obj: { [key: string]: T } | ArrayLike<T> | Array<T>,
   callback: (
     currentValue: T,
@@ -25,3 +25,5 @@ export default function each<T>(
 
   return obj
 }
+
+export default each

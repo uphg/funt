@@ -1,10 +1,10 @@
-import toInteger from "./toInteger"
-import isNaN from "./isNaN"
+import toInteger from './toInteger'
+import isNaN from './isNaN'
 import baseIndexOf from './_baseIndexOf'
-import baseFindIndex from "./_baseFindIndex"
+import baseFindIndex from './_baseFindIndex'
 
 // 返回数组中某项第一次出现的位置
-export default function indexOf<T>(
+function indexOf<T>(
   array: T[] = [],
   value: T,
   fromIndex?: number
@@ -21,3 +21,5 @@ export default function indexOf<T>(
 
   return value === value ? baseIndexOf(array, value, index) : baseFindIndex<T>(array, isNaN, index)
 }
+
+export default indexOf

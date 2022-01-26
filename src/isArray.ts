@@ -1,3 +1,7 @@
-export default function isArray(value: unknown) {
-  return Array.isArray(value)
+import isTag from './_isTag'
+
+function isArray(value: unknown) {
+  return isTag(value, 'Array')
 }
+
+export default Array.isArray || isArray

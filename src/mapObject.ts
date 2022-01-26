@@ -1,4 +1,4 @@
-export default function mapObject<T>(
+function mapObject<T>(
   object: { [key: string]: T },
   callback: (
     currentValue?: T,
@@ -16,3 +16,5 @@ export default function mapObject<T>(
 
   return result
 }
+
+export default mapObject

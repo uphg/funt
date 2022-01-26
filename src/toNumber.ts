@@ -12,7 +12,7 @@ const reIsBinary = /^0b[01]+$/i
 // 检测八进制字符串值
 const reIsOctal = /^0o[0-7]+$/i
 
-export default function toNumber(value: any) {
+function toNumber(value: any) {
   if (typeof value === 'number') return value
   if (typeof value === 'bigint') return _Number(value)
   if (isSymbol(value)) return NAN
@@ -32,3 +32,5 @@ export default function toNumber(value: any) {
     ? _parseInt(value.slice(2), isBinary ? 2 : 8)
     : (reIsBadHex.test(value) ? NAN : +value)
 }
+
+export default toNumber

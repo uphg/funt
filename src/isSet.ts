@@ -1,5 +1,7 @@
 import isTag from './_isTag';
 
-export default function isSet(value: unknown) {
+function isSet(value: unknown) {
   return isTag(value, 'Set')
 }
+
+export default isSet

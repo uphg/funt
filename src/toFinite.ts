@@ -2,7 +2,7 @@ import toNumber from './toNumber'
 import { INFINITY, MAX_INTEGER } from './_common'
 
 // 转有限数字
-export default function toFinite(value: unknown): number {
+function toFinite(value: unknown): number {
   if (!value) return value === 0 ? value : 0
 
   value = toNumber(value)
@@ -14,3 +14,5 @@ export default function toFinite(value: unknown): number {
 
   return (value === value ? value : 0) as number
 }
+
+export default toFinite

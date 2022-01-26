@@ -1,5 +1,7 @@
 import isTag from './_isTag';
 
-export default function isMap(value: unknown) {
+function isMap(value: unknown) {
   return isTag(value, 'Map')
 }
+
+export default isMap

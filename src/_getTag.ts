@@ -1,3 +1,5 @@
-export default function getTag(value: unknown) {
+function getTag(value: unknown) {
   return Object.prototype.toString.call(value)
 }
+
+export default getTag

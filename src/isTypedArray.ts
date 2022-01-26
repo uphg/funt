@@ -13,6 +13,8 @@ import getTag from './_getTag';
 // [object Uint32Array]
 const reTypedTag = /^\[object (?:Float(?:32|64)|(?:Int|Uint)(?:8|16|32)|Uint8Clamped)Array\]$/
 
-export default function isTypedArray(value: unknown) {
+function isTypedArray(value: unknown) {
   return isObjectLike(value) && reTypedTag.test(getTag(value))
 }
+
+export default isTypedArray

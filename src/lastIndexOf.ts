@@ -1,10 +1,10 @@
-import toInteger from "./toInteger"
-import isNaN from "./isNaN"
+import toInteger from './toInteger'
+import isNaN from './isNaN'
 import baseLastIndexOf from './_baseLastIndexOf'
-import baseFindIndex from "./_baseFindIndex"
+import baseFindIndex from './_baseFindIndex'
 
 // 返回数组中某项最后一次出现的位置
-export default function lastIndexOf<T>(
+function lastIndexOf<T>(
   array: T[] = [],
   value: T,
   fromIndex?: number
@@ -21,3 +21,5 @@ export default function lastIndexOf<T>(
 
   return value === value ? baseLastIndexOf(array, value, index) : baseFindIndex<T>(array, isNaN, index, true)
 }
+
+export default lastIndexOf

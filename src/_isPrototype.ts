@@ -5,9 +5,11 @@ const objectProto = Object.prototype
 // // => true
 // isPrototype(Array.prototype)
 // // => true
-export default function isPrototype(value: any) {
+function isPrototype(value: any) {
   const Ctor = value && value.constructor
   const proto = (typeof Ctor === 'function' && Ctor.prototype) || objectProto
 
   return value === proto
 }
+
+export default isPrototype

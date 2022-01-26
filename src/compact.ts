@@ -1,4 +1,4 @@
-export default function compact<T>(array: T[]) {
+function compact<T>(array: T[]) {
   let resIndex = 0
   const result: T[] = []
 
@@ -11,3 +11,5 @@ export default function compact<T>(array: T[]) {
 
   return result
 }
+
+export default compact

@@ -1,3 +1,5 @@
-export default function isBigInt(value: unknown) {
+function isBigInt(value: unknown) {
   return typeof value === 'bigint'
 }
+
+export default isBigInt

@@ -1,4 +1,4 @@
-import toInteger from "./toInteger"
+import toInteger from './toInteger'
 import { MAX_ARRAY_LENGTH } from './_common'
 
 function toLength(value: unknown = 0) {

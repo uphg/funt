@@ -1,5 +1,7 @@
 import isTag from './_isTag';
 
-export default function isDate(value: unknown) {
+function isDate(value: unknown) {
   return isTag(value, 'Date')
 }
+
+export default isDate

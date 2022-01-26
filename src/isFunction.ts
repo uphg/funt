@@ -1,3 +1,5 @@
-export default function isFunction(value: unknown) {
+function isFunction(value: unknown) {
   return typeof value === 'function'
 }
+
+export default isFunction
