@@ -26,8 +26,8 @@ describe('type assert', () => {
     setObj,
     weakSetObj,
     argsFn(),
-    new ArrayBuffer(1)
-    
+    new ArrayBuffer(1),
+    Object.create({a: 1, b: 2})
   ]
 
   const typesMap = {

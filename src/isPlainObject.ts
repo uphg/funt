@@ -12,11 +12,7 @@ function isPlainObject(value: unknown) {
     return true
   }
 
-  let proto = value
-  while (getProto(proto) !== null) {
-    proto = getProto(proto)
-  }
-  return getProto(value) === proto
+  return getProto(value) === Object.prototype
 }
 
 export default isPlainObject
