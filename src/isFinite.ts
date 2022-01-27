@@ -5,4 +5,4 @@ function isFinite(value: unknown) {
   return typeof value === 'number' && _isFinite(value) && !_isNaN(value)
 }
 
-export default isFinite
+export default Number.isFinite || isFinite
