@@ -15,6 +15,7 @@ export { default as findLast } from './findLast'
 export { default as findLastIndex } from './findLastIndex'
 export { default as indexOf } from './indexOf'
 export { default as lastIndexOf } from './lastIndexOf'
+export { default as uniq } from './uniq'
 export { default as remain } from './remain'
 export { default as tail } from './tail'
 
