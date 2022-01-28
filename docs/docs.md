@@ -265,7 +265,25 @@ delay((p1, p2) => {
 // hello hi
 ```
 
-## 类型转换
+## 语言
+
+### <synta text="eq(value, other)">eq</synta>
+
+判断两个值是否为[同一个值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+
+```js
+eq(NaN, NaN)
+// => true
+
+eq(-0, -0)
+// => true
+
+eq(Infinity, -Infinity)
+// => false
+
+eq(-0, +0)
+// => false
+```
 
 ### <synta text="toFinite(value)">toFinite</synta>
 
@@ -339,7 +357,6 @@ toNumber('6.2')
 // => 6.2
 ```
 
-## 类型判断
 
 ### <synta text="isBoolean(value)">isBoolean</synta>
 
