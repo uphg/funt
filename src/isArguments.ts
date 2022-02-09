@@ -5,7 +5,7 @@ const result = (value: unknown) => isTag(value, 'Arguments')
 
 function isArguments(value: unknown) {
   // eslint-disable-next-line prefer-rest-params
-  return !result(arguments) ? hasProp(value, 'callee') : result(value)
+  return result(arguments) ? result(value) : hasProp(value, 'callee') 
 }
 
 export default isArguments
