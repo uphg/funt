@@ -98,6 +98,18 @@ flatMapDeep([1, 2, 3], (item) => [[[[item, item]]]])
 // => [1, 1, 2, 2, 3, 3]
 ```
 
+### <synta text="uniq(array)">uniq</synta>
+
+数组去重，返回一个没有重复值的数组
+
+```js
+uniq([2, 3, 1, 3, 2])
+// => [2, 3, 1]
+
+uniq([-Infinity, -0, NaN, undefined, -0, NaN, 1, undefined, -Infinity])
+// => [-Infinity, -0, NaN, undefined, 1]
+```
+
 ### <synta text="find(array, callback, [fromIndex=0])">find</synta>
 
 迭代指定数组，返回 callback 函数为 true 的第一项的值
@@ -253,7 +265,25 @@ delay((p1, p2) => {
 // hello hi
 ```
 
-## 类型转换
+## 语言
+
+### <synta text="eq(value, other)">eq</synta>
+
+判断两个值是否为[同一个值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+
+```js
+eq(NaN, NaN)
+// => true
+
+eq(-0, -0)
+// => true
+
+eq(Infinity, -Infinity)
+// => false
+
+eq(-0, +0)
+// => false
+```
 
 ### <synta text="toFinite(value)">toFinite</synta>
 
@@ -327,7 +357,6 @@ toNumber('6.2')
 // => 6.2
 ```
 
-## 类型判断
 
 ### <synta text="isBoolean(value)">isBoolean</synta>
 
