@@ -14,7 +14,7 @@ export const hasOwnProperty = Object.prototype.hasOwnProperty
 export const nativeGetSymbols = Object.getOwnPropertySymbols
 
 export const _isFinite = isFinite
-export const _parseInt = parseInt
+export const _parseInt = Number.parseInt || parseInt
 export const _now = Date.now
 export const _Number = Number
 

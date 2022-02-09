@@ -1,11 +1,11 @@
 import isTag from './_isTag'
-import hasProp from './_hasProp'
+import hasOwn from './_hasOwn'
 
 const result = (value: unknown) => isTag(value, 'Arguments')
 
 function isArguments(value: unknown) {
   // eslint-disable-next-line prefer-rest-params
-  return result(arguments) ? result(value) : hasProp(value, 'callee') 
+  return result(arguments) ? result(value) : hasOwn(value, 'callee') 
 }
 
 export default isArguments
