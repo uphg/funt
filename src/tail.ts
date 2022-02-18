@@ -1,6 +1,5 @@
 function tail<T>(array: T[]) {
-  const length = array?.length
-  if (!length) {
+  if (!array?.length) {
     return []
   }
 

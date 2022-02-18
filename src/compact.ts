@@ -5,8 +5,9 @@ function compact<T>(array: T[]) {
   if (array === null || array === void 0) return result
 
   for (const item of array) {
-    if (!item) continue
-    result[resIndex++] = item
+    if (item) {
+      result[resIndex++] = item
+    }
   }
 
   return result

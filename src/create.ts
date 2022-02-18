@@ -4,7 +4,7 @@ function create(prototype: Object | null, properties: Object | null = null) {
   prototype = prototype === null ? null : new Object(prototype)
 
   const result = Object.create(prototype)
-  return !properties ? result : Object.assign(result, properties)
+  return properties ? Object.assign(result, properties) : result 
 }
 
 export default create
