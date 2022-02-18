@@ -98,6 +98,24 @@ flatMapDeep([1, 2, 3], (item) => [[[[item, item]]]])
 // => [1, 1, 2, 2, 3, 3]
 ```
 
+### <synta text="flatten(array)">flatten</synta>
+
+返回一个新的扁平化的数组
+
+```js
+flatten([[1, 2], [3, 4], [5, [6, 7]]])
+// => [1, 2, 3, 4, 5, [6, 7]]
+```
+
+### <synta text="flattenDeep(array)">flattenDeep</synta>
+
+该方法与 flatten 类似，不同的地方是它会递归的展开所有数组
+
+```js
+flattenDeep([[1, 2], [3, 4], [5, [6, 7]]])
+// => [1, 2, 3, 4, 5, 6, 7]
+```
+
 ### <synta text="uniq(array)">uniq</synta>
 
 数组去重，返回一个没有重复值的数组
