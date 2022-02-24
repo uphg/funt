@@ -289,21 +289,21 @@ delay((p1, p2) => {
 
 ## 类型
 
-### <synta text="eq(value, other)">eq</synta>
+### <synta text="same(value, other)">same</synta>
 
 判断两个值是否为[同一个值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
 
 ```js
-eq(NaN, NaN)
+same(NaN, NaN)
 // => true
 
-eq(-0, -0)
+same(-0, -0)
 // => true
 
-eq(Infinity, -Infinity)
+same(Infinity, -Infinity)
 // => false
 
-eq(-0, +0)
+same(-0, +0)
 // => false
 ```
 
