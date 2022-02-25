@@ -451,21 +451,6 @@ isSymbol('hi')
 // false
 ```
 
-### <synta text="isNil(value)">isNil</synta>
-
-检测 value 是否为空值，包括 `null` 和 `undefined`
-
-```js
-isNil(null)
-// true
-
-isNil(undefined)
-// true
-
-isNil('')
-// false
-```
-
 ### <synta text="isFunction(value)">isFunction</synta>
 
 检测 value 是否为函数
