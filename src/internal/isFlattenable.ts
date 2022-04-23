@@ -1,4 +1,4 @@
-import isArguments from './isArguments'
+import isArguments from '../isArguments'
 
 // 参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol/isConcatSpreadable
 const spreadableSymbol = Symbol.isConcatSpreadable

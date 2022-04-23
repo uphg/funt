@@ -1,5 +1,5 @@
 import isArrayLike from './isArrayLike'
-import type { ArrayLike } from './_interfaces'
+import type { ArrayLike } from './internal/interfaces'
 
 // 对数组或对象的每一项执行一次给定的函数
 function each<T>(

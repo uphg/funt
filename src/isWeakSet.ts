@@ -1,4 +1,4 @@
-import isTag from './_isTag';
+import isTag from './internal/isTag';
 
 function isWeakSet(value: unknown) {
   return isTag(value, 'WeakSet')

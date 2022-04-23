@@ -1,4 +1,4 @@
-import { MAX_SAFE_INTEGER } from './_common'
+import { MAX_SAFE_INTEGER } from './common'
 
 // 检测无符号的整数
 const reIsUint = /^(?:0|[1-9]\d*)$/

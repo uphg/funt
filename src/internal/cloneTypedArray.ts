@@ -1,5 +1,5 @@
-import type { TypedArray } from './_interfaces';
-import cloneArrayBuffer from './_cloneArrayBuffer';
+import type { TypedArray } from './interfaces';
+import cloneArrayBuffer from './cloneArrayBuffer';
 
 function cloneTypedArray(value: TypedArray) {
   const buffer = cloneArrayBuffer(value.buffer)

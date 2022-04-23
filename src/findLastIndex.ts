@@ -1,5 +1,5 @@
 import toInteger from './toInteger'
-import baseFindIndex from './_baseFindIndex'
+import baseFindIndex from './internal/baseFindIndex'
 
 // 返回通过 if 判断为真的数组（或类数组）的第一项的索引
 

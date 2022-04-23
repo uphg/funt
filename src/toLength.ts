@@ -1,5 +1,5 @@
 import toInteger from './toInteger'
-import { MAX_ARRAY_LENGTH } from './_common'
+import { MAX_ARRAY_LENGTH } from './internal/common'
 
 function toLength(value: unknown = 0) {
   if (!value) {

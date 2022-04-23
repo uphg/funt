@@ -1,5 +1,5 @@
-import isTag from './_isTag'
-import hasOwn from './_hasOwn'
+import isTag from './internal/isTag'
+import hasOwn from './internal/hasOwn'
 
 const result = (value: unknown) => isTag(value, 'Arguments')
 

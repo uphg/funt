@@ -1,4 +1,4 @@
-import { _isNaN } from './_common'
+import { _isNaN } from './internal/common'
 import isNumber from './isNumber'
 
 function isNaN(value: unknown): boolean {

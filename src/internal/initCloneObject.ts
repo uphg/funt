@@ -1,4 +1,4 @@
-import isPrototype from './_isPrototype'
+import isPrototype from './isPrototype'
 
 function initCloneObject(value: object) {
   return (typeof value.constructor === 'function' && !isPrototype(value))

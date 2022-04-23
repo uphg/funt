@@ -1,5 +1,5 @@
-import isFlattenable from './_isFlattenable'
-import baseFlattenDeep from './_baseFlattenDeep'
+import isFlattenable from './isFlattenable'
+import baseFlattenDeep from './baseFlattenDeep'
 
 function baseFlatten<T>(array: T[], callback: Function, isDeep = false) {
   const length = array?.length || 0

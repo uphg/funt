@@ -1,4 +1,4 @@
-import cloneArrayBuffer from './_cloneArrayBuffer';
+import cloneArrayBuffer from './cloneArrayBuffer';
 
 function cloneDataView(value: DataView) {
   const buffer = cloneArrayBuffer(value.buffer)

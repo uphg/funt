@@ -1,5 +1,5 @@
 import toNumber from './toNumber'
-import { INFINITY, MAX_INTEGER } from './_common'
+import { INFINITY, MAX_INTEGER } from './internal/common'
 
 // 转有限数字
 function toFinite(value: unknown): number {

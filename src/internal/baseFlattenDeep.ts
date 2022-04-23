@@ -1,4 +1,4 @@
-import isFlattenable from './_isFlattenable'
+import isFlattenable from './isFlattenable'
 
 function baseFlattenDeep<T>(array: T[]) {
   const result = []

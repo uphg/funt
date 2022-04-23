@@ -1,4 +1,4 @@
-import type { ArrayLike } from './_interfaces'
+import type { ArrayLike } from './internal/interfaces'
 
 function map<T>(
   array: ArrayLike<T> | Array<T>,

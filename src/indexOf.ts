@@ -1,7 +1,7 @@
 import toInteger from './toInteger'
 import isNaN from './isNaN'
-import baseIndexOf from './_baseIndexOf'
-import baseFindIndex from './_baseFindIndex'
+import baseIndexOf from './internal/baseIndexOf'
+import baseFindIndex from './internal/baseFindIndex'
 
 // 返回数组中某项第一次出现的位置
 function indexOf<T>(

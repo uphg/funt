@@ -36,7 +36,7 @@ const weakSetObj = new WeakSet()
 const arrayLike = { 0: 'a', 1: 'b', 2: 'c', length: 3 }
 const arrayBuffer = new ArrayBuffer(0)
 
-export * from '../src/_common'
+export * from '../src/internal/common'
 
 export {
   symbol,

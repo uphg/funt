@@ -1,5 +1,5 @@
 import isObjectLike from './isObjectLike'
-import isTag from './_isTag'
+import isTag from './internal/isTag'
 
 const getProto = Object.getPrototypeOf
 

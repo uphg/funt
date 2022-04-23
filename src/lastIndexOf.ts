@@ -1,7 +1,7 @@
 import toInteger from './toInteger'
 import isNaN from './isNaN'
-import baseLastIndexOf from './_baseLastIndexOf'
-import baseFindIndex from './_baseFindIndex'
+import baseLastIndexOf from './internal/baseLastIndexOf'
+import baseFindIndex from './internal/baseFindIndex'
 
 // 返回数组中某项最后一次出现的位置
 function lastIndexOf<T>(

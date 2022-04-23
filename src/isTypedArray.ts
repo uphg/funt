@@ -1,5 +1,5 @@
 import isObjectLike from './isObjectLike';
-import getTag from './_getTag';
+import getTag from './internal/getTag';
 
 // 匹配以下内容
 // [object Float32Array]

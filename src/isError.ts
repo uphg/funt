@@ -1,5 +1,5 @@
 import isPlainObject from './isPlainObject';
-import isTag from './_isTag';
+import isTag from './internal/isTag';
 
 // Error/DOMException
 function isError(value: any) {

@@ -1,7 +1,7 @@
 import isObject from './isObject'
 import isSymbol from './isSymbol'
 import trim from './trim'
-import { _Number, NAN, _parseInt } from './_common'
+import { _Number, NAN, _parseInt } from './internal/common'
 
 // 检测不规范的十六进制字符串值
 const reIsBadHex = /^[-+]0x[0-9a-f]+$/i
