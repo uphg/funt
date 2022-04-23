@@ -70,11 +70,12 @@ const actions = computed(() => {
     text-align: center;
     padding: 1px 0 3rem;
     .logo-wrap {
-      width: 300px;
-      max-width: 100%;
-      max-height: 280px;
+      width: 320px;
       display: block;
       margin: 4.2rem auto 1.5rem;
+      img {
+        width: 320px;
+      }
     }
     .logo {
       --img-url: '/images/logo-dark.svg'

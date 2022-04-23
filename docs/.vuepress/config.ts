@@ -24,6 +24,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     docsDir: 'docs',
     // logo: '/images/logo.svg',
     // theme-level locales config
+    repo: 'uphg/funt',
     // navbar
     navbar: nav,
 

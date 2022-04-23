@@ -1,24 +1,16 @@
----
-home: true
-sidebar: false
-actions:
-  - text: 快速开始
-    link: /docs/
-    type: primary
----
+# Funt
 
-<HomeHeader />
+Funt.js is a function library for JavaScript
 
-## 安装
+## Installation
+
+Using npm:
 
 ```sh
-npm install funt
-# or yarn add funt
+npm i funt
 ```
 
-## 在项目中导入
-
-按需导入
+import in project
 
 ```js
 // ES6 modules
@@ -28,7 +20,7 @@ import { each, find, ... } from 'funt'
 const { each, find, ... } = require('funt')
 ```
 
-支持单个方法引入
+Import on demand
 
 ```js
 // ES6 modules
@@ -37,3 +29,7 @@ import each from 'funt/each'
 // CommonJS modules
 const each = require('funt/each')
 ```
+
+## Documentation
+
+See [API documentation](https://uphgs.com/funt/)

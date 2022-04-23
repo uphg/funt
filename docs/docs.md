@@ -61,7 +61,6 @@ console.log(object2[0] === object[0])
 以指定大小分割数组
 
 ```js
-
 const array = ['a', 'b', 'c', 'd']
 
 chunk(array, 2)
@@ -195,13 +194,13 @@ findLastIndex(array, (item) => item === 3, 3)
 返回在数组中可以找到一个给定元素的第一个的索引，如果不存在，则返回 -1。可指定 fromIndex，表示从指定索引查询
 
 ```js
-const array = [1, 2, 3, 4, 2]
+const array = ['a', 'b', 'c', 'a']
 
-indexOf(array, 2)
+indexOf(array, 'b')
 // => 1
 
-indexOf(array, 2, 2)
-// => 4
+indexOf(array, 'a', 2)
+// => 3
 ```
 
 ### <synta text="lastIndexOf(array, searchElement, [fromIndex=array.length-1])">lastIndexOf</synta>
@@ -209,13 +208,13 @@ indexOf(array, 2, 2)
 返回在数组中可以找到一个给定元素的最后一个的索引，如果不存在，则返回 -1。可指定 fromIndex，表示从指定索引查询
 
 ```js
-const array = [1, 2, 3, 4, 2]
+const array = ['a', 'b', 'c', 'a']
 
-lastIndexOf(array, 2)
-// => 4
+lastIndexOf(array, 'a')
+// => 3
 
-lastIndexOf(array, 2, 2)
-// => 1
+lastIndexOf(array, 'a', 2)
+// => 0
 ```
 
 ### <synta text="remain(array, start, [deleteCount=array.length-1])">remain</synta>
@@ -253,6 +252,11 @@ debounce(() => {}, 1000)
 
 // 立即调用一次
 debounce(() => {}, 1000, true)
+
+const fn = debounce(() => {}, 1000)
+
+// 清空未调用定时器，内置
+fn.cancel()
 ```
 
 ### <synta text="throttle(func, [wait=0], [options={}])">throttle</synta>
@@ -283,23 +287,23 @@ delay((p1, p2) => {
 // hello hi
 ```
 
-## 语言
+## 类型
 
-### <synta text="eq(value, other)">eq</synta>
+### <synta text="same(value, other)">same</synta>
 
 判断两个值是否为[同一个值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
 
 ```js
-eq(NaN, NaN)
+same(NaN, NaN)
 // => true
 
-eq(-0, -0)
+same(-0, -0)
 // => true
 
-eq(Infinity, -Infinity)
+same(Infinity, -Infinity)
 // => false
 
-eq(-0, +0)
+same(-0, +0)
 // => false
 ```
 
@@ -444,21 +448,6 @@ isSymbol(Symbol())
 // true
 
 isSymbol('hi')
-// false
-```
-
-### <synta text="isNil(value)">isNil</synta>
-
-检测 value 是否为空值，包括 `null` 和 `undefined`
-
-```js
-isNil(null)
-// true
-
-isNil(undefined)
-// true
-
-isNil('')
 // false
 ```
 
