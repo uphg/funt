@@ -33,8 +33,8 @@ const uint8ClampedTag = '[object Uint8ClampedArray]'
 const uint16Tag = '[object Uint16Array]'
 const uint32Tag = '[object Uint32Array]'
 
-function getQuote(quote: [any, any][], value: any) {
-  return find(quote, (item) => item[0] === value)?.[1]
+function getRef(refs: [any, any][], value: any) {
+  return find(refs, (item) => item[0] === value)?.[1]
 }
 
 function initTypeObject(value: ObjectLike): object {
@@ -94,7 +94,7 @@ function cloneDeep(value: unknown, count?: { value: number }): any {
   if (value === null || typeof value !== 'object') return value
 
   const result = initTypeObject(value) as object
-  const quote: [any, any][] = []
+  const refs: [any, any][] = []
   const stack: [any, any][] = [[value, result]]
 
   while (stack.length) {
@@ -104,14 +104,14 @@ function cloneDeep(value: unknown, count?: { value: number }): any {
     const part = stack.shift() as [any, any]
     const source = part[0]
     const dist = part[1]
-    quote.push(part)
+    refs.push(part)
     const tag = getTag(source) 
 
     if (tag === setTag) {
       source.forEach((item: any) => {
-        const findQuote = getQuote(quote, item)
-        if (findQuote) {
-          dist.add(findQuote)
+        const findRef = getRef(refs, item)
+        if (findRef) {
+          dist.add(findRef)
         } else if (item === null || typeof item !== 'object') {
           dist.add(item)
         } else {
@@ -123,9 +123,9 @@ function cloneDeep(value: unknown, count?: { value: number }): any {
       })
     } else if (tag === mapTag) {
       source.forEach((item: any, key: any) => {
-        const findQuote = getQuote(quote, item)
-        if (findQuote) {
-          dist.set(key, findQuote)
+        const findRef = getRef(refs, item)
+        if (findRef) {
+          dist.set(key, findRef)
         } else if (item === null || typeof item !== 'object') {
           dist.set(key, item)
         } else {
@@ -141,10 +141,10 @@ function cloneDeep(value: unknown, count?: { value: number }): any {
       for (let i = 0; i < props.length; i++) {
         const key = props[i]
         const item = source[key]
-        const findQuote = getQuote(quote, item)
+        const findRef = getRef(refs, item)
 
-        if (findQuote) {
-          dist[key] = findQuote
+        if (findRef) {
+          dist[key] = findRef
         } else if (item === null || typeof item !== 'object') {
           dist[key] = item
         } else {
