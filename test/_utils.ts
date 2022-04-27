@@ -1,5 +1,4 @@
-// 解决报错：regeneratorruntime is not defined
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime' // 解决报错：regeneratorruntime is not defined
 import { create } from '../src/index'
 
 const symbol = Symbol('a')
@@ -7,6 +6,8 @@ const bigInt = BigInt(9007199254740991)
 const error = new Error()
 const date = new Date()
 const regex = /a/
+const args = toArgs([1, 2, 3])
+const strictArgs = (function() { 'use strict'; return arguments; }(1, 2, 3));
 const func = () => {}
 const asyncFunc = async() => {}
 const generatorFunc = function * foo() {}
@@ -18,6 +19,10 @@ function argsFn() {
 function CustomError(message) {
   this.name = 'CustomError';
   this.message = message;
+}
+
+function toArgs(array) {
+  return (function() { return arguments; }.apply(undefined, array)) as IArguments
 }
 
 CustomError.prototype = create(Error.prototype, {
@@ -35,6 +40,8 @@ const weakSetObj = new WeakSet()
 
 const arrayLike = { 0: 'a', 1: 'b', 2: 'c', length: 3 }
 const arrayBuffer = new ArrayBuffer(0)
+
+const arrayProto = Array.prototype
 
 export * from '../src/internal/common'
 
@@ -57,5 +64,9 @@ export {
   weakMapObj,
   setObj,
   weakSetObj,
-  CustomError
+  CustomError,
+  arrayProto,
+  toArgs,
+  args,
+  strictArgs
 }

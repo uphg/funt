@@ -42,6 +42,8 @@ module.exports = {
     'eol-last': ['error', 'always'],
     // 'no-duplicate-case': 'off',
     'no-case-declarations': 'off',
+    'prefer-spread': 'off',
+    'prefer-rest-params': 'off',
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off',

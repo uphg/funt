@@ -2,7 +2,7 @@ import {
   /* remain, deepClone, isFinite, throttle,
   chunk,  debounce, each, map, find, findIndex, 
   findLast, findLastIndex, indexOf, hasInstance, create, isError, lastIndexOf, delay,  */
-  flatMap, flatMapDeep
+  flatMap, flatMapDeep, values
 } from './index'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -18,6 +18,13 @@ app.innerHTML = '<h1>Hello Vite!</h1> <button id="btn1">点击防抖</button> <b
   const array = [1, 2, 3]
   console.log(flatMap<number>(array, (item: number) => [item, item]))
   console.log(flatMapDeep(array, (item: number) => [[[[[[[item, item]]]]]]]))
+}
+
+{
+  const obj = { a: 1, b: 2 }
+  const vals = values(obj)
+  console.log('vals')
+  console.log(vals)
 }
 
 // {
