@@ -54,6 +54,28 @@ console.log(object2[0] === object[0])
 // => false
 ```
 
+## <synta text="values(object)">values</synta>
+
+返回对象所有 value 组成的数组
+
+```js
+function Func() {
+  this.a = 1
+  this.b = 2
+}
+Func.prototype.c = 3
+const f1 = new Func()
+
+values(f1)
+// => ['a', 'b']
+
+values({ a: 1, b: 2, c: 3 })
+// => [1, 2, 3]
+
+values('hi')
+// => ['h', 'i']
+```
+
 ## 数组
 
 ### <synta text="chunk(array, size=1)">chunk</synta>
@@ -377,6 +399,24 @@ toNumber(Infinity)
  
 toNumber('6.2')
 // => 6.2
+```
+
+### <synta text="toArray(value)">toArray</synta>
+
+value 转数组
+
+```js
+toArray({ 0: 'a', 1: 'b' })
+// => ['a', 'b']
+
+toArray('hi')
+// => ['h', 'i']
+
+toArray(1)
+// => []
+
+toArray(null)
+// => []
 ```
 
 
