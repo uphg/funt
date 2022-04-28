@@ -63,6 +63,7 @@ export { default as trim } from './trim'
 
 // Object
 export { default as create } from './create'
+export { default as keys } from './keys'
 export { default as values } from './values'
 
 // Function

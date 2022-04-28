@@ -6,6 +6,10 @@ describe('toArray', () => {
     expect(typeof toArray).toBe('function')
   })
 
+  it('number to arryas', () => {
+    expect(toArray(1)).toEqual([])
+  })
+
   it('objects to arrays', () => {
     expect(toArray({ a: 1, b: 2, c: 3 })).toEqual([1, 2, 3])
     expect(toArray({ 0: 'a', 1: 'b', 2: 'c' })).toEqual(['a', 'b', 'c'])
@@ -37,5 +41,14 @@ describe('toArray', () => {
 
   it('string to arrays', () => {
     expect(toArray('hello')).toEqual(['h', 'e', 'l', 'l', 'o'])
+  })
+
+  it('null value to arrays', () => {
+    expect(toArray(null)).toEqual([])
+    expect(toArray(void 0)).toEqual([])
+    expect(toArray(1/0)).toEqual([])
+    expect(toArray(0/0)).toEqual([])
+    expect(toArray(false)).toEqual([])
+    expect(toArray({})).toEqual([])
   })
 })

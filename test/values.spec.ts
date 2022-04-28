@@ -35,4 +35,8 @@ describe('values', () => {
       [1, 2, 3]
     ])
   })
+
+  it('string', () => {
+    expect(values('hi')).toEqual(['h', 'i'])
+  })
 })
