@@ -2,7 +2,6 @@
 export { default as cloneDeep } from './cloneDeep'
 export { default as each } from './each'
 export { default as map } from './map'
-export { default as mapObject } from './mapObject'
 
 // array
 export { default as chunk } from './chunk'

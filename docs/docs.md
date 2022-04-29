@@ -20,26 +20,14 @@ each({ a: 1, b: 2, c: 3 }, (value, key) => console.log(key))
 
 ### <synta text="map(array, callback)">map</synta>
 
-迭代指定数组/类数组，并根据 callback 函数的返回值组成一个新的数组返回
+迭代指定数组/类数组/对象，并根据 callback 函数的返回值组成一个新的数组返回
 
 ```js
 map([1, 2, 3], (number) => number * 2)
 // => [2, 4, 6]
 
-map([1, 2, 3], (number) => number * number)
-// => [1, 4, 9]
-```
-
-### <synta text="mapObject(object, callback)">mapObject</synta>
-
-迭代指定对象，并根据 callback 函数的返回值组成一个新的数组返回
-
-```js
-mapObject({ a: 1, b: 2, c: 3 }, (value, key) => value * 3)
+map({ a: 1, b: 2, c: 3 }, (value, key) => value * 3)
 // => [3, 6, 9]
-
-mapObject({ a: 1, b: 2, c: 3 }, (value, key) => key)
-// => ['a', 'b', 'c']
 ```
 
 ### <synta text="cloneDeep(value)">cloneDeep</synta>
