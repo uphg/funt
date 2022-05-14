@@ -1,4 +1,4 @@
-import same from './same'
+import eq from './eq'
 
 function uniq<T>(array: T[]) {
   const length = array?.length || 0
@@ -11,7 +11,7 @@ function uniq<T>(array: T[]) {
     let index = -1
     let status = false
     while (++index < result.length) {
-      if (same(value, result[index])) {
+      if (eq(value, result[index])) {
         status = true
         break
       }

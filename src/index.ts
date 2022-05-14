@@ -21,7 +21,7 @@ export { default as remain } from './remain'
 export { default as tail } from './tail'
 
 // 类型判断
-export { default as same } from './same'
+export { default as eq } from './eq'
 export { default as isBoolean } from './isBoolean'
 export { default as isString } from './isString'
 export { default as isNumber } from './isNumber'

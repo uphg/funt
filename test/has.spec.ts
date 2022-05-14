@@ -1,11 +1,11 @@
 import { has } from '../src/index'
 
-describe('flattenDeep', () => {
+describe('has', () => {
   it('is a function', () => {
     expect(typeof has).toBe('function')
   })
 
-  it('flat array', () => {
+  it('has array', () => {
     const Fn = function() {
       this.a = 1
     }
