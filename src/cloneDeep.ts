@@ -1,13 +1,13 @@
 import find from './find'
 import keys from './keys'
-import getSymbols from './getSymobls'
+import getSymbols from './internal/getSymobls'
 import getTag from './internal/getTag'
 import initCloneObject from './internal/initCloneObject'
 import cloneArrayBuffer from './internal/cloneArrayBuffer'
 import cloneDataView from './internal/cloneDataView'
 import cloneTypedArray from './internal/cloneTypedArray'
 
-import type { ObjectLike, TypedArray } from './internal/interfaces'
+import { ObjectLike, TypedArray } from './internal/interfaces'
 
 // const objectTag = '[object Object]'
 const numberTag = '[object Number]'

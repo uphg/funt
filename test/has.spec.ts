@@ -5,7 +5,7 @@ describe('has', () => {
     expect(typeof has).toBe('function')
   })
 
-  it('has array', () => {
+  it('has object key', () => {
     const Fn = function() {
       this.a = 1
     }
@@ -13,5 +13,6 @@ describe('has', () => {
     const obj1 = new Fn()
     expect(has(obj1, 'a')).toBeTruthy()
     expect(has(obj1, 'b')).toBeFalsy()
+    expect(has(obj1, 'toString')).toBeFalsy()
   })
 })

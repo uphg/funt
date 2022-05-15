@@ -64,6 +64,58 @@ values('hi')
 // => ['h', 'i']
 ```
 
+### <synta text="has(value)">has</synta>
+
+判断对象的指定属性是否为自身属性
+
+```js
+const object = { a: 1, b: 2 }
+
+has(object, 'a')
+// => true
+
+has(object, 'toString')
+// => false
+```
+
+### <synta text="hasIn(value)">has</synta>
+
+判断对象的指定属性是否为自身或原型的属性
+
+```js
+const object = { a: 1, b: 2 }
+
+has(object, 'a')
+// => true
+
+has(object, 'toString')
+// => true
+```
+
+
+### <synta text="pick(objec, keys)">pick</synta>
+
+返回一个由 keys 列表指定的 key 的值的对象
+
+```js
+const object = { a: '1', b: 2, c: 3 }
+
+pick(object, ['a', 'c'])
+// => { a: '1', c: 3 }
+```
+
+### <synta text="pickBy(objec, callback)">pickBy</synta>
+
+返回一个 callback return 值为 ture 组成的对象，callback 每次调用传入两个参数：value，key
+
+```js
+const object = { a: '1', b: 2, c: 3 }
+
+pickBy(object, (value) => isNumber)
+// => { b: 2, c: 3 }
+```
+
+
 ## 数组
 
 ### <synta text="chunk(array, size=1)">chunk</synta>
@@ -299,21 +351,21 @@ delay((p1, p2) => {
 
 ## 类型
 
-### <synta text="same(value, other)">same</synta>
+### <synta text="eq(value, other)">eq</synta>
 
-判断两个值是否为[同一个值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+判断两个值是否为[同一个值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_eqness)
 
 ```js
-same(NaN, NaN)
+eq(NaN, NaN)
 // => true
 
-same(-0, -0)
+eq(-0, -0)
 // => true
 
-same(Infinity, -Infinity)
+eq(Infinity, -Infinity)
 // => false
 
-same(-0, +0)
+eq(-0, +0)
 // => false
 ```
 

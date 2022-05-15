@@ -65,6 +65,9 @@ export { default as create } from './create'
 export { default as keys } from './keys'
 export { default as values } from './values'
 export { default as has } from './has'
+export { default as hasIn } from './hasIn'
+export { default as pick } from './pick'
+export { default as pickBy } from './pickBy'
 
 // Function
 export { default as debounce } from './debounce'
@@ -73,3 +76,8 @@ export { default as delay } from './delay'
 
 // Date
 export { default as now } from './now'
+
+export default {
+  a: 1,
+  b: 2
+}

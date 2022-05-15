@@ -21,8 +21,8 @@ module.exports = {
     // 禁止特定语法
     'no-restricted-syntax': [
       'error',
-      'WithStatement', // with 语句
-      "BinaryExpression[operator='in']" // in 运算符
+      'WithStatement' // with 语句
+      // "BinaryExpression[operator='in']" // in 运算符
     ],
     camelcase: 'error',
     'no-var': 'error',
