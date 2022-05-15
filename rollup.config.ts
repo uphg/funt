@@ -42,7 +42,7 @@ function createConfig(env) {
 
   if (CJS) {
     return {
-      input,
+      input: 'src/index.default.ts',
       output: [
         {
           preserveModules: true,
@@ -63,7 +63,7 @@ function createConfig(env) {
   }
   // default umd
   return {
-    input,
+    input: 'src/index.default.ts',
     output: [
       {
         name: 'funt',

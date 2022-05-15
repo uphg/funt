@@ -1,14 +1,8 @@
-const _hasToStringTag = require('../dist/cjs/_hasToStringTag')
+const _ = require('../dist/umd/index')
 
-const { findLast } = require('../dist/cjs/index')
-const findIndex = require('../dist/cjs/findIndex')
-console.log('demo')
+const { findLast } = require('../dist/umd/index')
 
-console.log('# _hasToStringTag')
-console.log(_hasToStringTag)
-
-console.log('# findIndex')
-console.log(findIndex)
-
-console.log('# findLast')
+console.log('findLast')
 console.log(findLast)
+console.log('_')
+console.log(_.eq(1, 1))

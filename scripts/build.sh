@@ -11,5 +11,7 @@ pnpm rollup -c &&
 mkdir dist/internal
 mv dist/es/*.d.ts dist && 
 mv dist/es/internal/*.d.ts dist/internal && 
+mv dist/cjs/index.default.js dist/cjs/index.js && 
+mv dist/umd/index.default.js dist/umd/index.js && 
 cp -r public/. dist &&
 cp README.md dist
