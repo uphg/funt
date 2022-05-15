@@ -70,6 +70,8 @@ export { default as has } from './has'
 export { default as hasIn } from './hasIn'
 export { default as pick } from './pick'
 export { default as pickBy } from './pickBy'
+export { default as omit } from './omit'
+export { default as omitBy } from './omitBy'
 
 // Function
 export { default as debounce } from './debounce'

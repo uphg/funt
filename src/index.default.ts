@@ -68,6 +68,8 @@ import has from './has'
 import hasIn from './hasIn'
 import pick from './pick'
 import pickBy from './pickBy'
+import omit from './omit'
+import omitBy from './omitBy'
 
 // Function
 import debounce from './debounce'
@@ -134,6 +136,8 @@ export default {
   hasIn,
   pick,
   pickBy,
+  omit,
+  omitBy,
   debounce,
   throttle,
   delay

@@ -7,8 +7,6 @@ export type ConstructorType = any
 
 export type Key = string | number | symbol
 
-export type Keys = Key[]
-
 export interface ObjectType {
   [key: Key]: unknown
 }

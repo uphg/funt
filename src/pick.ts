@@ -1,9 +1,9 @@
 import basePick from './internal/basePick';
-import { Keys } from './internal/interfaces';
+import { Key } from './internal/interfaces';
 import isNil from './isNil';
 
-function pick(obj: unknown, keys: Keys) {
-  return isNil(obj) ? {} : basePick(obj, keys)
+function pick(object: unknown, includes: Key[]) {
+  return isNil(object) ? {} : basePick(object, includes)
 }
 
 export default pick
