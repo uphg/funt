@@ -50,7 +50,6 @@ export { default as isMap } from './isMap'
 export { default as isWeakMap } from './isWeakMap'
 export { default as isSet } from './isSet'
 export { default as isWeakSet } from './isWeakSet'
-export { default as hasInstance } from './hasInstance'
 
 // 类型转换
 export { default as toFinite } from './toFinite'

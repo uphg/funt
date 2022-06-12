@@ -78,7 +78,7 @@ has(object, 'toString')
 // => false
 ```
 
-### <synta text="hasIn(value)">has</synta>
+### <synta text="hasIn(value)">hasIn</synta>
 
 判断对象的指定属性是否为自身或原型的属性
 
@@ -91,7 +91,6 @@ has(object, 'a')
 has(object, 'toString')
 // => true
 ```
-
 
 ### <synta text="pick(objec, keys)">pick</synta>
 
@@ -847,19 +846,4 @@ isWeakSet(new WeakSet)
 
 isWeakSet(new Set)
 // => false
-```
-
-### <synta text="hasInstance(value, constructor)">hasInstance</synta>
-
-检测指定值的构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上
-
-```js
-hasInstance({}, Object)
-// => true
-
-hasInstance([], Array)
-// => true
-
-hasInstance([], Object)
-// => true
 ```

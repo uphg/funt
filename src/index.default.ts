@@ -48,7 +48,6 @@ import isMap from './isMap'
 import isWeakMap from './isWeakMap'
 import isSet from './isSet'
 import isWeakSet from './isWeakSet'
-import hasInstance from './hasInstance'
 
 // 类型转换
 import toFinite from './toFinite'
@@ -122,7 +121,6 @@ export default {
   isWeakMap,
   isSet,
   isWeakSet,
-  hasInstance,
   toFinite,
   toInteger,
   toNumber,
