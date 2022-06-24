@@ -1,5 +1,5 @@
-const findIndex = require('../dist/cjs/findIndex')
-const findLastIndex = require('../dist/cjs/findLastIndex')
+const findIndex = require('../dist/findIndex')
+const findLastIndex = require('../dist/findLastIndex')
 console.log('cjs example')
 
 console.log('# findIndex')

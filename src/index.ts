@@ -1,5 +1,3 @@
-import methodsDefault from './index.default'
-
 // Collection
 export { default as cloneDeep } from './cloneDeep'
 export { default as each } from './each'
@@ -79,5 +77,3 @@ export { default as delay } from './delay'
 
 // Date
 export { default as now } from './now'
-
-export default methodsDefault

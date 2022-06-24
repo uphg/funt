@@ -1,17 +1,16 @@
 # Funt
 
-封装一些 JavaScript 常用的函数。
+Funt.js is a function library for JavaScript
 
-## 安装
+## Installation
 
-使用 npm 安装
+Using npm:
 
 ```sh
 npm i funt
-# or yarn add funt
 ```
 
-在项目中导入
+import in project
 
 ```js
 // ES6 modules
@@ -21,7 +20,7 @@ import { each, find, ... } from 'funt'
 const { each, find, ... } = require('funt')
 ```
 
-支持模块化按需引入
+Import on demand
 
 ```js
 // ES6 modules
@@ -30,3 +29,7 @@ import each from 'funt/each'
 // CommonJS modules
 const each = require('funt/each')
 ```
+
+## Documentation
+
+See [API documentation](https://uphgs.com/funt/)

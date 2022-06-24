@@ -76,7 +76,7 @@ function initTypeObject(value: ObjectLike): object {
       break
     case functionTag:
       result = function(this: any, ...args: unknown[]) {
-        (value as (...args: any) => any).apply<any, any[], any>(this, args)
+        (value as (...args: any) => any).apply(this, args)
       }
       break
     case arrayTag:
