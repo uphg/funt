@@ -42,7 +42,7 @@ console.log(object2[0] === object[0])
 // => false
 ```
 
-## <synta text="values(object)">values</synta>
+### <synta text="values(object)">values</synta>
 
 返回对象所有 value 组成的数组
 
