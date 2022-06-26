@@ -2,11 +2,7 @@ import path from 'path'
 import typescript from 'rollup-plugin-typescript2';
 import esbuild from 'rollup-plugin-esbuild'
 
-const entryConfigs = {
-  cjs: 'src/index.ts',
-  umd: 'src/funt.ts',
-  esm: 'src/index.ts'
-}
+const entryFile = 'src/index.ts'
 
 const outputConfigs = {
   cjs: {
@@ -17,7 +13,7 @@ const outputConfigs = {
   },
   umd: {
     name: 'funt',
-    file: 'dist/funt.js',
+    file: 'dist/index.js',
     format: 'umd'
   },
   esm: {
@@ -53,7 +49,7 @@ function createConfig(env) {
   const format = CJS ? 'cjs' : (ESM ? 'esm' : 'umd')
 
   return {
-    input: path.resolve(__dirname, entryConfigs[format]),
+    input: path.resolve(__dirname, entryFile),
     output: outputConfigs[format],
     plugins: [esbuildPlugin, ...(CJS ? [tsPlugin] : [])]
   }

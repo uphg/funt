@@ -1,3 +1,4 @@
 import * as funt from './funt'
 
-export default funt
+export * from './funt'
+export { funt as default }

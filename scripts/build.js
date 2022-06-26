@@ -16,6 +16,7 @@ async function run(argv) {
     version,
     license: 'MIT',
     main: 'index.js',
+    module: 'index.es.js',
     types: 'index.d.js',
     description: 'A javascript function collection library',
     keywords: ['javascript', 'array', 'object', 'function', 'methods'],
@@ -31,7 +32,8 @@ async function run(argv) {
   }
 
   await execa('rollup', ['-c', '--environment', 'CJS'])
-  await fs.remove(resolve('funt.js'))
+  await fs.remove(resolve('index.js'))
+  await execa('rollup', ['-c', '--environment', 'ESM'])
   await execa('rollup', ['-c'])
   await execa('eslint', ['dist', '--fix'])
   const strPackage = JSON.stringify(packageJson, null, 2)
