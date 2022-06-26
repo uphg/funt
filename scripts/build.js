@@ -6,7 +6,7 @@ const distDir = path.resolve(__dirname, '../dist')
 const resolve = (p) => path.resolve(distDir, p)
 const argv = require('minimist')(process.argv.slice(2));
 
-// use pnpm build -v 0.1.2
+// use pnpm build -v 0.1.x
 run(argv)
 
 async function run(argv) {
@@ -31,8 +31,9 @@ async function run(argv) {
   }
 
   await execa('rollup', ['-c', '--environment', 'CJS'])
-  await fs.remove(resolve('index.js'))
+  await fs.remove(resolve('funt.js'))
   await execa('rollup', ['-c'])
+  await execa('eslint', ['dist', '--fix'])
   const strPackage = JSON.stringify(packageJson, null, 2)
   fs.writeFile(resolve('./package.json'), strPackage)
   await execa('cp', ['README.md', 'dist'])

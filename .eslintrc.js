@@ -44,6 +44,7 @@ module.exports = {
     'no-case-declarations': 'off',
     'prefer-spread': 'off',
     'prefer-rest-params': 'off',
+    'no-undef': 'off',
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -51,6 +52,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off', // 关闭：禁止使用 ! 进行非空断言
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
     '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/no-var-requires': 'off'
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-this-alias': 'off'
   }
 };
