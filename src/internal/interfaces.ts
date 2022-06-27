@@ -7,12 +7,8 @@ export type ConstructorType = any
 
 export type Key = string | number | symbol
 
-export interface ObjectType {
-  [key: Key]: unknown
-}
-
-export interface ObjectLike {
-  [key: string]: any
+export interface ObjectLike<T=unknown> {
+  [key: Key]: T
 }
 
 export type TypedArray = Float32Array | Float64Array | Int8Array | Int16Array | Int32Array | Uint8Array | Uint8ClampedArray | Uint16Array | Uint32Array

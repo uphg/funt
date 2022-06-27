@@ -1,9 +1,9 @@
-import { Key, ObjectType } from './interfaces'
+import { Key, ObjectLike } from './interfaces'
 
 function basePickBy(object: any, keys: Key[], callback: (value: unknown, key: Key) => boolean) {
   let index = -1
   const length = keys.length
-  const result: ObjectType = {} 
+  const result: ObjectLike = {} 
   while (++index < length) {
     const key = keys[index]
     const value = object[key]

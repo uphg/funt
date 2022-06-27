@@ -37,7 +37,7 @@ function getRef(refs: [any, any][], value: any) {
   return find(refs, (item) => item[0] === value)?.[1]
 }
 
-function initTypeObject(value: ObjectLike): object {
+function initTypeObject(value: ObjectLike<any>): object {
   let result: object | null = null
   const tag = getTag(value)
   const Constr = value.constructor as any

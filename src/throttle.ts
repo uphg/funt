@@ -16,11 +16,11 @@ function throttle<T extends Function>(
   let previous = 0
 
   const later = function() {
-    clearTimeout(timerId as number)
+    timerId && clearTimeout(timerId)
 
     previous = !leading ? 0 : now()
     timerId = null
-    result = func.apply(context, args as unknown[])
+    result = func.apply(context, args)
 
     if (!timerId) context = args = null
   }
@@ -35,7 +35,7 @@ function throttle<T extends Function>(
     // remaining > wait，表示客户端系统时间被调整过，立即执行 func 函数，并且清除之前的定时器
     if (remaining <= 0 || remaining > wait) {
       if (timerId) {
-        clearTimeout(timerId as number)
+        clearTimeout(timerId)
         timerId = null
       }
 
@@ -51,7 +51,7 @@ function throttle<T extends Function>(
   }
 
   throttled.cancel = function() {
-    clearTimeout(timerId as number)
+    timerId && clearTimeout(timerId)
     previous = 0
     timerId = context = args = null
   }
