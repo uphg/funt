@@ -58,6 +58,7 @@ export { default as toArray } from './toArray'
 
 // string
 export { default as trim } from './trim'
+export { default as toMoney } from './toMoney'
 
 // Object
 export { default as create } from './create'
