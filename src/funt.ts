@@ -19,6 +19,7 @@ export { default as indexOf } from './indexOf'
 export { default as lastIndexOf } from './lastIndexOf'
 export { default as remain } from './remain'
 export { default as tail } from './tail'
+export { default as includes } from './includes'
 
 // 类型判断
 export { default as eq } from './eq'

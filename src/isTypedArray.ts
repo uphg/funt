@@ -1,5 +1,6 @@
 import isObjectLike from './isObjectLike';
-import getTag from './internal/getTag';
+import getObjectTag from './internal/getObjectTag';
+import { TypedArray } from './internal/interfaces';
 
 // 匹配以下内容
 // [object Float32Array]
@@ -13,8 +14,8 @@ import getTag from './internal/getTag';
 // [object Uint32Array]
 const reTypedTag = /^\[object (?:Float(?:32|64)|(?:Int|Uint)(?:8|16|32)|Uint8Clamped)Array\]$/
 
-function isTypedArray(value: unknown) {
-  return isObjectLike(value) && reTypedTag.test(getTag(value))
+function isTypedArray(value: unknown): value is TypedArray {
+  return isObjectLike(value) && reTypedTag.test(getObjectTag(value))
 }
 
 export default isTypedArray

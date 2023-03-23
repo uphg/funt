@@ -1,21 +1,21 @@
 import { hasOwnProperty } from './internal/common'
-import getTag from './internal/getTag'
+import getObjectTag from './internal/getObjectTag'
 import isArguments from './isArguments'
 import isArray from './isArray'
 
-function isEmpty(value: any) {
+function isEmpty<T extends unknown>(value: T): value is T {
   if (value === void 0 || value === null) {
     return true
   }
 
   if (isArray(value) || typeof value === 'string' || isArguments(value)) {
-    return !value.length
+    return !(value as Array<unknown>).length
   }
 
-  const tag = getTag(value)
+  const tag = getObjectTag(value)
 
   if (tag === '[object Map]' || tag === '[object Set]') {
-    return !value.size
+    return !(value as unknown as (Map<unknown, unknown> | Set<unknown>)).size
   }
 
   for (const key in value) {

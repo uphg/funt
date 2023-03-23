@@ -1,7 +1,8 @@
 import baseFlatten from './internal/baseFlatten'
+import { FlattenCallback, RecursiveArray } from './types'
 
-function flatMap<T>(array: T[], callback: Function) {
-  return baseFlatten<T>(array, callback)
+function flatMap<T, U>(array: Array<RecursiveArray<T>>, callback: FlattenCallback<T, U>) {
+  return baseFlatten<T, U>(array, callback)
 }
 
 export default flatMap

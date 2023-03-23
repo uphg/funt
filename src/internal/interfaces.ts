@@ -7,7 +7,7 @@ export type ConstructorType = any
 
 export type Key = string | number | symbol
 
-export interface ObjectLike<T=unknown> {
+export interface ObjectLike<T = unknown> {
   [key: Key]: T
 }
 
