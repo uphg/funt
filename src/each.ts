@@ -1,30 +1,26 @@
 import isArrayLike from './isArrayLike'
-import type { ObjectLike, ArrayLike } from './internal/interfaces'
 import keys from './keys'
+import type { Key } from './internal/interfaces'
 
-// 对数组或对象的每一项执行一次给定的函数
 function each<T>(
-  obj: ObjectLike<T> | ArrayLike<T> | Array<T>,
-  callback: (
-    currentValue: T,
-    index: number | string,
-    obj?: ObjectLike<T> | ArrayLike<T> | Array<T>
-  ) => unknown
+  object: T[] | Record<Key, T>,
+  callback: (item: T, inedx: number | string, object: T[] | Record<Key, T>) => void
 ) {
-  if (isArrayLike(obj)) {
-    const length = obj.length
-    for (let i = 0; i < length; i++) {
-      callback(obj[i], i, obj)
+  if (isArrayLike(object)) {
+    let index = -1
+    const length = object.length
+    while (++index < length) {
+      callback((object as T[])[index], index, object)
     }
   } else {
-    const _keys = keys(obj)
-    for (let i = 0; i < _keys.length; i++) {
-      const key = _keys[i] as unknown as number 
-      callback(obj[key], key, obj)
+    let index = -1
+    const propNames = keys(object)
+    const length = keys.length
+    while (++index < length) {
+      const key = propNames[index]
+      callback((object as Record<Key, T>)[key], key, object)
     }
   }
-
-  return obj
 }
 
 export default each

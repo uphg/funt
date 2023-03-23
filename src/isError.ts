@@ -1,8 +1,9 @@
 import isPlainObject from './isPlainObject';
 import isTag from './internal/isTag';
 
-// Error/DOMException
-function isError(value: any) {
+type ErrorLike = { message: string, name: string }
+
+function isError(value: any): value is Error | DOMException | ErrorLike {
   return isTag(value, 'Error')
     || isTag(value, 'DOMException')
     || (

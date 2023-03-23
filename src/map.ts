@@ -1,33 +1,30 @@
 import isArrayLike from './isArrayLike'
+import keys from './keys'
+import type { Key } from './internal/interfaces'
 
-type MapObject<T> = { [key: string | symbol | number]: T } | ArrayLike<T> | Array<T>
+type MaybeArrayLike<T> = ArrayLike<T> | Array<T>
+type MapObject<T> = Record<Key, T> | MaybeArrayLike<T>
+type MapCallback<T, U> = (item: T, index: number | string, object: MapObject<T>) => U
 
-function map<T>(
-  obj: MapObject<T>,
-  callback: (
-    currentValue: T,
-    index: number | string,
-    obj: MapObject<T>,
-  ) => any
-): MapObject<T>{
-  if (isArrayLike(obj)) {
-    const length = obj?.length || 0
-    const result = new Array(length) as T[]
+function map<T, U>(object: MapObject<T>, callback: MapCallback<T, U>): U[]{
+  if (isArrayLike(object)) {
+    const length = object?.length || 0
+    const result: U[] = new Array(length as number)
+    let index = -1
 
-    for (let i = 0; i < length; i++) {
-      result[i] = callback(obj[i], i, obj)
+    while (++index < length) {
+      result[index] = callback(object[index], index, object)
     }
-
     return result
   } else {
-    const keys = Object.keys(obj)
-    const result = new Array(keys.length)
-  
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i] as string
-      result[i] = callback((obj as { [key: string | symbol | number]: T })[key], key, obj)
+    const propNames = keys(object)
+    const result: U[] = new Array(propNames.length)
+    let index = -1
+
+    while (++index < propNames.length) {
+      const key = propNames[index]
+      result[index] = callback(object[key], key, object)
     }
-  
     return result
   }
   

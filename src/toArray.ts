@@ -3,7 +3,7 @@ import isString from './isString'
 import stringToArray from './internal/stringToArray'
 import copyArray from './internal/copyArray'
 import iteratorToArray from './internal/iteratorToArray'
-import getTag from './internal/getTag'
+import getObjectTag from './internal/getObjectTag'
 import mapToArray from './internal/mapToArray'
 import setToArray from './internal/setToArray'
 import values from './values'
@@ -24,7 +24,7 @@ function toArray(value: any) {
     return iteratorToArray(value[symIterator]())
   }
 
-  const tag = getTag(value)
+  const tag = getObjectTag(value)
   const func = tag === mapTag ? mapToArray : (tag === setTag ? setToArray : values)
 
   return func(value)

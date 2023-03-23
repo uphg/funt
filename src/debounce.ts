@@ -6,7 +6,7 @@ function debounce<T extends Function>(
   wait: number,
   immediate = false
 ) {
-  let timerId: null | number | NodeJS.Timeout,
+  let timerId: number | null,
     previous: number | null,
     context: unknown,
     result: unknown,

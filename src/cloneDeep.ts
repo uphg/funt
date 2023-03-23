@@ -1,26 +1,30 @@
-import find from './find'
-import keys from './keys'
 import getSymbols from './internal/getSymobls'
-import getTag from './internal/getTag'
+import getObjectTag from './internal/getObjectTag'
 import initCloneObject from './internal/initCloneObject'
 import cloneArrayBuffer from './internal/cloneArrayBuffer'
 import cloneDataView from './internal/cloneDataView'
 import cloneTypedArray from './internal/cloneTypedArray'
-
 import { ObjectLike, TypedArray } from './internal/interfaces'
+import includes from './includes'
+import isObject from './isObject'
+import each from './each'
+import find from './find'
+import keys from './keys'
 
-// const objectTag = '[object Object]'
+const objectTag = '[object Object]'
 const numberTag = '[object Number]'
 const stringTag = '[object String]'
 const booleanTag = '[object Boolean]'
 const dateTag = '[object Date]'
 const regExpTag = '[object RegExp]'
 const mapTag = '[object Map]'
+const weakMapTag = '[object WeakMap]'
+const weakSetTag = '[object WeakSet]'
+const weakRefTag ='[object WeakRef]'
 const setTag = '[object Set]'
 const functionTag = '[object Function]'
 const arrayTag = '[object Array]'
-// const argsTag = '[object Arguments]'
-
+const argsTag = '[object Arguments]'
 const arrayBufferTag = '[object ArrayBuffer]'
 const dataViewTag = '[object DataView]'
 const float32Tag = '[object Float32Array]'
@@ -33,13 +37,13 @@ const uint8ClampedTag = '[object Uint8ClampedArray]'
 const uint16Tag = '[object Uint16Array]'
 const uint32Tag = '[object Uint32Array]'
 
-function getRef(refs: [any, any][], value: any) {
-  return find(refs, (item) => item[0] === value)?.[1]
+function findCache(cache: [unknown, unknown][], value: unknown) {
+  return find(cache, (item) => item[0] === value)?.[1]
 }
 
 function initTypeObject(value: ObjectLike<any>): object {
   let result: object | null = null
-  const tag = getTag(value)
+  const tag = getObjectTag(value)
   const Constr = value.constructor as any
   switch (tag) {
     case arrayBufferTag:
@@ -72,6 +76,8 @@ function initTypeObject(value: ObjectLike<any>): object {
       break
     case mapTag:
     case setTag:
+    case weakMapTag:
+    case weakSetTag:
       result = new Constr
       break
     case functionTag:
@@ -82,81 +88,68 @@ function initTypeObject(value: ObjectLike<any>): object {
     case arrayTag:
       result = new Constr((value as any[]).length)
       break
-    default:
-    // case objectTag:
-    // case argsTag:
+    case objectTag:
+    case argsTag:
+    case weakRefTag:
       result = initCloneObject(value)
+      break
+    default:
+      result = value
   }
+
   return result as object
 }
 
-function cloneDeep(value: unknown, count?: { value: number }): any {
-  if (value === null || typeof value !== 'object') return value
+function cloneDeep<T>(value: T, count?: { value: number }): T {
+  if (!isObject(value)) return value
 
   const result = initTypeObject(value) as object
-  const refs: [any, any][] = []
+  const cache: [any, any][] = []
   const stack: [any, any][] = [[value, result]]
 
   while (stack.length) {
     // 临时计数
     count && (count.value += 1)
 
-    const part = stack.shift() as [any, any]
-    const source = part[0]
-    const dist = part[1]
-    refs.push(part)
-    const tag = getTag(source) 
+    const piece = stack.shift() as [any, any]
+    const source = piece[0]
+    const copy = piece[1]
+    const tag = getObjectTag(source)
 
-    if (tag === setTag) {
-      source.forEach((item: any) => {
-        const findRef = getRef(refs, item)
-        if (findRef) {
-          dist.add(findRef)
-        } else if (item === null || typeof item !== 'object') {
-          dist.add(item)
-        } else {
+    cache.push(piece)
+
+    if (includes([setTag, mapTag, weakSetTag, weakMapTag], tag)) {
+      const addName = setTag || weakSetTag ? 'add' : 'set'
+      each(source, (item: any) => {
+        const prev = findCache(cache, item)
+        if (prev) {
+          copy[addName](prev)
+        } else if (isObject(item)) {
           const newObject = initTypeObject(item)
-          dist.add(newObject)
-
+          copy[addName](newObject)
           stack.push([item, newObject])
-        }
-      })
-    } else if (tag === mapTag) {
-      source.forEach((item: any, key: any) => {
-        const findRef = getRef(refs, item)
-        if (findRef) {
-          dist.set(key, findRef)
-        } else if (item === null || typeof item !== 'object') {
-          dist.set(key, item)
         } else {
-          const newObject = initTypeObject(item)
-          dist.set(key, newObject)
-
-          stack.push([item, newObject])
+          copy[addName](item)
         }
       })
     } else {
-      const props = [...keys(source), ...getSymbols(source)]
+      const propNames = [...keys(source), ...getSymbols(source)]
 
-      for (let i = 0; i < props.length; i++) {
-        const key = props[i]
-        const item = source[key]
-        const findRef = getRef(refs, item)
-
-        if (findRef) {
-          dist[key] = findRef
-        } else if (item === null || typeof item !== 'object') {
-          dist[key] = item
+      each(propNames, (item, key) => {
+        const prev = findCache(cache, item)
+        if (prev) {
+          copy[key] = prev
+        } else if (isObject(item)) {
+          copy[key] = initTypeObject(item)
+          stack.push([item, copy[key]])
         } else {
-          dist[key] = initTypeObject(item)
-
-          stack.push([item, dist[key]])
+          copy[key] = item
         }
-      }
+      })
     }
   }
 
-  return result
+  return result as T
 }
 
 export default cloneDeep
