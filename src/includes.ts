@@ -1,9 +1,11 @@
+import eq from './eq'
+
 function includes<T>(array: T[] | undefined, value: T) {
-  if (!array?.length) return false
-  const length = array.length
+  const length = array?.length
+  if (!length) return false
   let index = -1
   while (++index < length) {
-    if (array[index] === value) {
+    if (eq(array[index], value)) {
       return true
     }
   }
