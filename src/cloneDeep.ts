@@ -135,7 +135,8 @@ function cloneDeep<T>(value: T, count?: { value: number }): T {
     } else {
       const propNames = [...keys(source), ...getSymbols(source)]
 
-      each(propNames, (item, key) => {
+      each(propNames, (key) => {
+        const item = source[key]
         const prev = findCache(cache, item)
         if (prev) {
           copy[key] = prev
