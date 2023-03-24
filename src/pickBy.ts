@@ -1,6 +1,6 @@
 import basePickBy from './internal/basePickBy';
 import getSymbols from './internal/getSymobls';
-import { Key } from './internal/interfaces';
+import { Key } from './internal/types';
 import isNil from './isNil';
 import keys from './keys';
 

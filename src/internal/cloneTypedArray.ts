@@ -1,4 +1,4 @@
-import type { TypedArray } from './interfaces';
+import type { TypedArray } from './types';
 import cloneArrayBuffer from './cloneArrayBuffer';
 
 function cloneTypedArray(value: TypedArray) {

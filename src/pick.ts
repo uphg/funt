@@ -1,5 +1,5 @@
 import basePick from './internal/basePick';
-import { Key } from './internal/interfaces';
+import { Key } from './internal/types';
 import isNil from './isNil';
 
 function pick(object: unknown, includes: Key[]) {

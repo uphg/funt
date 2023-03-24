@@ -1,6 +1,6 @@
 import has from '../has'
 import basePickBy from './basePickBy'
-import { Key } from './interfaces'
+import { Key } from './types'
 
 function basePick(obj: unknown, keys: Key[]) {
   return basePickBy(obj, keys, (_value, key) => has(obj, key))

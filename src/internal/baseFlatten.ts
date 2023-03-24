@@ -1,6 +1,6 @@
 import isFlattenable from './isFlattenable'
 import baseFlattenDeep from './baseFlattenDeep'
-import type { FlattenCallback,  RecursiveArray } from '../types'
+import type { FlattenCallback,  RecursiveArray } from './types'
 
 function baseFlatten<T, U extends unknown>(array: RecursiveArray<T>, callback: FlattenCallback<T, U>, isDeep = false) {
   const length = array?.length || 0

@@ -1,6 +1,6 @@
 import isArrayLike from './isArrayLike'
 import keys from './keys'
-import type { Key } from './internal/interfaces'
+import type { Key } from './internal/types'
 
 type MaybeArrayLike<T> = ArrayLike<T> | Array<T>
 type MapObject<T> = Record<Key, T> | MaybeArrayLike<T>

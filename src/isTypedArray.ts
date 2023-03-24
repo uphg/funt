@@ -1,6 +1,6 @@
 import isObjectLike from './isObjectLike';
 import getObjectTag from './internal/getObjectTag';
-import { TypedArray } from './internal/interfaces';
+import { TypedArray } from './internal/types';
 
 // 匹配以下内容
 // [object Float32Array]

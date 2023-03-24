@@ -1,6 +1,6 @@
 import keys from '../keys'
 import getSymbols from './getSymobls'
-import { Key } from './interfaces'
+import { Key } from './types'
 
 function baseOmitBy(object: any, callback: (value: unknown, key: Key) => boolean) {
   const props: Key[] = keys(object).concat(getSymbols(object) as any)

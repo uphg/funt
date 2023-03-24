@@ -1,10 +1,6 @@
+import type { FindCallback } from './types'
 
-function baseFindIndex<T>(
-  array: T[],
-  callback: (currentValue: T, index?: number, array?: T[]) => boolean,
-  fromIndex: number,
-  fromRight = false
-) {
+function baseFindIndex<T>(array: T[], callback: FindCallback<T>, fromIndex: number, fromRight = false) {
   const { length } = array
   let index = fromIndex + (fromRight ? 1 : -1)
 

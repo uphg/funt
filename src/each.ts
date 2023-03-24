@@ -1,6 +1,6 @@
 import isArrayLike from './isArrayLike'
 import keys from './keys'
-import type { Key } from './internal/interfaces'
+import type { Key } from './internal/types'
 
 function each<T>(
   object: T[] | Record<Key, T>,

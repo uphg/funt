@@ -1,4 +1,4 @@
-import { Key, ObjectLike } from './interfaces'
+import { Key, ObjectLike } from './types'
 
 function basePickBy(object: any, keys: Key[], callback: (value: unknown, key: Key) => boolean) {
   let index = -1

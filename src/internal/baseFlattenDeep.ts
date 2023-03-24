@@ -1,5 +1,5 @@
 import isFlattenable from './isFlattenable'
-import { RecursiveArray } from '../types'
+import { RecursiveArray } from './types'
 
 function baseFlattenDeep<T>(array: RecursiveArray<T>) {
   const result: T[] = []
