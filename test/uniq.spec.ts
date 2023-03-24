@@ -1,6 +1,6 @@
 import { uniq } from '../src/index'
 
-describe('trim', () => {
+describe('uniq', () => {
   it('is a function', () => {
     expect(typeof uniq).toBe('function')
   })

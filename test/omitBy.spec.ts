@@ -22,6 +22,6 @@ describe('omitBy', () => {
       [symbolKey]: 2,
       [symbolKey2]: 3
     }
-    expect(omitBy(obj, (_value, key) => key === symbolKey)).toEqual({ a: 1, [symbolKey2]: 3 })
+    expect(omitBy(obj, (_value, key) => key === symbolKey, true)).toEqual({ a: 1, [symbolKey2]: 3 })
   })
 })

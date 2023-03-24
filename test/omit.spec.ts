@@ -23,6 +23,6 @@ describe('omit', () => {
       [symbolKey]: 3,
       [symbolKey2]: 4
     }
-    expect(omit(obj, ['a', symbolKey])).toEqual({ b: 2, [symbolKey2]: 4 })
+    expect(omit(obj, ['a', symbolKey], true)).toEqual({ b: 2, [symbolKey2]: 4 })
   })
 })

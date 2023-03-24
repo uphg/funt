@@ -21,6 +21,6 @@ describe('pickBy', () => {
       b: 2,
       [symbolKey]: 3
     }
-    expect(pickBy(obj, (_value, key) => key === symbolKey)).toEqual({ [symbolKey]: 3 })
+    expect(pickBy(obj, (_value, key) => key === symbolKey, true)).toEqual({ [symbolKey]: 3 })
   })
 })
