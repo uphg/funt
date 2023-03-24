@@ -1,8 +1,7 @@
 import basePick from './internal/basePick';
-import { Key } from './internal/types';
 import isNil from './isNil';
 
-function pick(object: unknown, includes: Key[]) {
+function pick<T extends object>(object: T, includes: Array<keyof T>) {
   return isNil(object) ? {} : basePick(object, includes)
 }
 

@@ -1,9 +1,9 @@
-import { Key, ObjectLike } from './types'
+import type { PickByCallback } from './types'
 
-function basePickBy(object: any, keys: Key[], callback: (value: unknown, key: Key) => boolean) {
+function basePickBy<T extends object>(object: T, keys: Array<keyof T>, callback: PickByCallback<T>) {
   let index = -1
   const length = keys.length
-  const result: ObjectLike = {} 
+  const result = {} as T
   while (++index < length) {
     const key = keys[index]
     const value = object[key]

@@ -7,7 +7,7 @@ const propertyIsEnumerable = Object.prototype.propertyIsEnumerable
 const nativeGetSymbols = Object.getOwnPropertySymbols
 
 // 获取当前对象所有可枚举 Symbol key
-function getSymbols(object: unknown) {
+function getSymbols<T extends object>(object: T) {
   if (isNil(object)) {
     return []
   }

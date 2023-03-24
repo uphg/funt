@@ -1,8 +1,7 @@
 import has from '../has'
 import basePickBy from './basePickBy'
-import { Key } from './types'
 
-function basePick(obj: unknown, keys: Key[]) {
+function basePick<T extends object>(obj: T, keys: Array<keyof T>) {
   return basePickBy(obj, keys, (_value, key) => has(obj, key))
 }
 
