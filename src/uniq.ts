@@ -12,7 +12,6 @@ function uniq<T>(array: T[]) {
     if (includes(result, item)) continue
 
     result.push(item)
-    result.push(item)
   }
   return result
 }
