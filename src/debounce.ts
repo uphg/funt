@@ -6,7 +6,7 @@ function debounce<T extends Function>(
   wait: number,
   immediate = false
 ) {
-  let timerId: number | null,
+  let timerId: number | NodeJS.Timeout | null,
     previous: number | null,
     context: unknown,
     result: unknown,
@@ -27,7 +27,7 @@ function debounce<T extends Function>(
     }
   }
 
-  const debounced = function(..._args: any) {
+  const debounced = function(..._args: unknown[]) {
     context = this
     args = _args
     previous = now() // 函数执行时的时间

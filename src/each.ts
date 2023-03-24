@@ -15,7 +15,7 @@ function each<T>(
   } else {
     let index = -1
     const propNames = keys(object)
-    const length = keys.length
+    const length = propNames.length
     while (++index < length) {
       const key = propNames[index]
       callback((object as Record<Key, T>)[key], key, object)

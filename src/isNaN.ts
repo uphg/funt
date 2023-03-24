@@ -5,4 +5,4 @@ function isNaN(value: unknown): boolean {
   return isNumber(value) && _isNaN(value as number)
 }
 
-export default Number.isNaN || isNaN
+export default Number.isNaN ?? isNaN

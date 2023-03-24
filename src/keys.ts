@@ -12,7 +12,7 @@ function _keys<T extends object>(object: T) {
 }
 
 // 获取对象的 key
-function keys(object: any) {
+function keys<T extends object>(object: T) {
   return Object.keys(Object(object))
 }
 
