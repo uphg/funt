@@ -1,7 +1,7 @@
 import isFlattenable from './isFlattenable'
-import { RecursiveArray } from './types'
+import { RecursiveArray, RecursiveArrayLike } from './types'
 
-function baseFlattenDeep<T>(array: RecursiveArray<T>) {
+function baseFlattenDeep<T>(array: RecursiveArrayLike<T>) {
   const result: T[] = []
   const stack = [array]
 

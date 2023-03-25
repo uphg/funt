@@ -5,7 +5,7 @@ import baseFindIndex from './internal/baseFindIndex'
 
 // 返回数组中某项最后一次出现的位置
 function lastIndexOf<T>(
-  array: T[] = [],
+  array: ArrayLike<T> = [],
   value: T,
   fromIndex?: number
 ) {

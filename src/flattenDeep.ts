@@ -1,8 +1,8 @@
 import baseFlatten from './internal/baseFlatten'
-import { RecursiveArray } from './internal/types'
+import { RecursiveArrayLike } from './internal/types'
 
-function flattenDeep<T>(array: RecursiveArray<T>) {
-  return array?.length ? baseFlatten<T, T | RecursiveArray<T>>(array, (item) => item, true) : []
+function flattenDeep<T>(array: RecursiveArrayLike<T>) {
+  return array?.length ? baseFlatten<T, T | RecursiveArrayLike<T>>(array, (item) => item, true) : []
 }
 
 export default flattenDeep
