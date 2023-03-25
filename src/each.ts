@@ -3,8 +3,8 @@ import keys from './keys'
 import type { Key } from './internal/types'
 
 function each<T>(
-  object: T[] | Record<Key, T>,
-  callback: (item: T, inedx: number | string, object: T[] | Record<Key, T>) => void
+  object: ArrayLike<T> | Record<Key, T>,
+  callback: (item: T, inedx: number | string, object: ArrayLike<T> | Record<Key, T>) => void
 ) {
   if (isArrayLike(object)) {
     let index = -1
