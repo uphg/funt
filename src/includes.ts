@@ -1,6 +1,6 @@
 import eq from './eq'
 
-function includes<T>(array: T[] | undefined, value: T) {
+function includes<T>(array: ArrayLike<T> | undefined, value: T) {
   const length = array?.length
   if (!length) return false
   let index = -1
