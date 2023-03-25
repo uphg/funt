@@ -2,8 +2,7 @@ import isArrayLike from './isArrayLike'
 import keys from './keys'
 import type { Key } from './internal/types'
 
-type MaybeArrayLike<T> = ArrayLike<T> | Array<T>
-type MapObject<T> = Record<Key, T> | MaybeArrayLike<T>
+type MapObject<T> = Record<Key, T> | ArrayLike<T>
 type MapCallback<T, U> = (item: T, index: number | string, object: MapObject<T>) => U
 
 function map<T, U>(object: MapObject<T>, callback: MapCallback<T, U>): U[]{
