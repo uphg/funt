@@ -6,7 +6,7 @@ function throttle<T extends Function>(
   wait: number,
   options?: { leading?: boolean, trailing?: boolean }
 ) {
-  const { leading = true, trailing = true } = options || {}
+  const { leading = true, trailing = true } = options ?? {}
 
   let timerId: null | number | NodeJS.Timeout = null,
     context: unknown,
