@@ -13,7 +13,6 @@ function debounce<T extends Function>(
     args: unknown
 
   const later = function() {
-    clearTimeout(timerId as number)
     const passed = now() - (previous as number)
 
     if (wait > passed) {
@@ -41,7 +40,7 @@ function debounce<T extends Function>(
   }
 
   debounced.cancel = function() {
-    clearTimeout(timerId as number)
+    timerId && clearTimeout(timerId)
     timerId = args = context = null
   }
 

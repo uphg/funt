@@ -16,8 +16,6 @@ function throttle<T extends Function>(
   let previous = 0
 
   const later = function() {
-    timerId && clearTimeout(timerId)
-
     previous = !leading ? 0 : now()
     timerId = null
     result = func.apply(context, args)
