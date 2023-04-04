@@ -1,35 +1,19 @@
-import { defineUserConfig } from 'vuepress'
-import type { DefaultThemeOptions } from 'vuepress'
-const { path } = require('@vuepress/utils')
+import path from 'path'
+import { defaultTheme, defineUserConfig } from 'vuepress'
+import { searchPlugin } from '@vuepress/plugin-search'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const nav = [
-  {
-    text: '首页',
-    link: '/'
-  },
-  {
-    text: '文档',
-    link: '/docs'
-  }
-]
-
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig({
   base: '/funt/',
   title: 'funt',
   description: 'JavaScript 处理数组对象字符串等函数库合集',
 
-  themeConfig: {
+  theme: defaultTheme({
     docsDir: 'docs',
     // logo: '/images/logo.svg',
     // theme-level locales config
     repo: 'uphg/funt',
-    // navbar
-    navbar: nav,
-
-    // sidebar
-    sidebar: nav,
 
     // page meta
     editLinkText: '在 GitHub 上编辑此页',
@@ -50,15 +34,14 @@ export default defineUserConfig<DefaultThemeOptions>({
     ],
     backToHome: '返回首页',
 
-    // // a11y
     openInNewWindow: '在新窗口打开',
-    toggleDarkMode: '切换夜间模式',
+    colorModeSwitch: true,
     toggleSidebar: '切换侧边栏',
     themePlugins: {
       // only enable git plugin in production mode
       git: isProd,
     },
-  },
+  }),
 
   markdown: {
     importCode: {
@@ -70,23 +53,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     code: { lineNumbers: false }
   },
-  // markdown: {
-  //   code: { lineNumbers: false }
-  // },
-
   plugins: [
-    // only enable shiki plugin in production mode
-    // [
-    //   '@vuepress/plugin-shiki',
-    //   isProd
-    //     ? {
-    //         theme: 'dark-plus',
-    //       }
-    //     : false,
-    // ],
-    [
-      '@vuepress/plugin-search',
-      { placeholder: '搜索' },
-    ],
-  ],
+    searchPlugin({ locales: { '/': { placeholder: '搜索' } } })
+  ]
 })
